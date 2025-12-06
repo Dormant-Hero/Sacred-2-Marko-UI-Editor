@@ -24,6 +24,13 @@ button_hover_color = "#6d5a2b"
 COLORS_URL = "https://www.w3schools.com/tags/ref_colornames.asp"
 COLORS_DROPDOWN = ["red", "green", "yellow", "blue", "magenta", "cyan", "white", "black", "pink", "brown", "grey"]
 
+def resource_path(relative: str | os.PathLike) -> Path:
+    # Works both frozen and unfrozen
+    if getattr(sys, "frozen", False):
+        base = Path(sys._MEIPASS)  # type: ignore[attr-defined]
+    else:
+        base = Path(__file__).resolve().parent
+    return base / relative
 
 def get_game_root() -> Path:
     if getattr(sys, "frozen", False):
@@ -35,14 +42,14 @@ def get_game_root() -> Path:
         return Path(__file__).resolve().parent.parent  # .. -> Remaster
 
 def default_settings(default_class):
-    game_root = str(get_game_root())
-    ic(game_root)
-    og_ui_path = BASE_DIR / default_class.default_file
-    destination_path = game_root + default_class.destination_file
-    ic(og_ui_path)
-    ic(destination_path)
-    if os.path.exists(destination_path):
-        os.remove(destination_path)
+    game_root = Path(get_game_root())
+    og_ui_path = resource_path(default_class.default_file)  # Path inside bundle/project
+    destination_path = game_root / default_class.destination_file.lstrip("/")
+
+    if destination_path.exists():
+        destination_path.unlink()
+    destination_path.parent.mkdir(parents=True, exist_ok=True)
+
     shutil.copy(og_ui_path, destination_path)
 
 def right_screen(self, ui_element, bottom, direction, direction_value, scale, load_settings_func,
