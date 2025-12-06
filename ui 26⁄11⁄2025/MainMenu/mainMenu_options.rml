@@ -1,0 +1,892 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/journal_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>shared_gameSettings</title>
+        <style>
+            .ornament-left {
+            display: inline-block;
+            decorator: image("journal-ornament" flip-horizontal contain);
+            width: 20dp;
+            height: 12dp;
+            margin-right: 10dp;
+            }
+
+            .ornament-right {
+            display: inline-block;
+            decorator: image("journal-ornament" contain);
+            width: 20dp;
+            height: 12dp;
+            margin-left: 10dp;
+            }
+
+            #main-container {
+            position: absolute;
+            top: 3%;
+            right: 24dp;
+            width: 512dp;
+            height: 94%;
+            z-index: 0;
+            decorator: image("Textures/Spritesheets/Backgrounds/SkillsBackground.dds");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+
+            #main-container.in-game-layout {
+            top: 75dp;
+            height: 600dp;
+            }
+
+            #options-panel {
+            font-size: 16dp;
+            font-family: OptimusPrinceps;
+            font-effect: outline(2dp black);
+            color: title;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            height: 600dp; /* Screen Height 720 - Topbar Height 32 */
+            list-style: none;
+            overflow-y: hidden;
+            }
+
+
+            #main-container.in-game-layout #options-panel
+            {
+                height: 530dp;
+                pointer-events: auto;
+            }
+
+            .options-sub-panel {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+
+            tabset#options-tabset {
+            display: flex;
+            flex-direction: row;
+            /*transform: translateY(-50%);*/
+            height: 100%;
+            width: 100%;
+            /*background-color: red;*/
+            }
+
+            ul {
+            display: flex;
+            flex-direction: column;
+            width: 95%;
+            gap: 10dp;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10dp;
+            list-style: none;
+            align-items: center;
+            }
+
+            li {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            gap: 10dp;
+            width: 100%;
+            height: 27dp;
+            }
+
+            .option-container,
+            .option-container-mapping
+            {
+                font-size: 1.85vh;
+                padding-left: 10dp;
+            }
+
+            .option-container-mapping
+            {
+                width: 85%;
+                min-height: 25dp;
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            .option-container:hover,
+            .option-container-mapping:hover
+            {
+                decorator: tiled-horizontal-no-stretch(PointsBack-l, PointsBack-m, PointsBack-r);
+            }
+
+            .category-caption {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 90%;
+            height: 48dp;
+            min-height: 48dp; /* verhindert Zusammendrücken */
+            max-height: 48dp; /* optional zur Absicherung */
+
+            text-align: center;
+            font-size: 16dp;
+            font-family: OptimusPrinceps;
+            font-effect: outline(2dp black);
+            color: title;
+
+            decorator: image("TitleOrnamentBack" contain);
+            margin-top: 10dp;
+            box-sizing: border-box;
+            flex-shrink: 0; /* verhindert, dass flex sie verkleinert */
+            }
+
+            .sub-category-caption {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 90%;
+            height: 48dp;
+
+            font-size: 14dp;
+            text-align: center;
+
+            margin-top: 0dp;
+            padding: 0dp; /* optional, falls du woanders padding hattest */
+            }
+
+            .option-caption {
+            width: 300dp;
+            text-align: left;
+            }
+
+            .option-sub-element {
+            width: 125dp;
+            text-align: center;
+            }
+
+            .value-label {
+            width: 150dp;
+            font-size: 12dp;
+            }
+
+            .button-previous {
+            width: 24dp;
+            height: 42p;
+            decorator: image("ArrowL-default" contain);
+            }
+
+            .button-previous:focus {
+            decorator: image("ArrowL-default" contain);
+            }
+
+            .button-previous:hover {
+            decorator: image("ArrowL-hover" contain);
+            }
+
+            .button-previous:active {
+            decorator: image("ArrowL-active" contain);
+            }
+
+            .button-next {
+            width: 24dp;
+            height: 24p;
+            decorator: image("ArrowR-default" contain);
+            }
+
+            .button-next:focus {
+            decorator: image("ArrowR-default" contain);
+            }
+
+            .button-next:hover {
+            decorator: image("ArrowR-hover" contain);
+            }
+
+            .button-next:active {
+            decorator: image("ArrowR-active" contain);
+            }
+
+            .main-button-panel {
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            height: 48dp;
+            gap: 10dp;
+            align-items: center;
+            justify-content: center;
+            }
+
+            .main-button {
+            display: block;
+            position: relative;
+            width: 300dp;
+            height: 12dp;
+            line-height: 12dp;
+            margin-top: 24dp;
+            }
+
+            .checkbox-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            }
+
+            .checkbox {
+            display: flex;
+            width: 16dp;
+            height: 16dp;
+            decorator: image("Checkbox-active" contain);
+            }
+
+            .check {
+            display: flex;
+            width: 16dp;
+            height: 16dp;
+            decorator: image("Check-active" contain);
+            }
+
+            .nav-button
+            {
+            width: auto;
+            min-width:30dp;
+            height: 30dp;
+            position: relative;
+            margin-left: 60dp;
+            }
+
+            #button-apply-settings,
+            #button-reset-settings
+            {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            }
+
+            .apply-button-text,
+            .reset-button-text
+            {
+            position: relative;
+            left: 49%;
+            transform: translateX(-50%);
+            }
+
+            scrollbarvertical
+            {
+                width: 5dp;
+
+            }
+
+            .scrollable
+            {
+                width: 90%;
+                height: auto;
+                display: block;
+                flex-direction: column;
+                pointer-events: auto;
+                overflow-y: scroll;
+                overflow-style: inherit;
+                margin-top: 15dp;
+            }
+
+            .mapping-input
+            {
+                font-size: 1.9vh;
+                text-align: center;
+                decorator: tiled-horizontal-no-stretch(CounterBack-l, CounterBack-m, CounterBack-r);
+                width: 50%;
+                padding: 1dp;
+                margin-right: 10dp;
+            }
+
+            .mapping-input-static
+            {
+                font-size: 1.9vh;
+                text-align: center;
+                width: 50%;
+                padding: 5dp;
+            }
+
+            .bindings-category
+            {
+                font-size: 2.5vh;
+            }
+
+            .option-container-mapping-negative-feedback
+            {
+                image-color: red;
+                decorator: tiled-horizontal-no-stretch(PointsBack-l, PointsBack-m, PointsBack-r);
+            }
+
+
+        </style>
+    </head>
+
+    <body id="main-container">
+
+    <panel id="options-panel">
+        <div id="options-panel-graphics" class="options-sub-panel">
+            <div class="category-caption">
+                <span>1927439701</span>
+            </div> <!-- Display -->
+            <div id="options-panel-graphics-scroll-container" class="scrollable" onscroll="OnGraphicsScroll">
+              <ul>
+                <li class="option-container">
+                  <label id="display-resolution-caption" class="option-caption">3306937756</label> <!-- Resolution -->
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayResolution"></button>
+                  <label id="display-resolution-value" class="value-label">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayResolution"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-window-mode-caption" class="option-caption">0278414094</label> <!-- Window Mode -->
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayWindowMode"></button>
+                  <label id="display-window-mode-value" class="value-label">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayWindowMode"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-vsync-caption" class="option-caption">3609580916</label> <!-- V-Sync -->
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayVSync"></button>
+                  <label id="display-vsync-value" class="value-label">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayVSync"></button>
+                </li>
+
+                <!-- Performance -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">4239201911</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-msaa-level-caption" class="option-caption">0202872782</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayMsaaLevel"></button>
+                  <label id="display-msaa-level-value" class="value-label">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayMsaaLevel"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-view-distance-caption" class="option-caption">0273454634</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayViewDistance"></button>
+                  <label id="display-view-distance-value" class="value-label" min-value="50" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayViewDistance"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-grass-renderdistance-caption" class="option-caption">1663716207</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayGrassRenderdistance"></button>
+                  <label id="display-grass-renderdistance-value" class="value-label" min-value="50" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayGrassRenderdistance"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-shadow-distance-caption" class="option-caption">0858614629</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayShadowDistance"></button>
+                  <label id="display-shadow-distance-value" class="value-label" min-value="50" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayShadowDistance"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-treejob-aggressive-cullbudget-caption" class="option-caption">3259027402</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayTreejobAggressiveCullbudget"></button>
+                  <label id="display-treejob-aggressive-cullbudget-value" class="value-label" min-value="100" max-value="1600">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayTreejobAggressiveCullbudget"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tree-aggressive-culldistancefactor-caption" class="option-caption">2590309916</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayTreeAggressiveCulldistancefactor"></button>
+                  <label id="display-tree-aggressive-culldistancefactor-value" class="value-label" min-value="50" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayTreeAggressiveCulldistancefactor"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-patch-blending-cutoffdistance-caption" class="option-caption">0685005580</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayPatchBlendingCutoffdistance"></button>
+                  <label id="display-patch-blending-cutoffdistance-value" class="value-label" min-value="50" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayPatchBlendingCutoffdistance"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tree-lodbias-caption" class="option-caption">1564877298</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayTreeLodbias"></button>
+                  <label id="display-tree-lodbias-value" class="value-label" min-value="0" max-value="3">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayTreeLodbias"></button>
+                </li>
+
+
+                <!-- Tone Mapper -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">3639655119</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperEnabled"></button>
+                  <label id="display-tone-mapper-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperEnabled"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-shadow-range-caption" class="option-caption">1110470967</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperShadowRange"></button>
+                  <label id="display-tone-mapper-shadow-range-value" class="value-label" min-value="0" max-value="1" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperShadowRange"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-range-min-caption" class="option-caption">2851636510</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidRangeMin"></button>
+                  <label id="display-tone-mapper-mid-range-min-value" class="value-label" min-value="0" max-value="1" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidRangeMin"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-range-max-caption" class="option-caption">2851635616</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidRangeMax"></button>
+                  <label id="display-tone-mapper-mid-range-max-value" class="value-label" min-value="0" max-value="1" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidRangeMax"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-highlight-range-caption" class="option-caption">1652641361</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperHighlightRange"></button>
+                  <label id="display-tone-mapper-highlight-range-value" class="value-label" min-value="0" max-value="1" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperHighlightRange"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-shadow-brightness-caption" class="option-caption">0852784867</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperShadowBrightness"></button>
+                  <label id="display-tone-mapper-shadow-brightness-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperShadowBrightness"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-brightness-caption" class="option-caption">3188560135</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidBrightness"></button>
+                  <label id="display-tone-mapper-mid-brightness-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidBrightness"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-highlight-brightness-caption" class="option-caption">3313795293</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperHighlightBrightness"></button>
+                  <label id="display-tone-mapper-highlight-brightness-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperHighlightBrightness"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-shadow-contrast-caption" class="option-caption">1481713720</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperShadowContrast"></button>
+                  <label id="display-tone-mapper-shadow-contrast-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperShadowContrast"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-contrast-caption" class="option-caption">1639648988</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidContrast"></button>
+                  <label id="display-tone-mapper-mid-contrast-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidContrast"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-highlight-contrast-caption" class="option-caption">3583477106</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperHighlightContrast"></button>
+                  <label id="display-tone-mapper-highlight-contrast-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperHighlightContrast"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-shadow-gamma-caption" class="option-caption">3611905197</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperShadowGamma"></button>
+                  <label id="display-tone-mapper-shadow-gamma-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperShadowGamma"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-gamma-caption" class="option-caption">0542856209</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidGamma"></button>
+                  <label id="display-tone-mapper-mid-gamma-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidGamma"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-highlight-gamma-caption" class="option-caption">0597665855</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperHighlightGamma"></button>
+                  <label id="display-tone-mapper-highlight-gamma-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperHighlightGamma"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-shadow-saturation-caption" class="option-caption">4111909512</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperShadowSaturation"></button>
+                  <label id="display-tone-mapper-shadow-saturation-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperShadowSaturation"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-mid-saturation-caption" class="option-caption">1766542444</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperMidSaturation"></button>
+                  <label id="display-tone-mapper-mid-saturation-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperMidSaturation"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-tone-mapper-highlight-saturation-caption" class="option-caption">3033213410</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayToneMapperHighlightSaturation"></button>
+                  <label id="display-tone-mapper-highlight-saturation-value" class="value-label" min-value="0" max-value="2" step-value="0.05">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayToneMapperHighlightSaturation"></button>
+                </li>
+
+                <!-- Edge Antialiasing -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">2424137837</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-edgeaa-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayEdgeAAEnable"></button>
+                  <label id="display-edgeaa-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayEdgeAAEnable"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-edgeaa-depth-caption" class="option-caption">3235543096</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayEdgeAADetection"></button>
+                  <label id="display-edgeaa-depth-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayEdgeAADetection"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-edgeaa-boost-caption" class="option-caption">3787791843</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayEdgeAABoost"></button>
+                  <label id="display-edgeaa-boost-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayEdgeAABoost"></button>
+                </li>
+
+                <!-- Depth of Field -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">3429985409</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-dof-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayDoFEnabled"></button>
+                  <label id="display-dof-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayDoFEnabled"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-dof-focus-offset-caption" class="option-caption">1947390987</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayDoFFocusOffset"></button>
+                  <label id="display-dof-focus-offset-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayDoFFocusOffset"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-dof-focus-range-caption" class="option-caption">3501938193</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayDoFFocusRange"></button>
+                  <label id="display-dof-focus-range-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayDoFFocusRange"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-dof-blur-radius-caption" class="option-caption">0050918049</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayDoFBlurRadius"></button>
+                  <label id="display-dof-blur-radius-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayDoFBlurRadius"></button>
+                </li>
+
+                <!-- SSAO -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">1960849595</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOEnabled"></button>
+                  <label id="display-ssao-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOEnabled"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-radius-caption" class="option-caption">1040466786</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAORadius"></button>
+                  <label id="display-ssao-radius-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAORadius"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-bias-caption" class="option-caption">0758795129</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOBias"></button>
+                  <label id="display-ssao-bias-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOBias"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-intensity-caption" class="option-caption">2761517297</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOIntensity"></button>
+                  <label id="display-ssao-intensity-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOIntensity"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-minvalue-caption" class="option-caption">2573445162</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOMinValue"></button>
+                  <label id="display-ssao-minvalue-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOMinValue"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-focusdepth-caption" class="option-caption">3626873502</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOFocusDepth"></button>
+                  <label id="display-ssao-focusdepth-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOFocusDepth"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-ssao-samplecount-caption" class="option-caption">3471911444</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplaySSAOSampleCount"></button>
+                  <label id="display-ssao-samplecount-value" class="value-label" min-value="2" max-value="32">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplaySSAOSampleCount"></button>
+                </li>
+
+
+                 <!-- Vignette -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">3074408523</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-vignette-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayVignetteEnabled"></button>
+                  <label id="display-vignette-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayVignetteEnabled"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-vignette-falloff-caption" class="option-caption">2003993406</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayVignetteFalloff"></button>
+                  <label id="display-vignette-falloff-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayVignetteFalloff"></button>
+                </li>
+
+                <!-- Chromatic Aberration -->
+                <li class="sub-category-caption">
+                  <div class="ornament-left"></div>
+                  <label class="option-sub-element">3087225861</label>
+                  <div class="ornament-right"></div>
+                </li>
+                <li class="option-container">
+                  <label id="display-chromaabb-enabled-caption" class="option-caption">2243283801</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayChromaabbEnabled"></button>
+                  <label id="display-chromaabb-enabled-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayChromaabbEnabled"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-chromaabb-distance-caption" class="option-caption">2003993406</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayChromaabbDistance"></button>
+                  <label id="display-chromaabb-distance-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayChromaabbDistance"></button>
+                </li>
+                <li class="option-container">
+                  <label id="display-chromaabb-offset-caption" class="option-caption">3890913755</label>
+                  <button class="button-previous" onclick="OnClick_PreviousDisplayChromaabbOffset"></button>
+                  <label id="display-chromaabb-offset-value" class="value-label" min-value="0" max-value="200" step-value="5">N/A</label>
+                  <button class="button-next" onclick="OnClick_NextDisplayChromaabbOffset"></button>
+                </li>
+              </ul>
+            </div>
+
+        </div>
+
+        <div id="options-panel-gameplay" class="options-sub-panel">
+            <div class="category-caption">
+                <span>2568947533</span>
+            </div>
+            <div id="options-panel-gameplay-scroll-container" class="scrollable" onscroll="OnGameplayScroll">
+                <ul>
+                <!-- Camera Options -->
+                  <li class="sub-category-caption">
+                    <div class="ornament-left"></div>
+                    <p>2313801968</p><!-- Camera -->
+                    <div class="ornament-right"></div>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-follow-camera-caption" class="option-caption">0329630881</label> <!-- Follow Cam -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayFollowCam"></button>
+                    <label id="gameplay-follow-camera-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayFollowCam"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-collision-caption" class="option-caption">1744025617</label> <!-- Camera Collision -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayCameraCollision"></button>
+                    <label id="gameplay-camera-collision-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayCameraCollision"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-auto-zoom-curve-caption" class="option-caption">0458492007</label> <!-- Auto Zoom Curve -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayAutoZoomCurve"></button>
+                    <label id="gameplay-camera-auto-zoom-curve-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayAutoZoomCurve"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-zoom-min-caption" class="option-caption">1324725221</label> <!-- Zoom Min -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayZoomMin"></button>
+                    <label id="gameplay-camera-zoom-min-value" class="value-label" min-value="1" max-value="20">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayZoomMin"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-zoom-max-caption" class="option-caption">1324724327</label> <!-- Zoom Max -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayZoomMax"></button>
+                    <label id="gameplay-camera-zoom-max-value" class="value-label" min-value="1" max-value="20">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayZoomMax"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-zoom-curve-min-caption" class="option-caption">0544799674</label> <!-- Zoom Curve Min -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayZoomCurveMin"></button>
+                    <label id="gameplay-camera-zoom-curve-min-value" class="value-label" min-value="1" max-value="20">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayZoomCurveMin"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-camera-zoom-curve-max-caption" class="option-caption">0544798780</label> <!-- Zoom Curve Max -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayZoomCurveMax"></button>
+                    <label id="gameplay-camera-zoom-curve-max-value" class="value-label" min-value="1" max-value="20">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayZoomCurveMax"></button>
+                  </li>
+                  <li class="sub-category-caption">
+                    <div class="ornament-left"></div>
+                    <p>2301202676</p> <!-- Extended Options -->
+                    <div class="ornament-right"></div>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-collect-caption" class="option-caption">1003374364</label> <!-- Collect -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayCollect"></button>
+                    <label id="gameplay-collect-value" class="value-label" min-value="0" max-value="3">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayCollect"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-collect-misc-caption" class="option-caption">0521318397</label> <!-- Collect Misc -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayCollectMisc"></button>
+                    <label id="gameplay-collect-misc-value" class="value-label" min-value="0" max-value="3">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayCollectMisc"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-potion-order-caption" class="option-caption">1965789096</label> <!-- Potion Order -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayPotionOrder"></button>
+                    <label id="gameplay-potion-order-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayPotionOrder"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-floor-circles-caption" class="option-caption">3889661790</label> <!-- Floor Circles -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayFloorCircles"></button>
+                    <label id="gameplay-floor-circles-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayFloorCircles"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-hit-points-caption" class="option-caption">3862707552</label> <!-- Hit Points -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayHitPoints"></button>
+                    <label id="gameplay-hit-points-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayHitPoints"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-auto-equip-caption" class="option-caption">0334090112</label> <!-- Auto Equip -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayAutoEquip"></button>
+                    <label id="gameplay-auto-equip-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayAutoEquip"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-blood-effects-caption" class="option-caption">2963231715</label> <!-- Blood FX -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayBloodEffects"></button>
+                    <label id="gameplay-blood-effects-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayBloodEffects"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-buff-effects-caption" class="option-caption">2963344927</label> <!-- Buff FX -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayBuffEffects"></button>
+                    <label id="gameplay-buff-effects-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayBuffEffects"></button>
+                  </li>
+                  <li class="option-container">
+                    <label id="gameplay-fast-casting-caption" class="option-caption">1092714850</label> <!-- Fast Casting -->
+                    <button class="button-previous" onclick="OnClick_PreviousGameplayFastCasting"></button>
+                    <label id="gameplay-fast-casting-value" class="value-label" min-value="0" max-value="1">N/A</label>
+                    <button class="button-next" onclick="OnClick_NextGameplayFastCasting"></button>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="options-panel-sound" class="options-sub-panel">
+            <div class="category-caption">
+                <span>3744564474</span>
+            </div>
+            <ul style="width: 90%; margin-top: 15dp;">
+              <li class="option-container">
+                <label id="audio-master-volume-caption" class="option-caption">4215194333</label>         <!-- Master Volume -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioMasterVolume"></button>
+                <label id="audio-master-volume-value" class="value-label" min-value="0" max-value="100">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioMasterVolume"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-music-volume-caption" class="option-caption">3479591086</label>          <!-- Music -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioMusicVolume"></button>
+                <label id="audio-music-volume-value" class="value-label" min-value="0" max-value="100">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioMusicVolume"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-sfx-volume-caption" class="option-caption">0955606814</label>            <!-- Sound Effects -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioSfxVolume"></button>
+                <label id="audio-sfx-volume-value" class="value-label" min-value="0" max-value="100">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioSfxVolume"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-voice-volume-caption" class="option-caption">1480944248</label>          <!-- Voice -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioVoiceVolume"></button>
+                <label id="audio-voice-volume-value" class="value-label" min-value="0" max-value="100">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioVoiceVolume"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-2d3d-relation-caption" class="option-caption">0883360851</label>         <!-- Volume Relation 2D/3D -->
+                <button class="button-previous" onclick="OnClick_PreviousAudio2D3DRelation"></button>
+                <label id="audio-2d3d-relation-value" class="value-label" min-value="0" max-value="200">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudio2D3DRelation"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-direction-caption" class="option-caption">1527590396</label>             <!-- Sound Direction -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioDirection"></button>
+                <label id="audio-direction-value" class="value-label" min-value="0" max-value="2">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioDirection"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-comments-caption" class="option-caption">0759360492</label>              <!-- Comments -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioComments"></button>
+                <label id="audio-comments-value" class="value-label" min-value="0" max-value="3">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioComments"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-number-of-speakers-caption" class="option-caption">0414155222</label>    <!-- Number of Speakers -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioNumberOfSpeakers"></button>
+                <label id="audio-number-of-speakers-value" class="value-label" min-value="0" max-value="6">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioNumberOfSpeakers"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-obstacles-caption" class="option-caption">0507423602</label>             <!-- Obstacles -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioObstacles"></button>
+                <label id="audio-obstacles-value" class="value-label">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioObstacles"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-volume-zoom-dynamic-caption" class="option-caption">1440672906</label>   <!-- Volume Zoom Dynamic -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioVolumeZoomDynamic"></button>
+                <label id="audio-volume-zoom-dynamic-value" class="value-label">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioVolumeZoomDynamic"></button>
+              </li>
+              <li class="option-container">
+                <label id="audio-player-sfx-center-box-caption" class="option-caption">0417259766</label>  <!-- Player Sfx Center Box -->
+                <button class="button-previous" onclick="OnClick_PreviousAudioPlayerSfxCenterBox"></button>
+                <label id="audio-player-sfx-center-box-value" class="value-label">N/A</label>
+                <button class="button-next" onclick="OnClick_NextAudioPlayerSfxCenterBox"></button>
+              </li>
+            </ul>
+        </div>
+
+        <div id="options-panel-controls" class="options-sub-panel">
+            <div id="options-panel-controls-content" class="scrollable" onscroll="OnMappingsScroll">
+            </div>
+        </div>
+    </panel>
+
+    <div class="main-button-panel">
+        <button id="button-reset-settings" class="main-button" onclick="OnClick_ResetSettings">
+            <div id="button-reset-settings-label" class="">3955678788</div>
+            <!--<div class="nav-button reset-settings" id="reset-button-prompt" onclick="OnClick_ResetSettings"></div>-->
+        </button>
+
+        <button id="button-apply-settings" class="main-button" onclick="OnClick_ApplySettings">
+            <div class="apply-button-text">1646704996</div>
+            <div class="nav-button apply-settings" id="apply-button-prompt" onclick=""></div>
+        </button>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 32dp; line-height: 32dp;">
+        <p id="version" style="color: title;">Build Version: N/A</p>
+    </div>
+    </body>
+</rml>
+

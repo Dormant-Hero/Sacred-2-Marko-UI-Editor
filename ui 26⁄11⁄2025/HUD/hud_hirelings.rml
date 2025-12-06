@@ -1,0 +1,62 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>hud_hirelings</title>
+        <style>
+
+            .hirelings-panel
+            {
+                width:90dp;
+                position: absolute;
+                bottom: 220dp;
+                right: 24dp;
+                display: flex;
+                flex-direction: column;
+
+                align-items: end;
+                justify-content: end;
+                justify-items: end;
+                align-content: end;
+            }
+
+            .hireling-background
+            {
+                width: 90dp;
+                height: 90dp;
+                decorator: image(TeamPortraitBack contain);
+                z-index: 1;
+                display: block;
+            }
+
+            .hireling-hp
+            {
+                position: relative;
+                width: 90dp;
+                height: 90dp;
+                fill-image: TeamPortraitHP;
+                z-index: 2;
+                display: block;
+            }
+
+            .hireling-icon
+            {
+                position: relative;
+                top:-70dp;
+                left: 20dp;
+                width: 50dp;
+                height: 50dp;
+                display: flex;
+                z-index: 3;
+                mask-image: image(Blacksmith-circle-mask);
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+        <div class="hirelings-panel" id="hirelings-container">
+
+        </div>
+    </body>
+</rml>

@@ -1,0 +1,75 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>outGameMenu</title>
+        <style>
+            .menu-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .menu-box {
+                width: 270dp;
+                height: 500;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 20dp;
+                decorator: image(Choose-save-bg contain);
+                gap:5dp;
+            }
+
+            .info-box
+            {
+                margin-top: 20dp;
+                width: 100%;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .info-box p
+            {
+                margin: 5dp 0;
+                font-size: 14dp;
+            }
+
+            .details
+            {
+                font-size: 1.5vh;
+                font-family: Inria Sans;
+                color: primary-list-value;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+        <div class="menu-container">
+            <div class="menu-box">
+
+                <!-- Menu Buttons -->
+                <button id="first-focus" onclick="ContinueGame" style="nav-down: #settings-button; nav-up: #save-and-exit">2214850355</button>
+                <button id="settings-button" onclick="OpenSettings" style="nav-down: #save-and-exit; nav-up: #first-focus">1247404381</button>
+                <button id="save-and-exit" onclick="SaveAndExit" style="nav-down: #first-focus; nav-up: #settings-button">0478123068</button>
+
+                <!-- Information Section -->
+                <div class="info-box" data-model="GameInfoViewModel">
+                    <p class="details">{{ConnectionMode}}</p>
+                    <p class="details">{{ClientVersion}}</p>
+                    <p class="details">{{ServerVersion}}</p>
+                    <p class="details">{{ServerName}}</p>
+                    <p class="details">{{GameMode}}</p>
+                    <p class="details">{{GameType}}</p>
+                    <p class="details">{{GameDifficulty}}</p>
+                    <p class="details">{Campaign}}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</rml>

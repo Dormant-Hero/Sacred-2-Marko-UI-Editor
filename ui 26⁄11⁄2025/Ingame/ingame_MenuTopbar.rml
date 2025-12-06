@@ -1,0 +1,142 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <title>ingame_MenuTopbar</title>
+        <style>
+
+            #topbar-panel {
+                pointer-events: auto;
+                width: 100%;
+                height: 8%;
+                decorator: tiled-horizontal-no-stretch(Map-topmenu-slice,
+                Map-topmenu-slice, Map-topmenu-slice);
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #tab-content {
+                pointer-events: none;
+                width: 100%;
+                height: 92%;
+            }
+
+
+            .tabbar-container {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 10;
+            }
+
+            .tabbar {
+                width: auto;
+                text-align: center;
+            }
+
+            .progress-text {
+                margin-bottom: 5px;
+                display: flex;
+                justify-content: space-between;
+                width: 80%;
+            }
+
+            .health-bar-position {
+                display: flex;
+            }
+
+            .xp-bar-position {
+                display: flex;
+            }
+
+            #progress-horizontal-entity-health {
+                decorator: tiled-horizontal(progress-l, progress-c, progress-r);
+                width: 80%;
+                height: 75%;
+            }
+
+            #progress-horizontal-entity-health fill {
+                decorator: tiled-horizontal(progress-fill-l, progress-fill-c, progress-fill-r);
+                width: 75%;
+                height: 75%;
+            }
+
+            #progress-horizontal-entity-xp {
+                decorator: tiled-horizontal(progress-l, progress-c, progress-r);
+                width: 80%;
+                height: 75%;
+            }
+
+            #progress-horizontal-entity-xp fill {
+                decorator: tiled-horizontal(progress-fill-l, progress-fill-c, progress-fill-r);
+                width: 75%;
+                height: 75%;
+            }
+
+            tab.ingame-menu-tab {
+                width: auto;
+                padding: 0 20dp;
+                height: 40dp; /* needed for vertical centering */
+                line-height: 40dp;
+                display: inline-block;
+                align-items: center;      /* vertical centering */
+                justify-content: center;  /* horizontal centering */
+                font-size: 15dp;
+                white-space: nowrap;
+            }
+
+            .nav-button {
+                width: 5%;
+                height: 75%;
+                text-align: center;
+                line-height: 30px;
+                cursor: pointer;
+                border-radius: 5px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-button:hover {
+            }
+
+            .tab-separator {
+                decorator: image(Map-top-divider-big contain);
+                width: 5dp;
+                height: 100%;
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="topbar-panel">
+
+
+        <!-- Tabbar -->
+        <div class="tabbar-container ">
+            <div id="prev-tab" class="nav-button left-shoulder"></div>
+
+            <tabset id="ingame-menu" class="tabbar optimus-text">
+                <tab id="options-tab" class="ingame-menu-tab">3414272697</tab>
+                <div class="tab-separator"></div>
+                <tab id="attributes-tab" class="ingame-menu-tab">0563355968</tab>
+                <div class="tab-separator"></div>
+                <tab id="inventory-tab" class="ingame-menu-tab">3817220635</tab>
+                <div class="tab-separator"></div>
+                <tab id="map-tab" class="ingame-menu-tab">1298107429</tab>
+                <div class="tab-separator"></div>
+                <tab id="combat-arts-tab" class="ingame-menu-tab">1599527173</tab>
+                <div class="tab-separator"></div>
+                <tab id="logbook-tab" class="ingame-menu-tab">0442700370</tab>
+            </tabset>
+
+            <div id="next-tab" class="nav-button right-shoulder"></div>
+        </div>
+
+    </panel>
+    <panel id="tab-content">
+    </panel>
+    </body>
+</rml>

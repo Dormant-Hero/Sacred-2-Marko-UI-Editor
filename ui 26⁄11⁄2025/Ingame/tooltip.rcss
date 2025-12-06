@@ -1,0 +1,338 @@
+@spritesheet Inventory-tooltip-bg
+{
+    src: "Textures\Spritesheets\Backgrounds\Inventory-tooltip-bg.dds";
+    Inventory-tooltip-background-t: 0px 0px 880px 576px;
+    Inventory-tooltip-frame-t: 0px 576px 880px 576px;
+    Inventory-tooltip-gradient: 0px 1152px 880px 576px;
+    Inventory-tooltip-frame-b: 0px 1728px 880px 208px;
+    Inventory-tooltip-background-minimal: 0px 1936px 880px 11px;
+    Inventory-tooltip-frame-minimal: 0px 1947px 880px 11px;
+    inventory-tooltip-empty-minimal: 0px 1958px 800px 11px;
+    Blacksmith-background-mask: 880px 0px 832px 416px;
+    Inventory-tooltip-background-b: 880px 416px 880px 388px;
+    Inventory-tooltip-background-m: 880px 804px 880px 180px;
+    Inventory-tooltip-frame-m: 880px 984px 880px 180px;
+    inventory-tooltip-empty-m: 880px 1164px 800px 180px;
+    inventory-tooltip-empty-b: 880px 1344px 800px 132px;
+
+}
+
+
+.tooltip-background
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-background-t, Inventory-tooltip-background-m, Inventory-tooltip-background-b );
+}
+
+/* GRADIENTS*/
+.rare-0-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#575164;
+}
+.rare-1-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#cfccad;
+}
+
+.rare-5-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#389bc1;
+}
+
+.rare-9-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#f4d174;
+}
+
+.rare-13-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#e9d14a;
+}
+
+.rare-15-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#b46722;
+}
+
+.set-gradient
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-gradient, inventory-tooltip-empty-m, inventory-tooltip-empty-b );
+    image-color:#0ea37f;
+}
+
+/* FRAMES*/
+.rare-0-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#575164;
+}
+
+.rare-1-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#cfccad;
+}
+
+.rare-5-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#389bc1;
+}
+
+.rare-9-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#f4d174;
+}
+
+.rare-13-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#e9d14a;
+}
+
+.rare-15-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#b46722;
+}
+
+.set-frame
+{
+    decorator: tiled-vertical-no-stretch( Inventory-tooltip-frame-t, Inventory-tooltip-frame-m, Inventory-tooltip-frame-b );
+    image-color:#0ea37f;
+}
+
+
+.inventory-tooltip-position
+{
+    top:10%;
+    left: 525dp;
+}
+
+.inventory-tooltip-position-spells
+{
+    top:10%;
+    right: 175dp;
+}
+
+.combat-art-tooltip-position
+{
+    top:10%;
+    right: 522dp;
+}
+
+.combat-art-tooltip-position-items
+{
+    top:10%;
+    left: 190dp;
+}
+
+.combat-art-tooltip-position-combo-open
+{
+    top:10%;
+    right: 652dp;
+}
+
+.logbook-tooltip-position
+{
+    top:10%;
+    right: 660dp;
+}
+
+.hud-ca-tooltip-position
+{
+    bottom: 20%;
+    right: 200dp;
+}
+
+.hud-weapons-tooltip-position
+{
+    bottom: 20%;
+    left: 205dp;
+}
+
+.hud-godspell-tooltip-position,
+.hud-potions-tooltip-position
+{
+    bottom: 13%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hud-godspell-tooltip-position-inventory
+{
+    bottom: 18%;
+    right: 340dp;
+}
+
+.hud-godspell-tooltip-position-combatarts
+{
+    bottom: 18%;
+    left: 360dp;
+}
+
+.bottom-margin
+{
+    height: 16dp;
+}
+
+.bottom-margin-large
+{
+    height: 24dp;
+}
+
+.tooltip-data
+{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    text-anchor: start;
+}
+
+#dynamic-bonus-stats,
+#dynamic-bonus-stats-secondary,
+#dynamic-mods-stats,
+#set-bonus
+{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap:5dp;
+}
+
+.input-prompts
+{
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    gap:5dp;
+    height: auto;
+}
+
+.input-prompt-line
+{
+    display: flex;
+    width: 100%;
+    height: 15dp;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap:10dp;
+    font-family: "Inria Sans";
+    font-size: 1.9vh;
+    color: primary-element-label;
+    margin-top: 5dp;
+}
+
+.separator
+{
+    width: 100%;
+    decorator: image(skills-dooted-line-long);
+    height: 1dp;
+}
+
+.separator-small
+{
+    width: 90%;
+    decorator: image(skills-dooted-line-short);
+    height: 1dp;
+}
+
+.bonus-stat-container
+{
+    display: flex;
+    width: 100%;
+    height: auto;
+    font-family: Inria Sans;
+    font-size: 1.9vh;
+    line-height: 1.9vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-name
+{
+    font-family: Inria Sans;
+    color: secondary-list-label;
+    font-size: 2.0vh;
+    width: 80%;
+    height: auto;
+    text-anchor: start;
+}
+
+.defence-damage-container
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 5dp;
+    width: 100%;
+}
+
+#damage-values,
+#defence-values
+{
+    height: 40dp;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10dp;
+
+}
+
+.stat-value
+{
+    color: secondary-list-value;
+    width: 35%;
+    text-align: right;
+}
+
+.stat-value-not-learned
+{
+    color: secondary-list-value;
+    width: 80%;
+    text-align: right;
+}
+
+.primary-value-text
+{
+    font-family: Inria Sans;
+    color: secondary-list-value;
+    font-size: 2.3vh;
+    width: 40%;
+}
+
+.defence-damage-type-bar
+{
+    position: absolute;
+    left: 30dp;
+    width:190dp;
+    height: 1vh;
+}
+
+.defence-damage-bars
+{
+    height: 15dp;
+    display: flex;
+}
+
+.damage-values-text-container,
+.defence-values-text-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+    text-anchor: start;
+    height: 30dp;
+    width: 60%;
+    font-size: 1.8vh;
+}
+
+

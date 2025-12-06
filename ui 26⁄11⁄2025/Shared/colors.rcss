@@ -1,0 +1,27 @@
+.dryade {
+color: #50D651;
+}
+
+.highelfe {
+color: #5D7AFF;
+}
+
+.inquisitor {
+color: #BD3940;
+}
+
+.seraphim {
+color: #1CFCFF;
+}
+
+.templeguardian {
+color: #059C68;
+}
+
+.shadowwarrior {
+color: #F9E427;
+}
+
+.dragonmage {
+color: #D05A0B;
+}

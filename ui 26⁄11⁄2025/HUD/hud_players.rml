@@ -1,0 +1,83 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>hud_players</title>
+        <style>
+            .player-panel {
+                width: 90dp;
+                position: absolute;
+                bottom: 220dp;
+                left: 24dp;
+                display: flex;
+                flex-direction: column;
+                gap: 5dp;
+
+                align-items: end;
+                justify-content: end;
+                justify-items: end;
+                align-content: end;
+            }
+
+            .player-background {
+                width: 90dp;
+                height: 90dp;
+                decorator: image(TeamPortraitBack contain);
+                z-index: 1;
+                display: block;
+                position: relative;
+            }
+
+            .player-hp {
+                position: relative;
+                width: 90dp;
+                height: 90dp;
+                fill-image: TeamPortraitHP;
+                z-index: 2;
+                display: block;
+            }
+
+            .player-icon {
+                position: relative;
+                top: -79dp;
+                left: 16dp;
+                width: 58dp;
+                height: 67dp;
+                display: flex;
+                z-index: 3;
+                mask-image: image(Blacksmith-circle-mask);
+            }
+
+            .player-name-bg {
+                position: absolute;
+                bottom: -2dp;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 11dp;
+                width: 65dp;
+                text-align: center;
+                z-index: 4;
+                decorator: image(blacksmith-text-background);
+                opacity: 0.7;
+            }
+
+            .player-name {
+                position: absolute;
+                bottom: -2dp;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 11dp;
+                width: 65dp;
+                text-align: center;
+                z-index: 5;
+            }
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <div class="player-panel" id="players-container">
+
+    </div>
+    </body>
+</rml>

@@ -1,0 +1,544 @@
+@spritesheet TraderBackgrounds {
+    src: "Textures/Spritesheets/Backgrounds/TraderBackgrounds.dds";
+    Dialog-background: 0px 0px 832px 1936px;
+    Trader-background-grid: 832px 0px 1072px 1936px;
+    Trader-background: 1904px 0px 1072px 1936px;
+}
+
+@spritesheet blacksmith {
+    src: "Textures/Spritesheets/blacksmith.dds";
+    forge-art-background: 0px 0px 112px 152px;
+    blacksmith-text-background: 112px 0px 1016px 296px;
+    Blacksmith-circle-mask: 1128px 0px 321px 320px;
+    blacksmith-item-background-hover: 1449px 0px 369px 425px;
+    blacksmith-item-background-selected: 0px 296px 369px 425px;
+    blacksmith-item-background: 369px 296px 369px 425px;
+}
+
+@spritesheet journal-background-copy-for-orament {
+    src: "Textures/Spritesheets/Backgrounds/JournalBackgrounds.dds";
+    title-ornament: 1836px 344px 64px 28px;
+}
+
+@spritesheet CombomasterElements
+{
+    src: Textures\Spritesheets\Combomaster.dds;
+    Combomaster-slots-default: 0px 0px 116px 116px;
+    Combomaster-rune-slot-default: 116px 0px 476px 200px;
+    Combomaster-rune-slot-selected: 0px 200px 476px 200px;
+
+}
+
+@spritesheet OrbPanel
+{
+    src: Textures\Spritesheets\OrbPanel.dds;
+    mount-background: 0px 0px 504px 912px;
+    Orb-background-active: 504px 0px 104px 104px;
+    Orb-background-default: 504px 104px 104px 104px;
+    Orb-background-inactive: 504px 208px 104px 104px;
+    Orb-button-active-focus: 504px 600px 80px 96px;
+    Orb-button-focus: 504px 504px 80px 96px;
+    Orb-button-active: 504px 312px 80px 96px;
+    Orb-button-default: 504px 408px 80px 96px;
+    Orb-button-letter-I: 584px 312px 23px 30px;
+    Orb-button-letter-II: 584px 342px 23px 30px;
+}
+
+
+@spritesheet InventoryCAStats {
+    src: "Textures/Spritesheets/InventoryCAStats.dds";
+    SeparatorSmall: 2px 2px 360px 8px;
+    CombatArtsRegen-bar: 366px 2px 376px 24px;
+    CombatArtsRegen-point: 746px 2px 14px 24px;
+    CombatArtPointEmpty: 764px 2px 36px 36px;
+    CombatArtPointFull: 804px 2px 36px 36px;
+    CoinIcon: 844px 2px 48px 48px;
+    DmgTypeFireIcon: 896px 2px 48px 48px;
+    DmgTypeIceIcon: 948px 2px 48px 48px;
+    DmgTypeMagicIcon: 1000px 2px 48px 48px;
+    DmgTypeNormalIcon: 1052px 2px 48px 48px;
+    DmgTypePoisonIcon: 1104px 2px 48px 48px;
+    SmallCounterBack: 1156px 2px 72px 56px;
+    AttackIcon: 1232px 2px 64px 64px;
+    CombatArtIcon: 1300px 2px 64px 64px;
+    DefenseIcon: 1368px 2px 64px 64px;
+    HealthIcon: 1436px 2px 64px 64px;
+    MagicAttackIcon: 1504px 2px 64px 64px;
+    MagicDeffenseIcon: 1572px 2px 64px 64px;
+    ComboArrows-active: 1640px 2px 24px 71px;
+    ComboArrows-inactive: 1668px 2px 24px 71px;
+    ComboArrows-selected: 1696px 2px 24px 71px;
+    PointsBack-l: 1724px 2px 16px 80px;
+    PointsBack-m: 1744px 2px 48px 80px;
+    PointsBack-r: 1796px 2px 16px 80px;
+    EquipSlotMS-active: 1816px 2px 184px 104px;
+    EquipSlotMS-hover: 2px 14px 184px 104px;
+    EquipSlotS-active: 190px 14px 104px 104px;
+    MainStatBack-l: 2004px 2px 16px 128px;
+    MainStatBack-r: 2024px 2px 16px 128px;
+    EquipSlotMSBack: 298px 30px 184px 104px;
+    EquipSlotS-hover: 486px 30px 104px 104px;
+    EquipSlotSBack: 594px 30px 104px 104px;
+
+    PlusBTN-active: 702px 42px 104px 104px;
+    PlusBTN-banned: 810px 54px 104px 104px;
+    PlusBTN-default: 918px 54px 104px 104px;
+    PlusBTN-hover: 1026px 54px 104px 104px;
+    PlusBTN-inactive: 1134px 70px 104px 104px;
+    PlusBTN-upgraded: 1242px 70px 104px 104px;
+
+    SlotGlovesMS: 1350px 70px 184px 104px;
+    SlotNecklaceS: 1538px 77px 104px 104px;
+    SlotRingS: 1646px 86px 104px 104px;
+    SlotTrinketS: 1754px 110px 104px 104px;
+    MainStatBack-m: 1862px 110px 96px 128px;
+    FilterAll-active: 2px 122px 112px 136px;
+    FilterAll-default: 118px 122px 112px 136px;
+    FilterCA-active: 234px 138px 112px 136px;
+    FilterCA-default: 350px 138px 112px 136px;
+    FilterCloth-active: 466px 138px 112px 136px;
+    FilterCloth-default: 582px 138px 112px 136px;
+    FilterConsumable-active: 698px 162px 112px 136px;
+    FilterConsumable-default: 814px 162px 112px 136px;
+    FilterGem-active: 930px 162px 112px 136px;
+    FilterGem-default: 1046px 178px 112px 136px;
+    FilterQuest-active: 1162px 178px 112px 136px;
+    FilterQuest-default: 1278px 178px 112px 136px;
+    FilterWeapon-active: 1394px 178px 112px 136px;
+    FilterWeapon-default: 1510px 185px 112px 136px;
+    InventoryFilter-active: 1626px 194px 112px 136px;
+    InventoryFilter-default: 1742px 218px 112px 136px;
+    InventoryFilter-hover: 1858px 242px 112px 136px;
+
+    sps_combo_1: 355px 278px 184px 184px;
+    sps_combo_2: 543px 302px 184px 184px;
+    sps_combo_3: 731px 302px 184px 184px;
+    sps_combo_4: 919px 318px 184px 184px;
+    ComboAdd: 1107px 318px 184px 184px;
+    ComboCA-Active: 1295px 318px 184px 184px;
+    ComboCA-hover: 1483px 334px 184px 184px;
+    ComboIconsBack: 1671px 382px 184px 184px;
+    EquipSlotM-active: 1859px 382px 184px 184px;
+    EquipSlotM-hover: 2px 459px 184px 184px;
+    EquipSlotMBack: 190px 466px 184px 184px;
+    SlotBatteryM: 378px 490px 184px 184px;
+    SlotBeltM: 566px 490px 184px 184px;
+    SlotBootsM: 754px 506px 184px 184px;
+    SlotHeadM: 942px 506px 184px 184px;
+    SlotLegsM: 1130px 506px 184px 184px;
+    SlotPantsM: 1318px 522px 184px 184px;
+    SlotShouldersM: 1610px 570px 184px 184px;
+    ComboOrnament: 1798px 570px 246px 200px;
+
+    CombatArtArrows-active: 1506px 522px 100px 112px;
+    CombatArtArrows-inactive: 2px 647px 100px 112px;
+    CombatArtArrows-selected: 106px 654px 100px 112px;
+    CombatArtArrows-selected1: 210px 654px 100px 112px;
+
+    CombatArtArrows-inactive-up: 2px 647px 100px 112px;
+    CombatArtArrows-inactive-down: 2px 759px 100px 112px;
+
+    CombatArtArrows-active-up: 1506px 522px 100px 112px;
+    CombatArtArrows-active-down: 1506px 634px 100px 112px;
+
+    CombatArtArrows-learned-up: 106px 654px 100px 112px;
+    CombatArtArrows-learned-down: 210px 766px 100px 112px;
+
+    CombatArtSlot-active: 2px 262px 168px 168px;
+    CombatArtSlot-inactive: 174px 278px 177px 177px;
+
+    EquipSlotL-active: 314px 678px 184px 264px;
+    EquipSlotL-hover: 502px 678px 184px 264px;
+    EquipSlotLBack: 690px 694px 184px 264px;
+    SlotTorsoL: 878px 694px 184px 264px;
+    SlotWingsL: 1066px 694px 184px 264px;
+}
+
+@spritesheet Inventory-bg-big
+{
+    src: "Textures/Spritesheets/Backgrounds/Inventory-bg-big.dds";
+    InventoryBackgroundL1: 0px 0px 1540px 1940px;
+    InventoryBackgroundR1: 1540px 0px 474px 1944px;
+}
+
+@spritesheet Inventory-bg-small
+{
+    src: "Textures/Spritesheets/Backgrounds/Inventory-bg-small.dds";
+    InventorySlot-center-bigx3: 0px 0px 1428px 281px;
+    Journal-grid: 1428px 0px 504px 408px;
+    InventorySlot-center-big: 0px 281px 1032px 280px;
+    InventoryBackgroundR2: 1032px 281px 396px 397px;
+    InventoryBackgroundL2: 1428px 408px 397px 397px;
+    Journal-Dotted-line: 0px 561px 944px 28px;
+    Journal-handle: 944px 561px 72px 28px;
+    InventoryBackgroundL1-tile: 1825px 408px 96px 96px;
+    InventorySlot-center-big-ornament: 0px 589px 285px 224px;
+}
+
+
+@spritesheet Combatarts
+{
+    src: "Textures/Spritesheets/Combatarts.dds";
+    Combatarts-main-bg: 0px 0px 1540px 1940px;
+    Combatarts-combopanel-bg: 1540px 0px 368px 1184px;
+    Combatarts-plus-active: 1540px 1184px 178px 179px;
+    Combatarts-plus-inactive: 1540px 1363px 178px 179px;
+    Combatarts-plus-selected: 1540px 1542px 178px 179px;
+    Combatarts-circle-active: 1540px 1721px 36px 36px;
+    Combatarts-circle-inactive: 1576px 1721px 36px 36px;
+    Combatarts-circle-mask: 1612px 1721px 36px 36px;
+    Combatarts-square-active: 1648px 1721px 36px 36px;
+    Combatarts-square-inactive: 1684px 1721px 36px 36px;
+    Combatarts-square-mask: 1540px 1757px 36px 36px;
+    Combatarts-line-active: 1576px 1757px 16px 64px;
+    Combatarts-line-default: 1540px 1793px 16px 64px;
+    Combatarts-line-inactive: 1556px 1793px 16px 64px;
+}
+
+
+
+.attack-icon {
+    decorator: image(AttackIcon contain);
+}
+
+.defence-icon {
+    decorator: image(DefenseIcon contain);
+}
+
+.health-icon {
+    decorator: image(HealthIcon contain);
+}
+
+.ca-speed-icon {
+    decorator: image(CombatArtIcon contain);
+}
+
+.magic-attack-icon {
+    decorator: image(MagicAttackIcon contain);
+}
+
+.magic-defence-icon {
+    decorator: image(MagicDeffenseIcon contain);
+}
+
+.ca-regen-bar-bg {
+    decorator: image(CombatArtsRegen-bar contain);
+}
+
+.ca-regen-bar-indicator {
+    decorator: image(CombatArtsRegen-point contain);
+}
+
+.separator-small {
+    decorator: image(SeparatorSmall fill);
+}
+
+.slot-gloves-ms {
+    decorator: image(SlotGlovesMS contain);
+}
+
+.slot-necklace-s {
+    decorator: image(SlotNecklaceS contain);
+}
+
+.slot-ring-s {
+    decorator: image(SlotRingS contain);
+}
+
+.slot-trinket-s {
+    decorator: image(SlotTrinketS contain);
+}
+
+.slot-battery-m {
+    decorator: image(SlotBatteryM contain);
+}
+
+.slot-belt-m {
+    decorator: image(SlotBeltM contain);
+}
+
+.slot-boots-m {
+    decorator: image(SlotBootsM contain);
+}
+
+.slot-head-m {
+    decorator: image(SlotHeadM contain);
+}
+
+.slot-legs-m {
+    decorator: image(SlotLegsM contain);
+}
+
+.slot-pants-m {
+    decorator: image(SlotPantsM contain);
+}
+
+.slot-shoulders-m {
+    decorator: image(SlotShouldersM contain);
+}
+
+.slot-torso-l {
+    decorator: image(SlotTorsoL contain);
+}
+
+.slot-wings-l {
+    decorator: image(SlotWingsL contain);
+}
+
+
+.filter-all {
+    decorator: image(FilterAll-default contain);
+}
+
+.filter-all:focus-visible:selected,
+.filter-all:focus:selected,
+.filter-all:hover:selected,
+.filter-all:selected {
+    decorator: image(FilterAll-active contain);
+}
+
+.filter-ca {
+    decorator: image(FilterCA-default contain);
+}
+
+.filter-ca:focus-visible:selected,
+.filter-ca:focus:selected,
+.filter-ca:hover:selected,
+.filter-ca:selected {
+    decorator: image(FilterCA-active contain);
+}
+
+.filter-cloth {
+    decorator: image(FilterCloth-default contain);
+}
+
+.filter-cloth:focus-visible:selected,
+.filter-cloth:focus:selected,
+.filter-cloth:hover:selected,
+.filter-cloth:selected {
+    decorator: image(FilterCloth-active contain);
+}
+
+.filter-consumable {
+    decorator: image(FilterConsumable-default contain);
+}
+
+.filter-consumable:focus-visible:selected,
+.filter-consumable:focus:selected,
+.filter-consumable:hover:selected,
+.filter-consumable:selected {
+    decorator: image(FilterConsumable-active contain);
+}
+
+.filter-gem {
+    decorator: image(FilterGem-default contain);
+}
+
+.filter-gem:focus-visible:selected,
+.filter-gem:focus:selected,
+.filter-gem:hover:selected,
+.filter-gem:selected {
+    decorator: image(FilterGem-active contain);
+}
+
+.filter-quest {
+    decorator: image(FilterQuest-default contain);
+}
+
+.filter-quest:focus-visible:selected,
+.filter-quest:focus:selected,
+.filter-quest:hover:selected,
+.filter-quest:selected {
+    decorator: image(FilterQuest-active contain);
+}
+
+.filter-weapon {
+    decorator: image(FilterWeapon-default contain);
+}
+
+.filter-weapon:focus-visible:selected,
+.filter-weapon:focus:selected,
+.filter-weapon:hover:selected,
+.filter-weapon:selected {
+    decorator: image(FilterWeapon-active contain);
+}
+
+
+tab.icon-tab {
+    display: inline-block;
+    decorator: none;
+    color: tabs-default;
+    pointer-events: auto;
+    padding: 3dp;
+    decorator: image(InventoryFilter-default contain);
+}
+
+tab.icon-tab:disabled {
+    decorator: image(InventoryFilter-default contain);
+    color: tabs-disabled;
+}
+
+tab.icon-tab:focus-visible,
+tab.icon-tab:focus,
+tab.icon-tab:hover {
+    decorator: image(InventoryFilter-hover contain);
+    color: tabs-hover;
+}
+
+tab.icon-tab:focus-visible:selected,
+tab.icon-tab:focus:selected,
+tab.icon-tab:hover:selected,
+tab.icon-tab:selected {
+    decorator: image(InventoryFilter-active contain);
+    color: tabs-active;
+}
+
+.points-back {
+    decorator: tiled-horizontal-no-stretch(PointsBack-l, PointsBack-m, PointsBack-r);
+}
+
+.gold-icon {
+    decorator: image(CoinIcon contain);
+}
+
+.panel-1-1 {
+    decorator: image(EquipSlotSBack);
+}
+
+.panel-1-1-orb:hover,
+.panel-1-1-orb:focus,
+.panel-1-1-orb:focus-visible {
+    decorator: image(Orb-background-active);
+}
+
+.panel-1-1-orb-inactive:hover,
+.panel-1-1-orb-inactive:focus,
+.panel-1-1-orb-inactive:focus-visible {
+    decorator: image(Orb-background-active);
+}
+
+.panel-1-1:hover,
+.panel-1-1:focus,
+.panel-1-1:focus-visible {
+    decorator: image(EquipSlotS-active);
+}
+
+.panel-1-2 {
+    decorator: image(EquipSlotMSBack);
+}
+
+.panel-1-2:hover,
+.panel-1-2:focus,
+.panel-1-2:focus-visible {
+    decorator: image(EquipSlotMS-active);
+}
+
+.panel-2-2 {
+    decorator: image(EquipSlotMBack);
+}
+
+.panel-2-2:hover,
+.panel-2-2:focus,
+.panel-2-2:focus-visible {
+    decorator: image(EquipSlotM-active);
+}
+
+.panel-2-3 {
+    decorator: image(EquipSlotLBack);
+}
+
+.panel-2-3:hover,
+.panel-2-3:focus,
+.panel-2-3:focus-visible {
+    decorator: image(EquipSlotL-active);
+}
+
+
+.damage-icon-fire {
+    decorator: image(DmgTypeFireIcon contain);
+}
+
+.damage-icon-ice {
+    decorator: image(DmgTypeIceIcon contain);
+}
+
+.damage-icon-magic {
+    decorator: image(DmgTypeMagicIcon contain);
+}
+
+.damage-icon-physical {
+    decorator: image(DmgTypeNormalIcon contain);
+}
+
+.damage-icon-poison {
+    decorator: image(DmgTypePoisonIcon contain);
+}
+
+button.plusButton {
+    decorator: image(PlusBTN-inactive contain);
+}
+
+button.plusButton:hover,
+button.plusButton:focus,
+button.plusButton:focus-visible {
+    decorator: image(PlusBTN-hover contain);
+}
+
+button.plusButton:active{
+    decorator: image(PlusBTN-active contain);
+}
+
+button.plusButton:active {
+    decorator: image(PlusBTN-upgraded contain);
+}
+
+button.plusButton:focus-visible {
+    decorator: image(PlusBTN-hover contain);
+}
+
+button.plusButton:focus {
+    decorator: image(PlusBTN-default contain);
+}
+
+button.plusButton:disabled {
+    decorator: image(PlusBTN-inactive contain);
+}
+
+.tooltip-generic {
+    pointer-events: none;
+    width: 227dp;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tooltip-wide
+{
+    pointer-events: none;
+    width: 260dp;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tooltip-frame,
+.tooltip-gradient
+{
+    pointer-events: none;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+
+

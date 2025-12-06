@@ -1,71 +1,61 @@
+default_file_location = "ui 26⁄11⁄2025"
+
 class PlayerPortrait:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_characterDetails.rml"
+    destination_file = "/ui/HUD/hud_characterDetails.rml"
 
 class Minimap:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_Minimap.rml"
+    destination_file = "/ui/HUD/hud_Minimap.rml"
 
 class Taskbar:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarCenter.rml"
+    destination_file = "/ui/HUD/hud_taskBarCenter.rml"
 
 class WeaponsHud:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+    destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class CombatArtsHud:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+    destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class TaskbarInventory:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarCenter.rml"
+    destination_file = "/ui/HUD/hud_taskBarCenter.rml"
 
 class TaskbarCA:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarCenter.rml"
+    destination_file = "/ui/HUD/hud_taskBarCenter.rml"
 
 class WeaponsInventory:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+    destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class CombatArtsInventory:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+    destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class WeaponsCA:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+        default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+        destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class CombatArtsCA:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_taskBarActionSlots.rml"
+    destination_file = "/ui/HUD/hud_taskBarActionSlots.rml"
 
 class Tabmap:
-    def __init__(self):
-        self.bottom = ""
-        self.left = ""
-        self.scale = 1
+    default_file = default_file_location + "/HUD/hud_Tabmap.rml"
+    destination_file = "/ui/HUD/hud_Tabmap.rml"
+
+class AltText:
+    default_file = default_file_location + "/HUD/hud_AltText.rml"
+    destination_file = "/ui/HUD/hud_AltText.rml"
+
+class FloatingText:
+    default_file = default_file_location + "/HUD/hud_FloatingText.rml"
+    destination_file = "/ui/HUD/hud_FloatingText.rml"
+
+class ItemsTooltip:
+    default_file = default_file_location + "/Ingame/items_Tooltip.rml"
+    destination_file = "/ui/Ingame/items_Tooltip.rml"

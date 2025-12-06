@@ -1,0 +1,261 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/journal_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/JournalBackground-merged.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>messageBox_quest</title>
+        <style>
+            .message-box-container {
+                decorator: image(Dialog-background);
+                position: absolute;
+                top: 40dp;
+                right: 25dp;
+                /*top: 50%;*/
+                /*transform: translateY(-50%);*/
+                width: 250dp;
+                height: 640dp;
+                text-align: center; /* justify for blocksatz */
+                display: flex;
+                flex-direction: column;
+                padding: 10dp;
+                align-items: center;
+            }
+
+            #character-icon-background {
+                decorator: image(blacksmith-item-background contain);
+                position: relative;
+                display: block;
+                width: 125dp;
+                min-width: 125dp;
+                height: 125dp;
+                min-height: 125dp;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #character-icon {
+                mask-image: image(Blacksmith-circle-mask);
+                position: relative;
+                display: block;
+                width: 75%;
+                height: 75%;
+                object-fit: contain;
+                top:12.5%;
+                left: 12.5%;
+            }
+
+            .message-box-buttons {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 15dp;
+                padding: 15dp;
+            }
+
+            .message-box-title {
+                font-size: 18dp;
+                font-weight: bold;
+                color: highlight;
+                font-family: Inria Sans;
+                text-align: center;
+                height: 64dp;
+                margin-top: -2dp;
+                line-height: 100%;
+                transform: translateY(5dp);
+            }
+
+            .message-box-text-container {
+                position: relative;
+                display: block;
+                width: 225dp;
+                height: 100%;
+                list-style: none;
+                overflow-y: auto; /* Enables vertical scrolling */
+            }
+
+            .message-box-text {
+                width: 100%;
+                height: 100%;
+                font-size: 14dp;
+                text-align: left;
+                text-anchor: start;
+                display: block;
+            }
+
+            button.messageBoxButton {
+                margin-bottom: 5dp;
+                width: 215dp;
+                height: 24dp;
+                text-align: center;
+            }
+
+            .button-label
+            {
+                position: relative;
+                display: block;
+                text-align: center;
+                width: 85%;
+                height: 24dp;
+                line-height: 24dp;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .gold-icon {
+                display: inline-block;
+                width: 16dp;
+                height: 16dp;
+                margin-left: 6dp;
+            }
+
+            .ornament-separator
+            {
+                display: block;
+                decorator: image(journal-background-R-ornament contain);
+                height: 12dp;
+                min-height: 12dp;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 10dp;
+            }
+            .ornament-separator-invert
+            {
+                display: block;
+                decorator: image(journal-background-R-ornament contain);
+                height: 12dp;
+                min-height: 12dp;
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: -10dp;
+                transform: scaleY(-1);
+            }
+
+            #background-grid,
+            #inventory-container {
+                width: 248dp;
+                height: 124dp;
+                display: flex;
+                flex-direction: column;
+                pointer-events: none;
+            }
+
+            #reward-container {
+                display: flex;
+                flex-direction: column;
+                width: 225dp;
+                align-content: center;
+                justify-content: center;
+            }
+
+            .reward-caption {
+                display: flex;
+                margin-left: auto;
+                margin-right: auto;
+                font-family: Inria Sans;
+                font-size: 16dp;
+                height: 16dp;
+                line-height: 16dp;
+            }
+
+            #reward-caption-container {
+                display: flex;
+                flex-direction: row;
+                margin-left: auto;
+                margin-right: auto;
+                width: 225dp;
+                height: 64dp;
+                align-content: center;
+                justify-content: center;
+            }
+
+            .dotted-line {
+                margin-top: 10dp;
+                margin-bottom: 10dp;
+                width: 90%;
+                height: 5dp;
+                decorator: image(skills-dooted-line-short contain);
+            }
+
+            .ornament {
+                display: inline-block;
+                width: 24dp;
+                height: 10dp;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+
+            .ornament-left {
+                decorator: image(journal-ornament flip-horizontal);
+                margin-right: 5dp;
+            }
+
+            .ornament-right {
+                decorator: image(journal-ornament contain);
+                margin-left: 5dp;
+            }
+
+            #quest-reward-gold-text
+            {
+                font-size: 1.8vh;
+                color: title;
+            }
+
+        </style>
+    </head>
+    <body>
+    <div class="message-box-container" data-model="MessageBoxViewModel">
+        <div class="ornament-separator"></div>
+        <h1 class="message-box-title" id="message-box-title">{{Title}}</h1>
+        <div class="ornament-separator-invert"></div>
+
+        <div id="character-icon-background">
+            <img id="character-icon" src="" alt=""/>
+        </div>
+
+        <p class="dotted-line"></p>
+        <div id="message-box-text-container" class="message-box-text-container">
+            <p class="message-box-text" id="message-box-text">{{Text}}</p>
+        </div>
+        <p class="dotted-line"></p>
+
+        <div id="reward-container">
+            <div id="reward-caption-container">
+                <div class="ornament ornament-left"></div>
+                <div class="reward-caption">2059933492</div>
+                <div class="ornament ornament-right"></div>
+            </div>
+
+            <div id="gold-reward-container" style="display: flex; flex-direction: row; margin-top: 5dp; margin-bottom: 5dp; width: 100%; height: 64dp; align-content: center; justify-content: center;">
+                <p id="quest-reward-gold-text"></p>
+                <p class="gold-icon" id="gold-icon"></p>
+            </div>
+
+            <div id="quest-reward-container" class="quest-reward-container">
+                <div id="background-grid"></div>
+                <div id="inventory-container"></div>
+            </div>
+        </div>
+
+        <button style="nav-down:#message-box-cancel-button;" id="message-box-ok-button" class="messageBoxButton" onclick="OnQuestAcceptSelected">
+            <div class="button-container">
+                <div id="message-box-ok-text" class="button-label"> {{OkText}}</div>
+                <div id="down-button-prompt" class="button-prompt  down-button"></div>
+            </div>
+        </button>
+
+        <button style="nav-up:#message-box-ok-button;" id="message-box-cancel-button" class="messageBoxButton" onclick="OnQuestDeclineSelected" data-if="ShowCancelButton">
+            <div class="button-container">
+                <div id="message-box-cancel-text" class="button-label">{{CancelText}}</div>
+                <div id="right-button-prompt" class="button-prompt  right-button"></div>
+            </div>
+        </button>
+    </div>
+    </body>
+</rml>

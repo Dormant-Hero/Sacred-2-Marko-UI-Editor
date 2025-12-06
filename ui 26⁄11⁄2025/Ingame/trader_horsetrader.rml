@@ -1,0 +1,278 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="tooltip.rcss"/>
+        <title>trader_horsetrader</title>
+        <style>
+            #trader-inventory-panel
+            {
+                pointer-events: auto;
+                width: 275dp;
+                height: 624dp;
+                top:10%;
+                right: 1.5%;
+                position: absolute;
+                decorator: image(Dialog-background);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .buttons
+            {
+                position: absolute;
+                left: 50%;
+                bottom: 3%;
+                transform: translateX(-50%);
+                height:75dp;
+                width: 85%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .can-be-purchased
+            {
+                color:title;
+            }
+
+            .too-expensive
+            {
+                color:red;
+            }
+
+            .ornament-left
+            {
+                decorator: image(title-ornament flip-horizontal contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .ornament-right
+            {
+                decorator: image(title-ornament contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .trader-name-panel
+            {
+                height: 25dp;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+                flex-direction: row;
+                margin-top: 15dp;
+                gap: 10dp;
+            }
+
+            .panel-name
+            {
+                color: title;
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+				color: #72797c;
+            }
+
+            .minus-margin
+            {
+                margin-top: -50dp;
+            }
+
+            .header-image
+            {
+                decorator: image(Textures\data\backgrounds\t_ui-bg-horsetrader_do-x4.dds);
+                mask-image: image(Blacksmith-background-mask);
+                position: relative;
+                width: 100%;
+                height: 140dp;
+                top: -10dp;
+            }
+
+            .header-image
+            {
+                decorator: image(Textures\data\backgrounds\t_ui-bg-horsetrader_do-x4.dds);
+                mask-image: image(Blacksmith-background-mask);
+                position: relative;
+                width: 100%;
+                height: 140dp;
+                top: -10dp;
+            }
+
+            .shop-title-panel
+            {
+                position: relative;
+                width: 80%;
+                height: 40dp;
+                font-size: 2.5vh;
+                color:title;
+                line-height: 40dp;
+                text-align: center;
+                font-family: OptimusPrinceps;
+                decorator: image(TitleOrnamentBack);
+                top:-130dp;
+            }
+
+            .mount-portrait-background
+            {
+                height: 150dp;
+                width: 150dp;
+                decorator: image(blacksmith-item-background contain);
+                pointer-events: auto;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+            }
+
+
+            .mount-panel
+            {
+                display: flex;
+                flex-direction: row;
+                width: 90%;
+                height: 150dp;
+                justify-items: center;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .selector-button-left
+            {
+
+                width: 20dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .selector-button-right
+            {
+
+                width: 20dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .separator
+            {
+                width: 100%;
+                decorator: image(skills-dooted-line-short);
+                height: auto;
+                min-height: 1dp;
+            }
+
+            .trader-button
+            {
+                max-width: 90%;
+                max-height: 2vh;
+                text-align: center;
+                gap: 5dp;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .gold-icon-position
+            {
+
+                width:20dp;
+                height:20dp;
+                display:block;
+                margin-top: -4dp;
+            }
+
+            .scrollable
+            {
+                width: 100%;
+                height: 180dp;
+                display:flex;
+                flex-direction: column;
+                pointer-events: auto;
+                overflow-y: scroll;
+                overflow-style: auto;
+                align-items: center;
+            }
+
+            #mount-icon
+            {
+                height: 125dp;
+                width: auto;
+                pointer-events: none;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%, -1%) ;
+                margin-left: -35dp;
+                margin-top: -5dp;
+                mask-image: image(Blacksmith-circle-mask contain);
+            }
+
+            .nav-button
+            {
+                width: auto;
+                min-width: 20dp;
+                height: 20dp;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="trader-inventory-panel">
+
+        <!-- Title -->
+        <div class="header-image"></div>
+        <div class="shop-title-panel" id="trader-name">1385315895</div>
+
+        <div class="trader-name-panel minus-margin">
+            <div class="ornament-left"></div>
+            <div class="panel-name" id="traded-goods-name">3601274375</div>
+            <div class="ornament-right"></div>
+        </div>
+
+        <div class="mount-panel">
+            <button id="prev" class="selector-button-right arrow-left" onclick="OnPrevHorse"></button>
+            <div class="mount-portrait-background">
+                <img class="mount-icon" id="mount-icon"/>
+            </div>
+            <button id="next" class="selector-button-left arrow-right" onclick="OnNextHorse"></button>
+        </div>
+
+        <div class="bonus-stat-container" style="justify-content: space-evenly; margin-bottom: 20dp; width: 80%;">
+            <div class="stat-name" style="font-size: 2.5vh; color: title;" id="horse-name">Name Here</div>
+            <div class="stat-value" style="font-size: 2.5vh; color:primary-element-label;" id="horse-level" >LVL 0</div>
+        </div>
+
+        <div id="scroll-container" class="scrollable">
+            <div style="width: 80%; display: flex; flex-direction: column;">
+                <div id="dynamic-bonus-stats">
+                </div>
+            </div>
+        </div>
+
+
+        <div class ="buttons">
+            <button class ="trader-button" id="buy-button" onclick="OnBuyHorse">
+                <div style="display: flex;flex-direction: row; justify-items: center; align-content: center;justify-content: center; gap:3dp;">
+                    <div id="buy-sell-message">1857289789</div>
+                    <div id="horse-price"></div>
+                    <div class="gold-icon gold-icon-position"></div>
+                </div>
+            </button>
+            <button class="trader-button" onclick="OnCloseTrader">
+                <div style="margin-right: 5dp; margin-left: 30dp;" id="close-button-text">0135808154</div>
+                <div class="nav-button end-trade" id="close-button-prompt" onclick="OnCloseTrader"></div>
+            </button>
+        </div>
+    </panel>
+    </body>
+</rml>

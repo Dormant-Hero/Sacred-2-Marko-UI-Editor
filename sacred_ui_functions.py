@@ -4,6 +4,9 @@ import cssutils
 import sys
 from json_functions import *
 import logging
+from lxml import etree  # in addition to your existing imports
+from icecream import ic
+
 
 cssutils.log.setLevel(logging.CRITICAL)
 
@@ -24,6 +27,9 @@ MINIMAP_PATH      = UI_ROOT / "HUD" / "hud_Minimap.rml"
 TASKBAR_PATH      = UI_ROOT / "HUD" / "hud_taskBarCenter.rml"
 ACTION_SLOTS      = UI_ROOT / "HUD" / "hud_taskBarActionSlots.rml"
 TABMAP            = UI_ROOT / "HUD" / "hud_Tabmap.rml"
+ALT_TEXT = UI_ROOT / "HUD" / "hud_AltText.rml"
+FADING_TEXT = UI_ROOT / "HUD" / "hud_FloatingText.rml"
+ITEMS_TOOLTIP = UI_ROOT / "Ingame" / "items_Tooltip.rml"
 
 def obtain_css_sheet(file_path):
     with file_path.open(encoding="utf-8") as f:
@@ -35,6 +41,9 @@ def obtain_css_sheet(file_path):
     style_el = head.find("style", ns)
     css_text = style_el.text or ""
     return  cssutils.parseString(css_text), tree, style_el
+
+
+
 
 def player_portrait(bottom, direction_value, transform_scale):
     function_data = obtain_css_sheet(CHAR_DETAILS_PATH)
@@ -284,6 +293,139 @@ def tabmap_hud(direction_value, bottom, transform_scale):
             css = css.replace("translatex(", "translateX(")
             style_el.text = css
             tree.write(TABMAP, encoding="utf-8", xml_declaration=True)
+
+def alt_text_style(font_size, color, font_family):
+    function_data = obtain_css_sheet(ALT_TEXT)
+    sheet = function_data[0]
+    style_el = function_data[2]
+    tree = function_data[1]
+    for rule in sheet:
+        if rule.type == rule.STYLE_RULE and rule.selectorText.strip() == ".alt-text":
+            style = rule.style
+            style.setProperty("font-size", f"{font_size}vh")
+            style.setProperty("color", f"{color}")
+            style.setProperty("font-family", f"{font_family}")
+            (print(f"{rule.selectorText} just happened"))
+            css = sheet.cssText.decode("utf-8")
+            css = css.replace("translatex(", "translateX(")
+            style_el.text = css
+            tree.write(ALT_TEXT, encoding="utf-8", xml_declaration=True)
+
+def floating_text_font(font_size, font_family, **kwargs):
+    outline = kwargs.get("outline", "0")
+    outline_color = kwargs.get("outline_color", "black")
+    ic(font_size, font_family, outline, outline_color)
+    function_data = obtain_css_sheet(FADING_TEXT)
+    sheet = function_data[0]
+    style_el = function_data[2]
+    tree = function_data[1]
+    for rule in sheet:
+        if rule.type == rule.STYLE_RULE and rule.selectorText.strip() == ".floating-text":
+            style = rule.style
+            if outline != "0" and outline_color != "black":
+                style.setProperty("font-effect", f"outline({outline}dp {outline_color})")
+            style.setProperty("font-size", f"{font_size}vh")
+            style.setProperty("font-family", f"{font_family}")
+            (print(f"{rule.selectorText} just happened"))
+            css = sheet.cssText.decode("utf-8")
+            css = css.replace("translatex(", "translateX(")
+            style_el.text = css
+            tree.write(FADING_TEXT, encoding="utf-8", xml_declaration=True)
+
+
+
+def add_class_to_tooltip(selector_string, font_size, color, font_family):
+    sheet, tree, style_el = obtain_css_sheet(ITEMS_TOOLTIP)  # adjust unpacking order if needed
+
+    rule = None
+    for r in sheet:
+        if r.type == r.STYLE_RULE and r.selectorText.strip() == selector_string:
+            rule = r
+            break
+
+    if rule is None:
+        # create a new rule with a fresh declaration block
+        style = cssutils.css.CSSStyleDeclaration()
+        rule = cssutils.css.CSSStyleRule(selectorText=selector_string, style=style)
+        sheet.add(rule)  # adds rule at appropriate position in the stylesheet[web:2][web:28]
+    else:
+        style = rule.style
+
+    # set or override the properties
+    style.setProperty("font-size", f"{font_size}vh")
+    style.setProperty("color", f"{color}")
+    style.setProperty("font-family", f"{font_family}")
+    print(f"{rule.selectorText} just happened")
+
+    # serialize and write back
+    css = sheet.cssText.decode("utf-8")
+    css = css.replace("translatex(", "translateX(")
+    style_el.text = css
+    tree.write(ITEMS_TOOLTIP, encoding="utf-8", xml_declaration=True)
+
+def item_tooltip_stats(font_size, color, font_family):
+    selector_text1 = ".stat-name"
+    selector_text2 = ".stat-value"
+    add_class_to_tooltip(selector_text1, font_size, color, font_family)
+    add_class_to_tooltip(selector_text2, font_size, color, font_family)
+
+# just the value of armour or whatever primary value is for any given item
+def items_tooltip_primary_value_stat(font_size, color, font_family):
+    selector_text1 = ".primary-value-text"
+    add_class_to_tooltip(selector_text1, font_size, color, font_family)
+
+def mastery_required_for_bonus_text(font_size, color, font_family):
+    selector_text1 = ".mastery-text"
+    add_class_to_tooltip(selector_text1, font_size, color, font_family)
+
+def amend_body_gold_style(file_path, font_size, color, font_family):
+    parser = etree.XMLParser(remove_blank_text=False)
+    tree = etree.parse(str(file_path), parser)
+    root = tree.getroot()
+
+    # find <div class="price">
+    price_divs = root.xpath("//div[@class='price']")
+    for price_div in price_divs:
+        # children of .price that have a style attribute
+        for child in price_div.xpath("./*[@style]"):
+            style_attr = child.get("style")
+            if not style_attr:
+                continue
+            style = cssutils.css.CSSStyleDeclaration(cssText=style_attr)
+            style.setProperty("font-size", f"{font_size}vh")
+            style.setProperty("color", f"{color}")
+            style.setProperty("font-family", f"{font_family}")
+
+            child.set("style", style.cssText)
+
+    tree.write(str(file_path), encoding="utf-8", xml_declaration=True, pretty_print=True)
+
+def tooltip_item_name(font_size, color, font_family):
+    function_data = obtain_css_sheet(ITEMS_TOOLTIP)
+    sheet = function_data[0]
+    style_el = function_data[2]
+    tree = function_data[1]
+    for rule in sheet:
+        if rule.type == rule.STYLE_RULE and rule.selectorText.strip() == "#tooltip-item-name":
+            style = rule.style
+            style.setProperty("font-size", f"{font_size}vh")
+            style.setProperty("color", f"{color}")
+            style.setProperty("font-family", f"{font_family}")
+            (print(f"{rule.selectorText} just happened"))
+            css = sheet.cssText.decode("utf-8")
+            css = css.replace("translatex(", "translateX(")
+            style_el.text = css
+            tree.write(ITEMS_TOOLTIP, encoding="utf-8", xml_declaration=True)
+
+# tooltip_item_name(3, "red", "inria sans")
+
+# amend_body_gold_style(ITEMS_TOOLTIP, font_size=4, color="white", font_family="OptimusPrinceps")
+
+# items_tooltip_primary_value_stat(1, font_family="Inria Sans", color="red")
+
+# fading_text_font(13, "blue", font_family="OptimusPrinceps", outline=10, outline_color="red")
+
+# alt_text_font(font_size=8, color="red", font_family='"Inria Sans"')
 
 
 # tabmap_hud(left=50, top=10, transform_scale=0.25)

@@ -1,0 +1,112 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Shared/colors.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/skills.rcss"/>
+        <title>statistics_Tooltip</title>
+        <style>
+
+            .not-learned
+            {
+                color: red;
+            }
+
+            .primary-value-text
+            {
+                font-family: Inria Sans;
+                color: secondary-list-value;
+                font-size: 2.5vh;
+                line-height: 2.0vh;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                text-anchor: end;
+            }
+
+            .tooltip-wide
+            {
+                pointer-events: auto;
+                width: 270dp;
+                position: absolute;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .tooltip-wide-second
+            {
+                pointer-events: auto;
+                width: 270dp;
+                position: absolute;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                top:10%;
+                left: 805dp;
+            }
+
+            .stat-name
+            {
+                font-family: Inria Sans;
+                color: secondary-list-label;
+                font-size: 1.7vh;
+                width: 80%;
+                height: auto;
+                text-anchor: start;
+            }
+
+            .stat-value
+            {
+                color: secondary-list-value;
+                width: 35%;
+                text-align: right;
+                font-size: 1.7vh;
+            }
+
+            .bonus-stat-container
+            {
+                display: flex;
+                width: 100%;
+                height: auto;
+                font-family: Inria Sans;
+                line-height: 1.8vh;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events" style="z-index: 100;">
+
+    <panel id="tooltip-panel" class="tooltip-wide tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div style="margin-top: 10dp; margin-bottom: 10dp; font-family: OptimusPrinceps; font-size: 2vh; color: title;">4246066798</div>
+                <div id="dynamic-bonus-stats">
+                </div>
+            </div>
+        </div>
+    </panel>
+
+    <panel id="tooltip-panel-second" class="tooltip-wide-second tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div style="margin-top: 10dp;" id="dynamic-bonus-stats-secondary">
+                </div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

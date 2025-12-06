@@ -1,0 +1,62 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="globalElements.rcss"/>
+        <title>fadeScreen</title>
+        <style>
+        body {
+            z-index: 100000;
+        }
+
+        #overlay
+        {
+            position: absolute;
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        #blackbars
+        {
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+        }
+
+        .blackbar{
+            position: absolute;
+            z-index: 99;
+            width: 100%;
+            height: 10%;
+            background-color: #000000;
+        }
+
+        .blackbar-top{
+            top: 0;
+            left: 0;
+        }
+
+        .blackbar-bottom{
+            bottom: 0;
+            left: 0;
+        }
+
+        .fadeout {
+            animation: animation-fade-opacity-out 1s linear-in-out;
+        }
+
+        .fadein {
+            animation: animation-fade-opacity-in 1s linear-in-out;
+        }
+        </style>
+    </head>
+    <body class="no-pointer-events">
+        <div id="overlay" class="no-pointer-events"></div>
+        <div id="blackbars" class="no-pointer-events">
+            <div class="blackbar blackbar-top" />
+            <div class="blackbar blackbar-bottom" />
+        </div>
+    </body>
+</rml>

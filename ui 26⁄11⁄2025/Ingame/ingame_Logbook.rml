@@ -1,0 +1,1069 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+		<link type="text/rcss" href="../global/globalElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/journal_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/JournalBackground-merged.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>ingame_Logbook</title>
+        <style>
+            img {
+                object-fit: contain;
+            }
+
+            .nav-button {
+                width: 35dp;
+                height: 35dp;
+                text-align: center;
+                line-height: 35dp;
+                cursor: pointer;
+                border-radius: 5px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .background-right-panels {
+                position: absolute;
+                width: 600dp;
+                height: 600dp;
+                display: block;
+            }
+
+            #main-container {
+                decorator: image("JournalBackground" contain);
+                pointer-events: auto;
+                width: 600dp;
+                height: 630dp;
+                top: 75dp;
+                right: 20dp;
+                position: absolute;
+                display: flex;
+                align-items: flex-start;
+                flex-direction: row;
+                justify-content: flex-start;
+                font-size: 2vh;
+            }
+
+            .left-panel {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                width: 435dp;
+                height: 630dp;
+                /*background-color: #151414;*/
+            }
+
+            .left-panel-title {
+                position: relative;
+                width: 100%;
+                height: 48dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: center; /* Zentriert vertikal */
+                align-items: center; /* Zentriert horizontal */
+            }
+
+            .right-panel-title {
+                position: relative;
+                margin-left: 10dp;
+                margin-right: 20dp;
+                width: 90%;
+                height: 24dp;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; /* Zentriert vertikal */
+                align-items: center; /* Zentriert horizontal */
+            }
+
+            .right-panel-title-text {
+                font-family: OptimusPrinceps;
+                font-size: 2em;
+                line-height: 100%;
+
+            }
+
+            .ornament-left {
+                display: inline-block;
+                decorator: image(journal-ornament flip-horizontal);
+                width: 24dp;
+                height: 10dp;
+                margin-right: 10dp;
+            }
+
+            .ornament-right {
+                display: inline-block;
+                decorator: image(journal-ornament contain);
+                width: 24dp;
+                height: 10dp;
+                margin-left: 10dp;
+            }
+
+            .ornament-separator {
+                display: block;
+                decorator: image(journal-background-R-ornament contain);
+                width: 100%;
+                height: 25dp;
+				z-index: 2;
+				position: absolute; /* Or default positioning if Flexbox handles it */
+                top: 0%; /* Centers vertically */
+                left: 0%; /* Centers horizontally */
+                transform: translateY(-50%); /* Offsets to perfectly center */
+            }
+
+            .ornament-separator-invert {
+                display: block;
+                decorator: image(journal-background-R-ornament contain);
+                width: 100%;
+                height: 25dp;
+				padding-top: 10dp;
+				z-index: 2;
+				position: absolute; /* Or default positioning if Flexbox handles it */
+                top: 50%; /* Centers vertically */
+                left: 0%; /* Centers horizontally */
+                transform: scaleY(-1); /* Offsets to perfectly center */
+            }
+
+            #tab-container {
+                width: 100%;
+                height: 630dp;
+                /*background-color: #151414;*/
+				margin-right: 15dp;
+				padding-left: 10dp;
+            }
+
+            #tabbar-container-secondary {
+                margin-top: 15dp;
+                margin-left: 12dp;
+                margin-bottom: 10dp;
+                width: 300dp;
+                min-heigth: 35dp;
+                /*display: flex;*/
+                /*align-items: center;*/
+                /*justify-content: space-evenly;*/
+                /*z-index: 10;*/
+
+
+                /*position: absolute;*/
+                /*top: 25dp;*/
+                /*left: 12dp;*/
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .tab-content {
+                position: relative;
+                width: 330dp;
+                height: 560dp;
+                margin-top: 5dp;
+                margin-bottom: 5dp;
+                margin-left: 5dp;
+                margin-right: 5dp;
+            }
+			
+			#small-spacer{
+			    margin-top: 15dp;
+			}
+
+            #books-right-panel {
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            #book-content {
+                display: block;
+                margin-bottom: auto;
+                width: 330dp;
+                height: 475dp;
+                list-style: none;
+                overflow-y: auto;
+				color: #72797C;
+            }
+
+            #books-list li {
+                display: block;
+                width: 200dp;
+                padding-left: 7dp;
+            }
+
+            .book-category {
+                height: 24dp;
+				margin-top: 10dp;
+				margin-bottom: 5dp;
+				text-align: center;
+				font-family: OptimusPrinceps;
+                font-size: 2.1vh;
+                color: #b5a35d;
+            }
+
+            .book-title {
+                height: auto;
+                margin-left: 10dp;
+				margin-bottom: 2dp;
+                padding-top: 3dp;
+				padding-right: 3dp;
+				padding-bottom: 4dp;
+				font-family: Inria Sans;
+                color: #7f7f76;
+            }
+
+            .book-title:hover {
+                decorator: image(Quest-active fill);
+            }
+
+            .book-title:focus {
+                decorator: image(FocusFrame-active fill);
+            }
+
+            .book-title:small:hover{
+			    decorator: image(FocusFrame-small-hover fill);
+			}
+			
+			.book-title:small:focus{
+			    decorator: image(FocusFrame-small-active fill);
+			}
+			
+			.book-title:large:hover{
+			    decorator: image(FocusFrame-large-hover fill);
+			}
+			
+			.book-title:large:focus{
+			    decorator: image(FocusFrame-large-active fill);
+			}
+			
+            .active-quest-list-item-text {
+                width: 100%;
+                height: 100%;
+                line-height: 40dp;
+                font-size: 1vw;
+				color: #7F7F76;
+            }
+			
+			.active-quest-title-element-text {
+                width: 100%;
+                height: 100%;
+                line-height: 40dp;
+                font-size: 1.1vw;
+				color: #b5a35d;
+				font-family: OptimusPrinceps;
+				pointer-events: none;
+            }
+			
+
+            /* Quests Right Panel */
+            #quests-right-panel {
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Quest Tab Overview */
+            #quest-overview {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 275dp;
+                margin-top: 5dp;
+            }
+
+            #quest-overview-details {
+                display: block;
+                width: 50%;
+                height: 100%;
+            }
+
+            .quest-overview-details-row {
+                display: block;
+                width: 100%;
+                height: 32dp;
+            }
+
+            .quest-title-container {
+                position: relative;
+				margin-top: 4dp;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                align-items: center;
+				z-index: 1;
+            }
+
+            #quest-title {
+			    width: 100%;
+				height: 25dp;
+				margin-top: 15dp;
+                text-align: center;
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                color: title;
+			}
+            #books-title,
+            #stats-title {
+                width: 100%;
+				height: 25dp;
+				margin-top: 5dp;
+                text-align: center;
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                color: title;
+            }
+
+            #quest-location-minimap-container {
+                position: relative;
+                width: 100dp;
+                height: 100%;
+                align-content: center;
+                justify-content: center;
+                decorator: image("MapFrame-default" contain);
+            }
+
+            #quest-location-minimap {
+                position: relative;
+                display: block;
+                margin-top: 10dp;
+                margin-left: auto;
+                margin-right: auto;
+                width: 100dp;
+                height: 100dp;
+                /*background-color: red;*/
+                decorator: map("questmap");
+                mask-image: image("MapFrame-default" contain);
+            }
+
+            #quest-difficulty-caption {
+                position: relative;
+                width: 100dp;
+                height: 20dp;
+            }
+
+            #quest-difficulty-stars {
+                position: relative;
+                height: 15dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .star {
+                position: relative;
+                decorator: image("DifficultySlot-active" contain);
+                width: 28dp;
+                height: 28dp;
+            }
+
+            #quest-giver-caption {
+                position: relative;
+                width: 100dp;
+                height: 20dp;
+            }
+
+            #quest-giver-text {
+                position: relative;
+                width: 100dp;
+                height: 20dp;
+            }
+
+            #quest-location-caption {
+                position: relative;
+                width: 100dp;
+                height: 20dp;
+            }
+
+            #quest-location-text {
+                position: relative;
+                top: 75dp;
+                right: 50dp;
+                width: 100dp;
+                height: 20dp;
+            }
+
+            #quest-description-container {
+                position: relative;
+                margin-top: 25dp;
+				margin-left: 10dp;
+                width: 97%;
+                height: 100%;
+                display: block; /* Ensure vertical layout */
+                list-style: none;
+                overflow-y: auto; /* Enables vertical scrolling */
+            }
+
+            #quest-description {
+                width: 100%;
+                height: 100%;
+				color: #72797C;
+            }
+
+            #quest-task-container {
+                display: block;
+                width: 100%;
+                height: 100%;
+                /*background-color: orange;*/
+            }
+
+            #quest-task-list {
+                width: 100%;
+                height: 100%;
+                display: block; /* Ensure vertical layout */
+                list-style: none;
+                overflow-y: auto; /* Enables vertical scrolling */
+            }
+
+            #quest-task-list li.separator {
+                width: 100%;
+                height: 1dp;
+                background-color: pink;
+            }
+
+            .quest-task-list-item {
+                width: 95%;
+                height: 24dp;
+                display: flex; /* Align button and text in one row inside the list item */
+                align-items: left;
+                margin-top: 5dp;
+                margin-bottom: 5dp; /* Space between list items */
+            }
+
+            .quest-task-icon {
+                width: 32dp;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .quest-task-list-item-preview {
+                position: relative;
+                width: 24dp;
+                object-fit: contain;
+            }
+
+            .task-counter {
+                position: relative;
+                display: inline-block;
+                font-size: 14dp;
+                font-family: "Inria Sans";
+                line-height: 40dp;
+                text-align: right;
+                width: 100%;
+                height: 100%;
+            }
+
+            .quest-task-list-item-preview-state {
+                position: relative;
+                width: 24dp;
+                height: 100%;
+            }
+
+            .quest-task-list-item-label {
+                position: relative;
+                width: 100%;
+                height: 24dp;
+                line-height: 24dp;
+                align-content: center;
+				color: #CFCCAD;
+            }
+
+            #logbook-tabset {
+                display: block;
+                flex-direction: row;
+				align-content: center;
+                justify-content: space-between;
+                width: 300;
+                height: 35dp;
+            }
+
+            .tabbar-button {
+                height: 35dp;
+                width: 50dp;
+                display: inline-block;
+				margin-left: 2dp;
+				margin-right: 2dp;
+            }
+
+            .tabbar-icon {
+                display: inline-block;
+                z-index: 10;
+                width: 55%;
+                height: 55%;
+				margin-top: 7dp;
+				margin-left: 10dp;
+            }
+
+            #quests-tab .tabbar-icon {
+                decorator: image("JournalTabIcon-Quests-inactive" contain);
+            }
+
+            #quests-tab:selected .tabbar-icon {
+                decorator: image("JournalTabIcon-Quests-active" contain);
+            }
+
+            #books-tab .tabbar-icon {
+                decorator: image("JournalTabIcon-Books-inactive" contain);
+            }
+
+            #books-tab:selected .tabbar-icon {
+                decorator: image("JournalTabIcon-Books-active" contain);
+            }
+
+            #stats-tab .tabbar-icon {
+                decorator: image("JournalTabIcon-Achievements-inactive" contain);
+            }
+
+            #stats-tab:selected .tabbar-icon {
+                decorator: image("JournalTabIcon-Achievements-active" contain);
+            }
+
+            .left-panel-list {
+                width: 235dp;
+                height: 550dp;
+                padding-left: 15dp;
+                display: block; /* Ensure vertical layout */
+                list-style: none;
+                overflow-y: auto; /* Enables vertical scrolling */
+            }
+
+            .active-quest-list-item {
+                width: 200dp;
+                height: 40dp;
+                display: flex; /* Align button and text in one row inside the list item */
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
+                color: white;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-left: 10dp;
+            }
+			
+			.active-quest-list-item.hover,
+			.active-quest-list-item:hover {
+                decorator: image(Quest-active contain);
+			}
+			
+			.active-quest-list-item:active,
+			.active-quest-list-item:checked,
+			#active-quests-list.active > .active-quest-list-item:checked {
+                decorator: image(FocusFrame-active contain);
+			}
+
+            /*#active-quests-list.active > .active-quest-list-item:focus {*/
+            /*    decorator: image(FocusFrame-active contain);*/
+            /*}*/
+			
+			 /*#active-quests-list.active > .active-quest-list-item:focus {*/
+            /*    decorator: image(skills-slot-big-default contain);*/
+            /*}*/
+
+            .active-quest-list-item-text {
+                width: 100%;
+                height: 100%;
+                line-height: 40dp;
+                font-size: 1vw;
+            }
+
+            #active-quests-list li.intended {
+                margin-left: 10dp;
+            }
+
+            .quest-list-icon-background {
+                decorator: image(Checkbox-active contain);
+                width: 20dp;
+                height: 100%;
+                margin-right: 5dp;
+            }
+			
+			.quest-list-icon-main {
+                decorator: image(Checkbox-Main contain);
+                width: 20dp;
+                height: 100%;
+                margin-right: 5dp;
+            }
+
+            .quest-list-icon-won {
+                display: block;
+                decorator: image(Check-active contain);
+                width: 100%;
+                height: 100%;
+            }
+
+            .quest-list-icon-lost {
+                display: block;
+                decorator: image(QuestIcon-failed contain);
+                width: 100%;
+                height: 100%;
+            }
+
+            button {
+                decorator: none;
+                /*tiled-horizontal-no-stretch( primary-button-default-l, primary-button-default-m, primary-button-default-r );*/
+                /*justify-content: center;*/
+                /*align-items: center;*/
+                text-align: left;
+                /*width: 100%;*/
+                /*font-family: OptimusPrinceps;*/
+                /*font-size : 10dp;*/
+                /*color: primary-action-button-default;*/
+                /*font-size: 2.25vh;*/
+                /*pointer-events: auto;*/
+                /*focus: auto;*/
+                /*tab-index: auto;*/
+                /*padding: 10dp;*/
+                /*line-height: 100%;*/
+            }
+
+            button:hover {
+                decorator: image(FocusFrame-active contain);
+            }
+
+            button:focus {
+                decorator: image(FocusFrame-active contain);
+            }
+
+            button.active-quest-list-item {
+                width: 100%;
+                height: 100%;
+                font-size: 1.8vh;
+            }
+
+            ul {
+                font-family: Inria Sans;
+            }
+
+            ul li {
+                display: block;
+            }
+
+            #stats-list {
+                width: 80%;
+                padding-left: 10dp;
+				margin-top: 70dp;
+
+            }
+
+            .stats-list-title {
+                color: #7f7f76;
+                font-size: 1.7vh;
+                margin-left: 10dp;
+				margin-bottom: 7dp;
+            }
+
+            .stats-list-content {
+                position: absolute;
+                right: 20dp;
+                font-family: Inria Sans;
+                color: primary-list-value;
+                font-size: 1.8vh;
+            }
+			
+			.char-icon {
+                height: 80dp;
+				width: 80dp;
+                position: absolute; /* Or default positioning if Flexbox handles it */
+                top: 0%; /* Centers vertically */
+                left: 50%; /* Centers horizontally */
+                transform: translate(-50%, 40%); /* Offsets to perfectly center */
+            }
+
+            .char-icon-ornament {
+			    width: 180dp;
+				height: 51dp;
+                position: absolute; /* Or default positioning if Flexbox handles it */
+                top: 0%; /* Centers vertically */
+                left: 50%; /* Centers horizontally */
+                transform: translate(-50%, 63dp); /* Offsets to perfectly center */
+                decorator: image(PortraitOrnaments contain);
+				z-index: 2;
+            }
+			
+            .char-level-frame
+            {
+                decorator: image(LvlCounterBack fill);
+                display:flex;
+				width: 40dp;
+                height: 23dp;
+                position: absolute;
+                top: 0%;
+                left: 50%;
+                transform: translate(-50%, 85dp);
+                justify-content: center;
+                align-items: center;
+            }
+			
+            .char-level {
+                font-size: 14dp;
+                line-height: 100%;
+                text-align: center;
+                margin-top:15%;
+				color: #BDB996;
+            }
+
+            #stats-right-panel {
+                display: flex;
+                flex-direction: column;
+            }
+
+            #stats-points {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                font-size: 18dp;
+                font-family: OptimusPrinceps;
+                color: #7f7f76;
+				padding-top: 5dp;
+                margin-bottom: 5dp;
+            }
+			
+			#stats-points-ornament-tl {
+                decorator: image(OrnamentTitle-tl contain);
+				width: 35dp;
+				margin-right: 5dp;
+				display: block;
+			}
+			
+			#stats-points-ornament-tr {
+                decorator: image(OrnamentTitle-tr contain);
+				width: 35dp;
+				margin-left: 5dp;
+				display: block;
+			}
+
+            #achievement-list {
+                display: block;
+                margin-bottom: auto;
+				margin-left: 5dp;
+                width: 330dp;
+                height: 500dp;
+                list-style: none;
+                overflow-y: auto;
+            }
+
+            #achievement-list li {
+                height: 64dp;
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 3dp;
+            }
+
+            .achievement-icon {
+                position: relative;
+                min-width: 64dp;
+                min-height: 64dp;
+            }
+
+            .achievement-points {
+                transform: translate(24dp, 48dp);
+				font-family: OptimusPrinceps;
+                font-size: 2.1vh;
+                color: #b5a35d;
+				text-align: center;
+				z-index: 3;
+            }
+
+            .achievement-points-frame
+            {
+			    position:absolute;
+				left: 13dp;
+				top: 44dp;
+				width: 36dp;
+				height: 24dp;
+				z-index: 2;
+                decorator: image(LvlCounterBack contain);
+            }
+
+
+            .achievement-text-container {
+                position: relative;
+                margin-left: 10dp;
+                padding-top: 10dp;
+                display: flex;
+                flex-direction: column;
+            }
+			
+			.achievement-caption{
+				font-family: OptimusPrinceps;
+                font-size: 2.1vh;
+                color: #bdb996;
+			}
+			
+			.achievement-description{
+			    font-family: Inria Sans;
+                 color: #72797C;
+			}
+			
+			.achievement-separator{
+			    decorator: image(SeparatorSmall);
+				width: 275dp;
+				height: 3dp;
+				display: block;
+			}
+
+            #chapter-button-list {
+                pointer-events: auto;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                right: 612dp;
+                top: 64dp;
+                width: 48dp;
+                height: 550dp;
+                margin-top: 30dp;
+                list-style: none;
+                /*background-color: red;*/
+            }
+
+            .chapter-button {
+                display: block;
+                decorator: image("MapFrame-default" contain);
+                width: 48dp;
+                height: 48dp;
+                text-align: center;
+                font-size: 18dp;
+                font-family: OptimusPrinceps;
+                line-height: 48dp; /* Center Text vertical */
+                /*opacity: 0.6;*/
+            }
+
+            .chapter-button:hover {
+                /*opacity: 0.75;*/
+                decorator: image("Textures/Journal-chapter-button-hover.dds" contain);
+            }
+
+            .chapter-button:focus {
+                /*opacity: 0.75;*/
+				decorator: image("Textures/Journal-chapter-button-background.dds" contain);
+            }
+
+            /* fake focus state */
+            #chapter-button-list > .chapter-button.focus,
+			#chapter-button-list > .chapter-button:focus {
+                /*opacity: 1;*/
+                decorator: image("Textures/Journal-chapter-button-background.dds" contain);
+            }
+			
+			#chapter-button-list > .chapter-button.hover,
+			#chapter-button-list > .chapter-button:hover {
+                /*opacity: 1;*/
+                decorator: image("Textures/Journal-chapter-button-hover.dds" contain);
+            }
+
+            .quest-reward-container {
+                position: relative;
+                font-family: Inria Sans;
+                width: 100%;
+                height: 100dp;
+                display: flex;
+                /*flex-direction: row;*/
+                justify-content: flex-start;
+            }
+
+            #background-grid,
+            #inventory-container {
+                width: 248dp;
+                height: 124dp;
+                display: flex;
+                flex-direction: column;
+                pointer-events: none;
+            }
+
+            .gold-icon {
+                display: block;
+                width: 16dp;
+                height: 16dp;
+                margin-left: 6dp;
+                padding-top: 3dp;
+            }
+
+            .subtitle {
+                display: block;
+                height: 24dp;
+                font-family: "OptimusPrinceps";
+                font-size: 16dp;
+                color: primary-element-label;
+                line-height: 24dp;
+                text-align: center;
+            }
+
+            .dotted-line {
+                margin-top: 10dp;
+                margin-bottom: 10dp;
+                width: 90%;
+                height: 5dp;
+                decorator: image(skills-dooted-line-long contain);
+            }
+
+            #quest-reward-gold-text {
+                line-height: 20dp;
+            }
+
+            .left-panel-title-text {
+                font-size: 2.3vh;
+                color: title;
+                font-family: OptimusPrinceps;
+            }
+
+            /*.active {*/
+            /*    border-style: dashed;*/
+            /*    border-width: 1px;*/
+            /*    border-color: yellow;*/
+            /*}*/
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <div class="background-right-panels" id="background-panel"></div>
+    <ul id="chapter-button-list">
+        <li id="chapter-button-0" class="chapter-button" onclick="OnChapterClick(0)">2308172543</li>
+        <li id="chapter-button-1" class="chapter-button" onclick="OnChapterClick(1)">2308172544</li>
+        <li id="chapter-button-2" class="chapter-button" onclick="OnChapterClick(2)">2308172545</li>
+        <li id="chapter-button-3" class="chapter-button" onclick="OnChapterClick(3)">2308172546</li>
+        <li id="chapter-button-4" class="chapter-button" onclick="OnChapterClick(4)">2308172547</li>
+        <li id="chapter-button-5" class="chapter-button" onclick="OnChapterClick(5)">2308172548</li>
+        <li id="chapter-button-6" class="chapter-button" onclick="OnChapterClick(6)">2308172549</li>
+        <li id="chapter-button-7" class="chapter-button" onclick="OnChapterClick(7)">2308172550</li>
+        <li id="chapter-button-8" class="chapter-button" onclick="OnChapterClick(8)">2308172551</li>
+        <li id="chapter-button-9" class="chapter-button" onclick="OnChapterClick(9)">3125459647</li>
+        <li id="chapter-button-10" class="chapter-button" onclick="OnChapterClick(10)">3125459648</li>
+        <li id="chapter-button-11" class="chapter-button" onclick="OnChapterClick(11)">3125459649</li>
+    </ul>
+    <div id="main-container">
+        <div id="quests-left-panel" class="left-panel">
+            <div class="left-panel-title">
+                <div class="ornament-left"></div>
+                <p class="left-panel-title-text">0798219183</p> <!-- Active Quests -->
+                <div class="ornament-right"></div>
+            </div>
+            <ul id="active-quests-list" class="left-panel-list"></ul>
+        </div>
+        <div id="books-left-panel" class="left-panel">
+            <div class="left-panel-title">
+                <div class="ornament-left"></div>
+                <p id="books-left-panel-title" class="left-panel-title-text">1705739591</p> <!-- BOOKS -->
+                <div class="ornament-right"></div>
+            </div>
+            <ul id="books-list" class="left-panel-list"></ul>
+        </div>
+        <div id="stats-left-panel" class="left-panel">
+            <div class="left-panel-title">
+                <div class="ornament-left"></div>
+                <p id="stats-left-panel-title" class="left-panel-title-text">4246066798</p> <!-- Charakterstatistik -->
+                <div class="ornament-right"></div>
+            </div>
+            <div class="char-icon-container">        <!-- Hero Portrait with Ornaments -->
+                <div class="char-icon-ornament"></div>
+                <img id="char-icon" class="char-icon"/>
+                <div class="char-level-frame">
+                    <span class="optimus-text highlight-text char-level" id="char-level">{{ HeroCard.Level }}</span>
+                </div>
+
+            </div>
+            <ul id="stats-list"></ul>
+        </div>
+
+        <div id="tab-container">
+            <!-- Tabbar -->
+            <div id="tabbar-container-secondary">
+                <div id="secondary-tab-prev" class="nav-button left-trigger" style="margin-right: 7dp;"></div>
+                <tabset id="logbook-tabset">
+                    <tab id="quests-tab" class="tabbar-button" onclick="OnQuestsTabSelected">
+                        <div class="tabbar-icon quests-icon"></div>
+                    </tab>
+                    <tab id="books-tab" class="tabbar-button" onclick="OnBooksTabSelected">
+                        <div class="tabbar-icon books-icon"></div>
+                    </tab>
+                    <tab id="stats-tab" class="tabbar-button" onclick="OnStatsTabSelected">
+                        <div class="tabbar-icon stats-icon"></div>
+                    </tab>
+                </tabset>
+                <div id="secondary-tab-next" class="nav-button right-trigger" style="margin-left: 7dp;"></div>
+            </div>
+
+            <!-- Quests -->
+            <panel id="quests-right-panel" class="tab-content">
+                <div class="right-panel-title">
+                    <div class="ornament-separator"></div>
+                    <div class="quest-title-container">
+                        <p id="quest-title">0798219183</p>
+                    </div>
+                    <div class="ornament-separator-invert"></div>
+                </div>
+				<div id="small-spacer"></div>
+                <div id="quest-overview">
+                    <!-- Left Column -->
+                    <div id="quest-overview-left-column" style="width: 300dp; height: 150dp; margin-left: 5dp;">
+                        <p class="subtitle">2713767404</p>
+                        <div id="quest-difficulty-stars"></div>
+                        <div id="quest-location-minimap-container">
+                            <div id="quest-location-minimap" location="19;23;0;2332.3;1403.5;34.6;316.974426"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div id="quest-overview-right-column">
+                        <div style="display: flex; flex-direction: row; height: 24dp;">
+                            <p class="subtitle">2059933492</p>
+                            <div id="gold-reward-container" style="display: flex; flex-direction: row; width: 40%; height: 24dp; align-content: left; justify-content: left; margin-left: 4dp">
+                                <p id="quest-reward-gold-text"></p>
+                                <p class="gold-icon"></p>
+                            </div>
+                        </div>
+                        <div class="quest-reward-container">
+                            <div id="background-grid"></div>
+                            <div id="inventory-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="quest-description-container">
+                    <p class="dotted-line"></p>
+                    <p id="quest-description"></p>
+                    <ul id="quest-task-list"></ul>
+                </div>
+            </panel>
+
+            <!-- Books -->
+            <panel id="books-right-panel" class="tab-content">
+                <div class="right-panel-title">
+                    <div class="ornament-separator"></div>
+                    <div class="quest-title-container">
+                        <p id="books-title">1705739591</p> <!-- BOOKS -->
+                    </div>
+                    <div class="ornament-separator-invert" style="padding-top: 5dp;"></div>
+                </div>
+				<div id="small-spacer"></div>
+                <p id="book-content"></p>
+            </panel>
+
+            <!-- Stats -->
+            <panel id="stats-right-panel" class="tab-content">
+                <div class="right-panel-title">
+                    <div class="ornament-separator"></div>
+                    <div class="quest-title-container">
+                        <p id="stats-title">0466203185</p> <!--achivements-->
+                    </div>
+                    <div class="ornament-separator-invert" style="padding-top: 5dp;"></div>
+                </div>
+				<div id="small-spacer"></div>
+                <ul id="achievement-list"></ul>
+                <div class="points-ornament-separator" style=" display: block; decorator: image(journal-dottedline contain); width: 95%; height: 5dp; margin-top: 2dp;"></div>
+                <div id="stats-points">
+					<div id="stats-points-ornament-tl"></div>
+                    <div id="stats-points-title">2015904504</div>  <!--points-->
+                    <p>: </p>
+                    <div id="stats-points-content" style="color: #bdb996;"></div>
+					<div id="stats-points-ornament-tr"></div>
+                </div>
+            </panel>
+        </div>
+
+    </div>
+    </body>
+</rml>

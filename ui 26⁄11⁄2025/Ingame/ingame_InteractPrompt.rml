@@ -1,0 +1,60 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>ingame_InteractPrompt</title>
+        <style>
+            #prompt {
+                pointer-events: auto;
+                width: 200dp;
+                height: 8%;
+                position: absolute;
+                bottom: 13%;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .prompt-content {
+                width: auto;
+                height: 25dp;
+                padding-left: 10dp;
+                padding-right: 10dp;
+                padding-top: 2dp;
+                padding-bottom: 2dp;
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                line-height: 25dp;
+                text-anchor: middle;
+                justify-content: center;
+                align-items: center;
+                decorator: tiled-horizontal-no-stretch(CounterBack-l, CounterBack-m, CounterBack-r);
+                display: flex;
+                flex-direction: row;
+            }
+
+            .prompt-icon {
+                width: 20dp;
+                height: 20dp;
+                margin-right: 5dp;
+            }
+
+            #prompt-text {
+                width: auto;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="prompt">
+        <div class="prompt-content">
+            <div class="prompt-icon interact"></div>
+            <div class="interact-separator">/</div>
+            <div class="prompt-icon interact-rb"></div>
+            <div class="" id="prompt-text"></div>
+        </div>
+    </panel>
+    </body>
+</rml>

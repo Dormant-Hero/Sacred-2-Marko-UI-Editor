@@ -1,0 +1,51 @@
+#tabbar-container-secondary
+{
+    width: 93%;
+    height: 40dp;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 7dp;
+}
+
+#tabbar-container-secondary-inventory
+{
+    position: absolute;
+    top: 25dp;
+    left: 12dp;
+    width: 93%;
+    height: 40dp;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.secondary-tabbar-button
+{
+    height: 40dp;
+    width: 35dp;
+    display: inline-block;
+}
+
+.tabbar-icon
+{
+    display: inline-block;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+}
+
+.navigation-input-box-secondary
+{
+    width: 30dp;
+    height: 30dp;
+    margin-top: 5dp;
+}
+
+#inventory-filters
+{
+    display: flex;
+    flex-direction: row;
+    width:80%;
+    height:100%;
+}

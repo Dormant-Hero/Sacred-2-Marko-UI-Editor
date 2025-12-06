@@ -1,0 +1,61 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <title>caModification_Tooltip</title>
+        <style>
+            #tooltip-panel
+            {
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+                text-anchor: start;
+                width: 227dp;
+                display: block;
+                height: auto;
+
+            }
+
+            .skill-tooltip-position
+            {
+                position: relative;
+                top:10%;
+                left: 525dp;
+                z-index: 10;
+            }
+
+            #description
+            {
+                margin-top: 15dp;
+                font-family: Inria Sans;
+                font-size: 2vh;
+                color: primary-list-label;
+                width: 90%;
+                height: auto;
+            }
+
+            .tooltip-gradient,
+            .tooltip-frame
+            {
+                height: auto;
+                display: block;
+            }
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events">
+    <panel id="tooltip-panel" class="skill-tooltip-position tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient rare-0-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+                    <div id="description"></div>
+                    <div class="bottom-margin"></div>
+                </div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

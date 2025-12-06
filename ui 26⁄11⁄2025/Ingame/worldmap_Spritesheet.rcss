@@ -1,0 +1,207 @@
+@spritesheet WorldmapIcons
+{
+    src: "Textures/Spritesheets/map_icon_atlas.dds";
+
+    Icon-unknown:               0px     0px     64px 64px;
+    Icon-questionmark_mq:       64px    0px     64px 64px;
+    Icon-questionmark_sq:       128px   0px     64px 64px;
+    Icon-questionmark_cq:       192px   0px     64px 64px;
+    Icon-exclamationmark_mq:    256px   0px     64px 64px;
+    Icon-exclamationmark_sq:    320px   0px     64px 64px;
+    Icon-exclamationmark_cq:    384px   0px     64px 64px;
+    Icon-active_mq:             448px   0px     64px 64px;
+
+    Icon-active_sq:             0px     64px     64px 64px;
+    Icon-active_cq:             64px    64px     64px 64px;
+    Icon-inactive_sq:           128px   64px     64px 64px;
+    Icon-inactive_cq:           192px   64px     64px 64px;
+    Icon-off_map_mq:            256px   64px     64px 64px;
+    Icon-off_map_sq:            320px   64px     64px 64px;
+    Icon-off_map_cq:            384px   64px     64px 64px;
+    Icon-killtarget:            448px   64px     64px 64px;
+
+    Icon-protecttarget:         0px     128px     64px 64px;
+    Icon-area:                  64px    128px     64px 64px;
+    Icon-item:                  128px   128px     64px 64px;
+    Icon-trader:                192px   128px     64px 64px;
+    Icon-horsetrader:           256px   128px     64px 64px;
+    Icon-captain:               320px   128px     64px 64px;
+    Icon-blacksmith:            384px   128px     64px 64px;
+    Icon-priest:                448px   128px     64px 64px;
+
+    Icon-combomaster:           0px     192px     64px 64px;
+    Icon-mercenary:             64px    192px     64px 64px;
+    Icon-enemy_hero:            128px   192px     64px 64px;
+    Icon-enemy_boss:            192px   192px     64px 64px;
+    Icon-enemy_champion:        256px   192px     64px 64px;
+    Icon-enemy_pawn:            320px   192px     64px 64px;
+    Icon-ally_hero:             384px   192px     64px 64px;
+    Icon-ally_hireling:         448px   192px     64px 64px;
+
+    Icon-ally_minion:           0px     256px     64px 64px;
+    Icon-self:                  64px    256px     64px 64px;
+    Icon-neutral_hero:          128px   256px     64px 64px;
+    Icon-teleporter_world:      192px   256px     64px 64px;
+    Icon-teleporter_ship:       256px   256px     64px 64px;
+    Icon-respawnstone_active:   320px   256px     64px 64px;
+    Icon-respawnstone_inactive: 384px   256px     64px 64px;
+    Icon-playerchest:           448px   256px     64px 64px;
+
+    Icon-dungeonentrance:       0px     320px     64px 64px;
+    Icon-beacon:                64px    320px     64px 64px;
+    Icon-corpse:                128px   320px     64px 64px;
+    Icon-quest_won_sq:          192px   320px     64px 64px;
+    Icon-quest_lost_sq:         256px   320px     64px 64px;
+    Icon-trigger:               320px   320px     64px 64px;
+    Icon-teleporter_world_inactive: 384px   320px     64px 64px;
+}
+
+@spritesheet Map
+{
+    src:  "Textures/Spritesheets/Map.dds";
+    Map-cursor-active: 0px 0px 187px 188px;
+    Map-cursor-default: 187px 0px 187px 188px;
+}
+
+
+.worldmap-icon.icon-unknown{
+    decorator: image(Icon-unknown contain);
+}
+.worldmap-icon.icon-questionmark_mq{
+    decorator: image(Icon-questionmark_mq contain);
+}
+.worldmap-icon.icon-questionmark_sq{
+    decorator: image(Icon-questionmark_sq contain);
+}
+.worldmap-icon.icon-questionmark_cq{
+    decorator: image(Icon-questionmark_cq contain);
+}
+.worldmap-icon.icon-exclamationmark_mq{
+    decorator: image(Icon-exclamationmark_mq contain);
+}
+.worldmap-icon.icon-exclamationmark_sq{
+    decorator: image(Icon-exclamationmark_sq contain);
+}
+.worldmap-icon.icon-exclamationmark_cq{
+    decorator: image(Icon-exclamationmark_cq contain);
+}
+.worldmap-icon.icon-active_mq{
+    decorator: image(Icon-active_mq contain);
+}
+.worldmap-icon.icon-active_sq{
+    decorator: image(Icon-active_sq contain);
+}
+.worldmap-icon.icon-active_cq{
+    decorator: image(Icon-active_cq contain);
+}
+.worldmap-icon.icon-inactive_sq{
+    decorator: image(Icon-inactive_sq contain);
+}
+.worldmap-icon.icon-inactive_cq{
+    decorator: image(Icon-inactive_cq contain);
+}
+.worldmap-icon.icon-off_map_mq{
+    decorator: image(Icon-off_map_mq contain);
+}
+.worldmap-icon.icon-off_map_sq{
+    decorator: image(Icon-off_map_sq contain);
+}
+.worldmap-icon.icon-off_map_cq{
+    decorator: image(Icon-off_map_cq contain);
+}
+.worldmap-icon.icon-killtarget{
+    decorator: image(Icon-killtarget contain);
+}
+.worldmap-icon.icon-protecttarget{
+    decorator: image(Icon-protecttarget contain);
+}
+.worldmap-icon.icon-area{
+    decorator: image(Icon-area contain);
+}
+.worldmap-icon.icon-item{
+    decorator: image(Icon-item contain);
+}
+.worldmap-icon.icon-trader{
+    decorator: image(Icon-trader contain);
+}
+.worldmap-icon.icon-horsetrader{
+    decorator: image(Icon-horsetrader contain);
+}
+.worldmap-icon.icon-captain{
+    decorator: image(Icon-captain contain);
+}
+.worldmap-icon.icon-blacksmith{
+    decorator: image(Icon-blacksmith contain);
+}
+.worldmap-icon.icon-priest{
+    decorator: image(Icon-priest contain);
+}
+.worldmap-icon.icon-combomaster{
+    decorator: image(Icon-combomaster contain);
+}
+.worldmap-icon.icon-mercenary{
+    decorator: image(Icon-mercenary contain);
+}
+.worldmap-icon.icon-enemy_hero{
+    decorator: image(Icon-enemy_hero contain);
+}
+.worldmap-icon.icon-enemy_boss{
+    decorator: image(Icon-enemy_boss contain);
+}
+.worldmap-icon.icon-enemy_champion{
+    decorator: image(Icon-enemy_champion contain);
+}
+.worldmap-icon.icon-enemy_pawn{
+    decorator: image(Icon-enemy_pawn contain);
+}
+.worldmap-icon.icon-ally_hero{
+    decorator: image(Icon-ally_hero contain);
+}
+.worldmap-icon.icon-ally_hireling{
+    decorator: image(Icon-ally_hireling contain);
+}
+.worldmap-icon.icon-ally_minion{
+    decorator: image(Icon-ally_minion contain);
+}
+.worldmap-icon.icon-self{
+    decorator: image(Icon-self contain);
+}
+.worldmap-icon.icon-neutral_hero{
+    decorator: image(Icon-neutral_hero contain);
+}
+.worldmap-icon.icon-teleporter_world{
+    decorator: image(Icon-teleporter_world contain);
+}
+.worldmap-icon.icon-teleporter_ship{
+    decorator: image(Icon-teleporter_ship contain);
+}
+.worldmap-icon.icon-respawnstone_active{
+    decorator: image(Icon-respawnstone_active contain);
+}
+.worldmap-icon.icon-respawnstone_inactive{
+    decorator: image(Icon-respawnstone_inactive contain);
+}
+.worldmap-icon.icon-playerchest{
+    decorator: image(Icon-playerchest contain);
+}
+.worldmap-icon.icon-dungeonentrance{
+    decorator: image(Icon-dungeonentrance contain);
+}
+.worldmap-icon.icon-beacon{
+    decorator: image(Icon-beacon contain);
+}
+.worldmap-icon.icon-corpse{
+    decorator: image(Icon-corpse contain);
+}
+.worldmap-icon.icon-quest_won_sq{
+    decorator: image(Icon-quest_won_sq contain);
+}
+.worldmap-icon.icon-quest_lost_sq{
+    decorator: image(Icon-quest_lost_sq contain);
+}
+.worldmap-icon.icon-trigger{
+    decorator: image(Icon-trigger contain);
+}
+.worldmap-icon.icon-teleporter_world_inactive{
+    decorator: image(Icon-teleporter_world_inactive contain);
+}

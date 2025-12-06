@@ -1,0 +1,89 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>skill_Tooltip</title>
+        <style>
+			#tooltip-panel
+			{
+			font-family: OptimusPrinceps;
+			font-size: 2vh;
+			text-anchor: start;
+			}
+
+			.skill-tooltip-position
+			{
+			top:10%;
+			left: 525dp;
+			z-index: 10;
+			}
+
+			#skill-name
+			{
+			width: 90%;
+			font-size: 2.9vh;
+			line-height: 2.9vh;
+			}
+
+			#skill-level-value,
+			#mastery-level,
+			.next-level-text
+			{
+			width: 90%;
+			font-size: 2.0vh;
+			line-height: 2.0vh;
+			font-family: Inria Sans;
+			}
+
+			#description,
+			#mastery-description
+			{
+			margin-top: 15dp;
+			font-family: Inria Sans;
+			font-size: 2vh;
+			color: primary-list-label;
+			width: 90%;
+			}
+
+			.nav-button
+			{
+			width: auto;
+			min-width: 20dp;
+			height: 20dp;
+			}
+
+		</style>
+    </head>
+
+    <body class="no-pointer-events">
+    <panel id="tooltip-panel" class="tooltip-generic skill-tooltip-position tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient rare-0-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+                    <div style="margin-top: 15dp; color: title;" id="skill-name">name</div>
+                    <div style="font-family: Inria Sans; color: primary-action-button-active;" id="skill-level-value">lvl 100500</div>
+
+                    <div id="description" style="margin-bottom: 10dp; font-size: 1.7vh;"></div>
+
+                    <div id="dynamic-bonus-stats"></div>
+                    <div class= "next-level-text" style="margin-top: 15dp; margin-bottom: 15dp;">1891472007</div>
+                    <div id="dynamic-bonus-stats-secondary"></div>
+                    <div id="mastery-level" style="color: red; font-size: 1.7vh; margin-top: 15dp;"></div>
+                    <div id="mastery-description" style="font-size: 1.7vh; margin-top: 3dp;"></div>
+
+                    <div class="separator"></div>
+                    <div class="input-prompts" id="input-prompts-panel">
+                        <div class="input-prompt-line" id ="skill-learn-line"><div class="nav-button item-inventory-equip"></div><div>1354204120</div></div>
+                        <div class="input-prompt-line" id ="skill-upgrade-line"><div class="nav-button item-inventory-equip"></div><div>1269157310</div></div>
+                    </div>
+                    <div class="bottom-margin"></div>
+                </div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

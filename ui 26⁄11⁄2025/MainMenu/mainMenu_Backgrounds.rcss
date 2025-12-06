@@ -1,0 +1,19 @@
+@spritesheet CharacterCreation-background
+{
+    src: "Textures/Spritesheets/Backgrounds/CharacterCreation-background.dds";
+    MainMenu-CharacterCreation-background: 0px 0px 1120px 1936px;
+}
+
+@spritesheet CharacterCreationCustomization-background
+{
+    src: "Textures/Spritesheets/Backgrounds/CharacterCreationCustomization-background.dds";
+    MainMenu-CharacterCreationGods-background: 0px 0px 1120px 1936px;
+}
+
+@spritesheet CharacterCreationGods-background
+{
+    src: "Textures/Spritesheets/Backgrounds/CharacterCreationGods-background.dds";
+    MainMenu-CharacterCreationCustomization-background: 0px 0px 1120px 1936px;
+}
+
+

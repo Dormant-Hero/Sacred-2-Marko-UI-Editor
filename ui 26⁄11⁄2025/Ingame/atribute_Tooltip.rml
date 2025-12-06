@@ -1,0 +1,81 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>atribute_Tooltip</title>
+        <style>
+			#tooltip-panel
+			{
+			font-family: OptimusPrinceps;
+			font-size: 2vh;
+			text-anchor: start;
+			}
+
+			#upgrade-attribute-line
+			{
+			text-align: center;
+			height: 30dp;
+			}
+
+			.skill-tooltip-position
+			{
+			top:10%;
+			left: 525dp;
+			z-index: 10;
+			}
+
+			#attribute-name
+			{
+			width: 90%;
+			font-size: 2.9vh;
+			line-height: 2.9vh;
+			}
+
+			#description
+			{
+			margin-top: 15dp;
+			font-family: Inria Sans;
+			font-size: 2vh;
+			color: primary-list-label;
+			width: 90%;
+			margin-bottom: 10dp;
+			}
+
+			.nav-button
+			{
+			width: auto;
+			min-width: 20dp;
+			height: 30dp;
+			}
+
+		</style>
+    </head>
+
+    <body class="no-pointer-events">
+    <panel id="tooltip-panel" class="tooltip-generic skill-tooltip-position tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient rare-0-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+                    <div style="margin-top: 15dp; color: title;" id="attribute-name">name</div>
+                    <div id="description"></div>
+                    <div id="dynamic-bonus-stats"></div>
+
+
+                    <div class="input-prompts" id="input-prompts-panel">
+                        <div class="input-prompt-line" id ="upgrade-attribute-line">
+                            <div class="nav-button item-inventory-move"></div>
+                            <div style="margin-top: 4dp;">1243071981</div>
+                        </div>
+                    </div>
+
+                    <div class="bottom-margin-large"></div>
+                </div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

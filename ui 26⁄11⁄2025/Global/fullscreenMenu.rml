@@ -1,0 +1,11 @@
+<template name="fullscreenWindow">
+<head>
+	<link type="text/rcss" href="globalElements.rcss"/>
+	<style>
+    </style>
+</head>
+<body>
+</body>
+</template>
+
+

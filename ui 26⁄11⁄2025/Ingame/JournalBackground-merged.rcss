@@ -1,0 +1,5 @@
+@spritesheet JournalBackground-merged
+{
+    src: "Textures/Spritesheets/Backgrounds/JournalBackground-merged.dds";
+    JournalBackground: 2px 2px 1812px 1944px;
+}

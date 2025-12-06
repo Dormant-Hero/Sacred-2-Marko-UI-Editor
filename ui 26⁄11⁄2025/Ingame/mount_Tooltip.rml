@@ -1,0 +1,150 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Shared/colors.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/skills.rcss"/>
+        <title>mount_Tooltip</title>
+        <style>
+
+            #tooltip-skill-needed
+            {
+                color: red;
+                text-anchor: start;
+                width: 90%;
+            }
+
+
+            #tooltip-item-icon
+            {
+                max-height: 120dp;
+                max-width: 100%;
+                object-fit: contain;
+                display: flex;
+                position: relative;
+            }
+
+            .mastery-text
+            {
+                font-family: Inria Sans;
+                color: primary-list-label;
+                font-size: 1.6vh;
+                width: 86%;
+                text-anchor: start;
+                margin-left: 5dp;
+            }
+
+            .price
+            {
+                width: 90%;
+                margin-top: 10dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: flex-end;
+                gap: 10dp;
+            }
+
+            .gold-icon-position
+            {
+                width:20dp;
+                height:20dp;
+                display:block;
+            }
+
+            #tooltip-item-name
+            {
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                color: title;
+                width: 90%;
+                text-anchor: start;
+                text-wrap: auto;
+                margin-top: 15dp;
+            }
+
+            .requirement-skill-container
+            {
+                width: 25dp;
+                height: 25dp;
+                display: block;
+                margin-left: 5dp;
+            }
+
+            #requirement-skill-icon
+            {
+                width: 25dp;
+                height: 25dp;
+                position: relative;
+                display: block;
+                mask-image: image(skills-slot-square-default-mask contain);
+                z-index: 2;
+            }
+
+
+            .primary-value-text
+            {
+                font-family: Inria Sans;
+                color: secondary-list-value;
+                font-size: 2.5vh;
+                line-height: 2.0vh;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                text-anchor: end;
+            }
+
+            .mount-portrait-background
+            {
+                height: 150dp;
+                width: 150dp;
+                decorator: image(blacksmith-item-background contain);
+                pointer-events: auto;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                margin-top: 15dp;
+            }
+
+            #mount-icon
+            {
+                height: 125dp;
+                width: auto;
+                pointer-events: none;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%, -1%) ;
+                margin-left: -35dp;
+                margin-top: -5dp;
+                mask-image: image(Blacksmith-circle-mask contain);
+            }
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events">
+
+    <panel id="tooltip-panel" class="tooltip-generic tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+                    <div class="mount-portrait-background">
+                        <img class="mount-icon" id="mount-icon"/>
+                    </div>
+                    <div id="tooltip-item-name"></div>
+                    <div id="dynamic-bonus-stats"></div>
+                </div>
+                <div class="bottom-margin"></div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

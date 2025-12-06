@@ -1,0 +1,90 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <title>trader_Topbar</title>
+    <style>
+
+    #topbar-panel
+    {
+         pointer-events: auto;
+         width: 100%;
+         height: 8%;
+        decorator: tiled-horizontal-no-stretch( Map-topmenu-slice,
+        Map-topmenu-slice, Map-topmenu-slice );
+         position: absolute;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+    }
+
+    #tab-content
+    {
+        pointer-events: none;
+        width: 100%;
+        height: 92%;
+    }
+
+    .tabbar-container
+    {
+        width: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .tabbar
+    {
+        width: 90%;
+        text-align: center;
+    }
+
+    tab.ingame-menu-tab
+    {
+    	width: auto;
+        padding: 0 20dp;
+        line-height: 40dp;
+        display: inline-block;
+        font-size: 15dp;
+    }
+
+    .nav-button
+    {
+        width: 5%;
+        height: 75%;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        border-radius: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-button:hover
+    {
+    }
+
+    .tab
+    {
+        pointer-events: auto;
+    }
+
+    </style>
+    </head>
+    <body class="no-pointer-events">
+        <panel id="topbar-panel">
+            <!-- Tabbar -->
+            <div class="tabbar-container">
+                <div id="prev-tab" class="nav-button left-shoulder"></div>
+                <tabset id="trader-menu" class="tabbar optimus-text">
+                    <tab id ="inventory-tab" class="ingame-menu-tab" onclick="OnTraderTabClicked">3817220635</tab>
+                    <tab id ="buy-tab" class="ingame-menu-tab" onclick="OnTraderTabClicked">1857289789</tab>
+                </tabset>
+
+                <div id="next-tab" class="nav-button right-shoulder"></div>
+            </div>
+        </panel>
+        <panel id="tab-content">
+        </panel>
+    </body>
+</rml>

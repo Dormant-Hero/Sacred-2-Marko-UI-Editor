@@ -1,0 +1,288 @@
+@spritesheet KeyboardMousePrompts
+{
+    src: Textures/Spritesheets/Prompts/KeyboardMousePrompts.dds;
+    Keyboard-0: 2px 2px 72px 80px;
+    Keyboard-1: 78px 2px 72px 80px;
+    Keyboard-2: 154px 2px 72px 80px;
+    Keyboard-3: 230px 2px 72px 80px;
+    Keyboard-4: 306px 2px 72px 80px;
+    Keyboard-5: 382px 2px 72px 80px;
+    Keyboard-6: 458px 2px 72px 80px;
+    Keyboard-7: 534px 2px 72px 80px;
+    Keyboard-8: 610px 2px 72px 80px;
+    Keyboard-9: 686px 2px 72px 80px;
+    Keyboard-Alt-R: 762px 2px 112px 80px;
+    Keyboard-Alt-l: 878px 2px 112px 80px;
+    Keyboard-Apostrophe: 2px 86px 72px 80px;
+    Keyboard-Arrow-d: 78px 86px 72px 80px;
+    Keyboard-Arrow-l: 154px 86px 72px 80px;
+    Keyboard-Arrow-r: 230px 86px 72px 80px;
+    Keyboard-Arrow-t: 306px 86px 72px 80px;
+    Keyboard-Asterisk: 382px 86px 72px 80px;
+    Keyboard-Backslash: 458px 86px 72px 80px;
+    Keyboard-Backspace: 534px 86px 104px 80px;
+    Keyboard-Comma: 642px 86px 72px 80px;
+    Keyboard-Ctrl-l: 718px 86px 128px 80px;
+    Keyboard-Ctrl-r: 850px 86px 128px 80px;
+    Keyboard-Dot: 2px 170px 72px 80px;
+    Keyboard-Enter: 78px 170px 88px 80px;
+    Keyboard-Equal: 170px 170px 72px 80px;
+    Keyboard-Esc: 246px 170px 104px 80px;
+    Keyboard-F1: 354px 170px 72px 80px;
+    Keyboard-F10: 430px 170px 72px 80px;
+    Keyboard-F11: 506px 170px 72px 80px;
+    Keyboard-F12: 582px 170px 72px 80px;
+    Keyboard-F2: 658px 170px 72px 80px;
+    Keyboard-F3: 734px 170px 72px 80px;
+    Keyboard-F4: 810px 170px 72px 80px;
+    Keyboard-F5: 886px 170px 72px 80px;
+    Keyboard-F6: 2px 254px 72px 80px;
+    Keyboard-F7: 78px 254px 72px 80px;
+    Keyboard-F8: 154px 254px 72px 80px;
+    Keyboard-F9: 230px 254px 72px 80px;
+    Keyboard-Minus: 306px 254px 72px 80px;
+    Keyboard-Parenthesis-l: 382px 254px 72px 80px;
+    Keyboard-Parenthesis-r: 458px 254px 72px 80px;
+    Keyboard-Plus: 534px 254px 72px 80px;
+    Keyboard-Semicolon: 610px 254px 72px 80px;
+    Keyboard-Shift-l: 686px 254px 152px 80px;
+    Keyboard-Shift-r: 842px 254px 152px 80px;
+    Keyboard-Slash: 2px 338px 72px 80px;
+    Keyboard-Space: 78px 338px 176px 80px;
+    Keyboard-Tab: 258px 338px 112px 80px;
+    Keyboard-Tilde: 374px 338px 72px 80px;
+    Keyboard-a: 450px 338px 72px 80px;
+    Keyboard-b: 526px 338px 72px 80px;
+    Keyboard-c: 602px 338px 72px 80px;
+    Keyboard-d: 678px 338px 72px 80px;
+    Keyboard-e: 754px 338px 72px 80px;
+    Keyboard-f: 830px 338px 72px 80px;
+    Keyboard-g: 906px 338px 72px 80px;
+    Keyboard-h: 2px 422px 72px 80px;
+    Keyboard-i: 78px 422px 72px 80px;
+    Keyboard-j: 154px 422px 72px 80px;
+    Keyboard-k: 230px 422px 72px 80px;
+    Keyboard-l: 306px 422px 72px 80px;
+    Keyboard-m: 382px 422px 72px 80px;
+    Keyboard-n: 458px 422px 72px 80px;
+    Keyboard-o: 534px 422px 72px 80px;
+    Keyboard-p: 610px 422px 72px 80px;
+    Keyboard-q: 686px 422px 72px 80px;
+    Keyboard-r: 762px 422px 72px 80px;
+    Keyboard-s: 838px 422px 72px 80px;
+    Keyboard-t: 914px 422px 72px 80px;
+    Keyboard-u: 2px 506px 72px 80px;
+    Keyboard-v: 78px 506px 72px 80px;
+    Keyboard-w: 154px 506px 72px 80px;
+    Keyboard-x: 230px 506px 72px 80px;
+    Keyboard-y: 306px 506px 72px 80px;
+    Keyboard-z: 382px 506px 72px 80px;
+    Mouse-Left: 458px 506px 80px 80px;
+    Mouse-Move-lr: 542px 506px 80px 80px;
+    Mouse-Move-td: 626px 506px 80px 80px;
+    Mouse-Right: 710px 506px 80px 80px;
+    Mouse-Scroll-d: 794px 506px 80px 80px;
+    Mouse-Scroll-t: 878px 506px 80px 80px;
+    Mouse-Scroll-td: 2px 590px 80px 80px;
+    Mouse-Scroll: 86px 590px 80px 80px;
+    Mouse-Side-1: 170px 590px 80px 80px;
+    Mouse-Side-2: 254px 590px 80px 80px;
+
+}
+
+@spritesheet PlaystationPrompts
+{
+    src: Textures/Spritesheets/Prompts/Controller-Prompts.dds;
+    Controller-Empty: 2px 2px 80px 80px;
+    Controller-LStick-d: 86px 2px 80px 80px;
+    Controller-LStick-l: 170px 2px 80px 80px;
+    Controller-LStick-lr: 254px 2px 80px 80px;
+    Controller-LStick-r: 338px 2px 80px 80px;
+    Controller-LStick-t: 422px 2px 80px 80px;
+    Controller-LStick-td: 506px 2px 80px 80px;
+    Controller-LStick: 590px 2px 80px 80px;
+    Controller-RStick-d: 674px 2px 80px 80px;
+    Controller-RStick-l: 758px 2px 80px 80px;
+    Controller-RStick-lr: 842px 2px 80px 80px;
+    Controller-RStick-r: 926px 2px 80px 80px;
+    Controller-RStick-t: 2px 86px 80px 80px;
+    Controller-RStick-td: 86px 86px 80px 80px;
+    Controller-RStick: 170px 86px 80px 80px;
+    Ps-Circle: 254px 86px 80px 80px;
+    Ps-Dpad-d: 338px 86px 80px 80px;
+    Ps-Dpad-l: 422px 86px 80px 80px;
+    Ps-Dpad-r: 506px 86px 80px 80px;
+    Ps-Dpad-t: 590px 86px 80px 80px;
+    Ps-Dpad: 674px 86px 80px 80px;
+    Ps-Ex: 758px 86px 80px 80px;
+    Ps-L1: 842px 86px 80px 80px;
+    Ps-L2: 926px 86px 80px 80px;
+    Ps-LStick-click: 2px 170px 80px 80px;
+    Ps-R1: 86px 170px 80px 80px;
+    Ps-R2: 170px 170px 80px 80px;
+    Ps-RStick-click: 254px 170px 80px 80px;
+    Ps-Square: 338px 170px 80px 80px;
+    Ps-Triangle: 422px 170px 80px 80px;
+    Ps4-Options: 506px 170px 80px 80px;
+    Ps4-Share: 590px 170px 80px 80px;
+    Ps4-touch: 674px 170px 80px 80px;
+    Ps5-Options: 758px 170px 80px 80px;
+    Ps5-Share: 842px 170px 80px 80px;
+    Ps5-touch: 926px 170px 80px 80px;
+    Xbox-A: 2px 254px 80px 80px;
+    Xbox-B: 86px 254px 80px 80px;
+    Xbox-Dpad-d: 170px 254px 80px 80px;
+    Xbox-Dpad-l: 254px 254px 80px 80px;
+    Xbox-Dpad-r: 338px 254px 80px 80px;
+    Xbox-Dpad-t: 422px 254px 80px 80px;
+    Xbox-Dpad: 506px 254px 80px 80px;
+    Xbox-LB: 590px 254px 80px 80px;
+    Xbox-LStick-click: 674px 254px 80px 80px;
+    Xbox-LT: 758px 254px 80px 80px;
+    Xbox-RB: 842px 254px 80px 80px;
+    Xbox-RStick-click: 926px 254px 80px 80px;
+    Xbox-RT: 2px 338px 80px 80px;
+    Xbox-Screen: 86px 338px 80px 80px;
+    Xbox-Settings: 170px 338px 80px 80px;
+    Xbox-Status: 254px 338px 80px 80px;
+    Xbox-X: 338px 338px 80px 80px;
+    Xbox-Y: 422px 338px 80px 80px;
+}
+
+.item-inventory-quick-sell-container
+{
+    display: flex;
+    width: 100%;
+    height: 15dp;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap:10dp;
+    font-family: "Inria Sans";
+    font-size: 1.9vh;
+    color: primary-element-label;
+    margin-top: 5dp;
+}
+
+
+.left-ctrl-button
+{
+    decorator: image( Keyboard-Ctrl-l contain);
+}
+
+.item-inventory-drop,
+.item-inventory-scrap,
+.item-inventory-scrap-container,
+.item-inventory-drop-container
+{
+    opacity: 0;
+    height: 0dp;
+}
+
+.interact-separator,
+.xbox-controller-panel
+{
+    display: none;
+}
+
+.ps-5-controller-panel
+{
+    display: none;
+}
+
+.focus-map
+{
+    decorator: image(Keyboard-e contain);
+}
+
+.move-map
+{
+    decorator: image(Mouse-Left contain);
+}
+
+.select-on-map
+{
+    decorator: image(Mouse-Left contain);
+}
+
+.zoom-map
+{
+    decorator: image(Mouse-Scroll contain);
+}
+
+.item-inventory-move
+{
+    decorator: image(Mouse-Left contain);
+}
+
+.item-inventory-equip
+{
+    decorator: image(Mouse-Right contain);
+}
+
+.item-inventory-compare
+{
+    decorator: image(Keyboard-Alt-l contain);
+}
+
+.settings-button,
+.item-trader-deselect,
+.end-trade,
+.item-trader-buy,
+.switch-weapon,
+.switch-ca,
+.right-button,
+.left-button,
+.up-button,
+.down-button,
+.apply-settings,
+.reset-settings
+{
+    decorator: none;
+}
+
+.use-godspell
+{
+    /*setup runtime depending on keyboard binding*/
+}
+
+.interact,
+.use-weapon
+{
+    decorator: image(Mouse-Left contain);
+}
+
+.use-ca
+{
+    decorator: image(Mouse-Right contain);
+}
+
+.left-shoulder
+{
+    decorator: image(Keyboard-1 contain);
+}
+.right-shoulder
+{
+    decorator: image(Keyboard-3 contain);
+}
+.left-trigger
+{
+    decorator: image(Keyboard-q contain);
+}
+.right-trigger
+{
+    decorator: image(Keyboard-e contain);
+}
+.quick-access-inventory
+{
+    /*setup runtime depending on keyboard binding*/
+}
+.quick-access-combatArts
+{
+    /*setup runtime depending on keyboard binding*/
+}
+.quick-access-map
+{
+    /*setup runtime depending on keyboard binding*/
+}
+
+

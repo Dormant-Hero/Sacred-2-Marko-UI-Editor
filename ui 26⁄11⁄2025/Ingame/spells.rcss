@@ -1,0 +1,229 @@
+@spritesheet DragonMageSpells
+{
+    src: "Textures/Spells/DragonMageSpells.dds";
+    dm_co_beschuetzer: 0px 0px 278px 272px;
+    dm_co_magischerwall: 278px 0px 278px 272px;
+    dm_co_windstoss: 556px 0px 278px 272px;
+    dm_co_wirbelwind: 0px 272px 278px 272px;
+    dm_co_zerstoerer: 278px 272px 278px 272px;
+    dm_dm_berserkerform: 556px 272px 278px 272px;
+    dm_dm_drachenform: 0px 544px 278px 272px;
+    dm_dm_drachenschlag: 278px 544px 278px 272px;
+    dm_dm_ewigesfeuer: 556px 544px 278px 272px;
+    dm_dm_vertrauter: 0px 816px 278px 272px;
+    dm_form_brsrk_blutrausch: 278px 816px 278px 272px;
+    dm_form_brsrk_zerfetzen: 556px 816px 278px 272px;
+    dm_form_drgn_feuerball: 0px 1088px 278px 272px;
+    dm_form_drgn_feuerwand: 0px 1360px 278px 272px;
+    dm_form_drgn_teleport: 0px 1632px 278px 272px;
+    dm_form_drng_feuerball: 278px 1088px 278px 272px;
+    dm_me_energiebrand: 556px 1088px 278px 272px;
+    dm_me_gedankenschlag: 278px 1360px 278px 272px;
+    dm_me_kampftrance: 278px 1632px 278px 272px;
+    dm_me_mahlstrom: 556px 1360px 278px 272px;
+    dm_me_schutzrunen: 556px 1632px 278px 272px;
+    dm_co_beschuetzer_small: 834px 0px 172px 172px;
+    dm_dm_vertrauter_small: 834px 172px 172px 172px;
+    dm_me_schutzrunen_small: 834px 344px 172px 172px;
+    dm_form_travel_sprung: 278px 1088px 278px 272px;
+}
+
+@spritesheet DryadeSpells
+{
+    src: "Textures/Spells/DryadeSpells.dds";
+    ea_dr_hunt: 12px -12px 278px 278px;
+    ea_dr_naturemagic: 312px -12px 278px 278px;
+    ea_dr_voodoo: 612px -12px 278px 278px;
+    dr_hu_angriffsserie: 0px 280px 278px 272px;
+    dr_hu_konzentrierterangriff: 278px 280px 278px 272px;
+    dr_hu_projektilfokus: 556px 280px 278px 272px;
+    dr_hu_projektilfocus: 556px 280px 278px 272px;
+    dr_hu_sprint: 0px 552px 278px 272px;
+    dr_hu_wirbeln: 278px 552px 278px 272px;
+    dr_nm_bodenspiesse: 556px 552px 278px 272px;
+    dr_nm_handauflegen: 0px 824px 278px 272px;
+    dr_nm_rindenhaut: 278px 824px 278px 272px;
+    dr_nm_wacherverstand: 556px 824px 278px 272px;
+    dr_nm_wucherwurzel: 0px 1096px 278px 272px;
+    dr_vo_gegneressenz: 0px 1368px 278px 272px;
+    dr_vo_krankheit: 0px 1640px 278px 272px;
+    dr_vo_quaelen: 278px 1096px 278px 272px;
+    dr_vo_totem: 556px 1096px 278px 272px;
+    dr_vo_verderbensfluch: 278px 1368px 278px 272px;
+    dr_vo_zombie: 278px 1640px 278px 272px;
+    dr_hu_projektilfokus_small: 834px 280px 172px 163px;
+    dr_nm_rindenhaut_small: 834px 443px 172px 163px;
+    dr_vo_zombie_small: 834px 606px 172px 163px;
+}
+
+@spritesheet HighElveSpells
+{
+    src: "Textures/Spells/HighElveSpells.dds";
+    ea_he_arcane: 12px -12px 278px 278px;
+    ea_he_inferno: 312px -12px 278px 278px;
+    ea_he_storm: 612px -12px 278px 278px;
+    he_ar_bannkreis: 0px 280px 278px 272px;
+    he_ar_energieblitz: 278px 280px 278px 272px;
+    he_ar_magischerschlag: 556px 280px 278px 272px;
+    he_ar_regenerationskraft: 0px 552px 278px 272px;
+    he_ar_teleport: 278px 552px 278px 272px;
+    he_in_feuerball: 556px 552px 278px 272px;
+    he_in_feuerdaemon: 0px 824px 278px 272px;
+    he_in_feuerhaut: 278px 824px 278px 272px;
+    he_in_feuersturm: 556px 824px 278px 272px;
+    he_in_meteor: 0px 1096px 278px 272px;
+    he_st_eissplitter: 0px 1368px 278px 272px;
+    he_st_frostschlag: 0px 1640px 278px 272px;
+    he_st_kristallhaut: 278px 1096px 278px 272px;
+    he_st_nebelform: 556px 1096px 278px 272px;
+    he_st_schneesturm: 278px 1368px 278px 272px;
+    he_ar_regenerationskraft_small: 834px 280px 172px 172px;
+    he_in_feuerdaemon_small: 834px 452px 172px 163px;
+    he_in_feuerhaut_small: 834px 615px 172px 163px;
+    he_st_kristallhaut_small: 834px 778px 172px 163px;
+    he_st_nebelform_small: 834px 941px 172px 163px;
+}
+
+@spritesheet HorseAndGottSpells
+{
+    src: "Textures/Spells/HorseAndGottSpells.dds";
+    sk_kampfruf: 0px 0px 300px 300px;
+    tw_en_gravitation: 300px 0px 300px 300px;
+    tw_te_dauerfeuer: 600px 0px 300px 300px;
+    dm_form_any_recall: 0px 300px 278px 272px;
+    ea_dm_command: 278px 300px 278px 272px;
+    ea_dm_dragonmagic: 556px 300px 278px 272px;
+    ea_dm_mentalism: 0px 572px 278px 272px;
+    gott_chaos_sakkaradaemon: 278px 572px 278px 272px;
+    gott_krieg_kriegsrausch: 556px 572px 278px 272px;
+    gott_licht_blitz: 0px 844px 278px 272px;
+    gott_natur_lebenskraft: 278px 844px 278px 272px;
+    gott_philosophie_schutzschild: 556px 844px 278px 272px;
+    gott_wissen_drohnen: 0px 1116px 278px 272px;
+    mount_aufbaeumen: 0px 1388px 278px 272px;
+    mount_sprung: 0px 1660px 278px 272px;
+    mount_sturmangriff: 278px 1116px 278px 272px;
+    spell_normal: 556px 1116px 270px 259px;
+    buff_normal: 834px 300px 172px 172px;
+}
+
+@spritesheet InquisitorSpells
+{
+    src: "Textures/Spells/InquisitorSpells.dds";
+    ea_in_inquisition: 12px 14px 278px 272px;
+    ea_in_power: 312px 12px 278px 272px;
+    ea_in_underworld: 612px 12px 278px 272px;
+    in_in_eifer: 0px 300px 278px 272px;
+    in_in_hinrichtung: 278px 300px 278px 272px;
+    in_in_kasteiung: 556px 300px 278px 272px;
+    in_in_pranger: 0px 572px 278px 272px;
+    in_in_verstuemmelung: 278px 572px 278px 272px;
+    in_po_doppelgaenger: 556px 572px 278px 272px;
+    in_po_doppelgaenger_buff: 0px 844px 278px 272px;
+    in_po_faecherblitz: 278px 844px 278px 272px;
+    in_po_machtsog: 556px 844px 278px 272px;
+    in_po_machtstoss: 0px 1116px 278px 272px;
+    in_po_vergeltung: 0px 1388px 278px 272px;
+    in_uw_entsetzen: 0px 1660px 278px 272px;
+    in_uw_schaendung: 278px 1116px 278px 272px;
+    in_uw_seelenfaenger: 556px 1116px 278px 272px;
+    in_uw_seelenraub: 278px 1388px 278px 272px;
+    in_uw_versklavung: 278px 1660px 278px 272px;
+    in_in_kasteiung_small: 834px 300px 172px 163px;
+    in_po_doppelgaenger_buff_small: 834px 463px 172px 163px;
+    in_po_vergeltung_small: 834px 626px 172px 163px;
+    in_uw_seelenfaenger_small: 834px 789px 172px 163px;
+}
+
+@spritesheet SeraphimSpells
+{
+    src: "Textures/Spells/SeraphimSpells.dds";
+    ea_se_celestialmagic: 12px -12px 278px 278px;
+    ea_se_combat: 312px -12px 278px 278px;
+    ea_se_technics: 612px -12px 278px 278px;
+    se_cm_bekehrung: 0px 280px 278px 272px;
+    se_cm_blitz: 278px 280px 278px 272px;
+    se_cm_heilen: 556px 280px 278px 272px;
+    se_cm_lichtaura: 0px 552px 278px 272px;
+    se_cm_lichtsaeule: 278px 552px 278px 272px;
+    se_co_befluegeln: 556px 552px 278px 272px;
+    se_co_kampfhaltung: 0px 824px 278px 272px;
+    se_co_schlaghagel: 278px 824px 278px 272px;
+    se_co_seelenhammer: 556px 824px 278px 272px;
+    se_co_wirbelsprung: 0px 1096px 278px 272px;
+    se_te_beeeffgee: 0px 1368px 278px 272px;
+    se_te_energieschild: 0px 1640px 278px 272px;
+    se_te_notschild: 278px 1096px 278px 272px;
+    se_te_schockwelle: 556px 1096px 278px 272px;
+    se_te_schwertfeuer: 278px 1368px 278px 272px;
+    se_cm_lichtaura_small: 834px 280px 172px 163px;
+    se_co_kampfhaltung_small: 834px 443px 172px 163px;
+    se_te_beeeffgee_small: 834px 606px 172px 163px;
+    se_te_energieschild_small: 834px 769px 172px 163px;
+}
+
+@spritesheet ShadowKnightSpells
+{
+    src: "Textures/Spells/ShadowKnightSpells.dds";
+    ea_sk_astralplane: 12px 0px 278px 272px;
+    ea_sk_hardcombat: 312px 12px 278px 272px;
+    ea_sk_tacticalcombat: 12px 266px 278px 272px;
+    sk_ap_geisterhand: 600px 0px 278px 272px;
+    sk_ap_geistform: 600px 272px 278px 272px;
+    sk_ap_geistform_buff: 300px 300px 278px 272px;
+    sk_ap_kampfbefehl: 0px 560px 278px 272px;
+    sk_ap_kohorte: 578px 544px 278px 272px;
+    sk_ap_unterstuetzung: 278px 572px 278px 272px;
+    sk_hc_befreiungsschlag: 0px 832px 278px 272px;
+    sk_hc_harterschlag: 556px 816px 278px 272px;
+    sk_hc_kampfruf: 278px 844px 278px 272px;
+    sk_hc_rammstoss: 0px 1104px 278px 272px;
+    sk_hc_unterstuetzung: 556px 1088px 278px 272px;
+    sk_hc_willensstaerke: 278px 1116px 278px 272px;
+    sk_kampfrausch: 0px 1376px 278px 272px;
+    sk_tc_attacke: 0px 1648px 278px 272px;
+    sk_tc_kampfrausch: 556px 1360px 278px 272px;
+    sk_tc_sprung: 278px 1388px 278px 272px;
+    sk_tc_standarte: 278px 1660px 278px 272px;
+    sk_tc_umlenkung: 556px 1632px 278px 272px;
+    sk_ap_geistform_buff_small: 834px 816px 172px 163px;
+    sk_ap_kohorte_small: 834px 979px 172px 163px;
+    sk_hc_willensstaerke_small: 834px 1142px 172px 163px;
+    sk_tc_umlenkung_small: 834px 1305px 172px 163px;
+}
+
+@spritesheet TempleGuardSpells
+{
+    src: "Textures/Spells/TempleGuardSpells.dds";
+    ea_tw_closecombat: 12px 12px 278px 272px;
+    ea_tw_energy: 312px 12px 278px 272px;
+    ea_tw_technology: 612px 12px 278px 272px;
+    tw_cc_pfaehlung: 0px 300px 300px 300px;
+    tw_cc_kampfarm: 300px 300px 278px 272px;
+    tw_cc_kampfaura: 578px 300px 278px 272px;
+    tw_cc_kampfaura_buff: 300px 572px 278px 272px;
+    tw_cc_schoepfungsschlag: 0px 600px 278px 272px;
+    tw_cc_tkampfschild: 578px 572px 278px 272px;
+    tw_cc_todesspiesse: 278px 844px 278px 272px;
+    tw_en_eiseskaelte: 0px 872px 278px 272px;
+    tw_en_energienetz: 556px 844px 278px 272px;
+    tw_en_gluthitze: 278px 1116px 278px 272px;
+    tw_en_mutieren: 0px 1144px 278px 272px;
+    tw_en_schockpulse: 556px 1116px 278px 272px;
+    tw_te_archimedisstrahl: 0px 1416px 278px 272px;
+    tw_te_flammenwerfer: 0px 1688px 278px 272px;
+    tw_te_levitieren: 278px 1388px 278px 272px;
+    tw_te_projektil: 278px 1660px 278px 272px;
+    tw_te_tschock: 556px 1388px 278px 272px;
+    tw_cc_kampfaura_buff_small: 834px 844px 172px 163px;
+    tw_cc_tkampfschild_small: 834px 1007px 172px 163px;
+    tw_en_schockpulse_small: 834px 1170px 172px 163px;
+    tw_cc_kampfaura_small: 834px 844px 172px 163px;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,304 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="worldmap_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>ingame_WorldMap</title>
+        <style>
+            .debug-only {
+            display: none;
+            }
+            :root.debug .debug-only {
+            display: block;
+            }
+
+            body {
+            transform-origin: center;
+            z-index: -1;
+            }
+
+            .animate-worldmap-open {
+            animation: animation-burn-fade 1.5s linear-in-out;
+            }
+
+            .animate-worldmap-close {
+            animation: animation-burn-fade 1.5s linear-in-out alternate;
+            }
+
+            #debug-marker-screen {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            }
+
+            #debug-marker-target {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            }
+
+            #debug-marker-mouse1 {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+            background-color: green;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            }
+
+            #debug-marker-mouse2 {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+            background-color: purple;
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            }
+
+            #worldmap-container {
+            pointer-events: auto;
+            top: 0dp;
+            left: 0dp;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+            background-color: black;
+            position: absolute;
+            transform: none !important;
+            display: block;
+            drag: drag;
+            }
+
+            #worldmap {
+            pointer-events: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 2048px;
+            height: 2048px;
+            background-color: #555;
+            transform-origin: 0 0;
+            transform: none;
+            }
+
+            #worldmap-icons {
+            position: absolute;
+            display: block;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            }
+
+            #worldmap-tex {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            decorator: map("worldmap");
+            pointer-events: none;
+            }
+
+            .worldmap-icon {
+            pointer-events: none;
+            position: absolute;
+            width: 40dp;
+            height: 40dp;
+            transform-origin: center;
+            z-index: 2;
+            display: inline-block;
+            }
+
+            #worldmap-dynamic-icons {
+            z-index: 6;
+            }
+
+            .worldmap-poi {
+            pointer-events: none;
+            position: absolute;
+            display: inline-block;
+            }
+
+            .worldmap-icon-wrapper {
+            position: relative;
+            display: inline-block;
+            }
+
+
+            .hoverable {
+            pointer-events: auto;
+            justify-items: center;
+            align-content: center;
+            display: block;
+
+            }
+
+            .interactable {
+            pointer-events: auto;
+            z-index: 5;
+            }
+
+            .interactable:hover .hover-text,
+            .hoverable:hover .hover-text,
+            .worldmap-icon-wrapper:hover .hover-text {
+            visibility: visible;
+            z-index: 4;
+            }
+            .worldmap-icon .self-icon {
+            z-index: 10;
+            }
+
+            .worldmap-icon-wrapper .hover-text
+            {
+            color: title;
+            font-size: 1.8vh;
+            font-family: "Inria Sans";
+            pointer-events: none;
+            text-anchor: middle;
+            white-space: nowrap;
+            height: auto;
+            width: auto;
+            padding: 3dp;
+            }
+
+
+            .hover-text
+            {
+            display: inline-block;
+            white-space: nowrap;
+            height: auto;
+            width: auto;
+            padding: 3dp;
+            visibility: hidden;
+            z-index: 5;
+            color: title;
+            font-size: 2.9vh;
+            font-family: "Inria Sans";
+            text-anchor: bottom;
+            justify-items: center;
+            align-content: center;
+            transform: translate(0, 0);
+            decorator: tiled-horizontal-no-stretch(CounterBack-l, CounterBack-m, CounterBack-r);
+            padding-right: 10dp;
+            padding-left: 10dp;
+            padding-top: 5dp;
+            padding-bottom: 5dp;
+            }
+
+
+            .hover-text-style
+            {
+            display: none;
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            }
+
+            /* Cursor Style */
+            #cursor {
+            position: absolute;
+            display: none; /* Invisible by default, block for visibility */
+            decorator: image("Map-cursor-active" contain);
+            width: 64dp;
+            height: 64dp;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+            z-index: 42;
+            }
+
+            #portal-name {
+
+            }
+
+            .prompts-panel
+            {
+            position: absolute;
+            bottom: 1%;
+            left: 10dp;
+            width: auto;
+            display: flex;
+            flex-direction: row;
+            decorator: tiled-horizontal-no-stretch(skills-background-skills-dark-m, skills-background-skills-dark-m, skills-background-skills-dark-m);
+            padding-right:  10dp;
+            padding-left: 10dp;
+            padding-top: 5dp;
+            padding-bottom: 5dp;
+            }
+
+            .nav-button
+            {
+            width: auto;
+            min-width: 20dp;
+            height: 20dp;
+            }
+
+            .nav-text
+            {
+            color: primary-list-label;
+            font-size:  2.2vh;
+            font-family: "Inria Sans";
+            margin-right: 10dp;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel>
+        <div id="worldmap-container" ondragstart="MapDragStart" ondrag="MapDrag" ondragend="MapDragEnd" onmousescroll="MapScroll" onclick="MapClick">
+            <div id="worldmap">
+                <div id="worldmap-tex"/>
+                <div id="worldmap-icons">
+                    <div id="worldmap-static-icons"></div>
+                    <div id="worldmap-dynamic-icons"></div>
+                    <!-- DEBUG MARKERS -->
+                    <div id="debug-markers" class="debug-only">
+                      <div id="debug-marker-target"></div>
+                      <div id="debug-marker-mouse1"></div>
+                      <div id="debug-marker-mouse2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div id="cursor"></div>
+      <div id="worldmap-controller-label" class="hover-text hover-text-style" >
+      </div>
+    </panel>
+    <panel class="prompts-panel">
+        <div class="nav-button move-map"></div>
+        <div class="nav-text">0994858804</div> <!-- move -->
+        <div class="nav-button select-on-map"></div>
+        <div class="nav-text">1461134029</div> <!-- select -->
+        <div class="nav-button zoom-map"></div>
+        <div class="nav-text">1324724319</div>
+        <div class="nav-button focus-map"></div>
+        <div class="nav-text">2058089282</div>
+
+    </panel>
+      <!-- DEBUG MARKERS -->
+      <div id="debug-marker-screen" class="debug-only"></div>
+    </body>
+</rml>

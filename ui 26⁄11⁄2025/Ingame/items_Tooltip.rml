@@ -1,0 +1,321 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Shared/colors.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/skills.rcss"/>
+        <title>items_Tooltip</title>
+        <style>
+
+            #tooltip-skill-needed
+            {
+                color: red;
+                text-anchor: start;
+                width: 90%;
+            }
+
+
+            #tooltip-item-icon
+            {
+                max-height: 120dp;
+                max-width: 100%;
+                object-fit: contain;
+                display: flex;
+                position: relative;
+            }
+
+            .mastery-text
+            {
+                font-family: Inria Sans;
+                color: primary-list-label;
+                font-size: 1.6vh;
+                width: 86%;
+                text-anchor: start;
+                margin-left: 5dp;
+            }
+
+            .price
+            {
+                width: 90%;
+                margin-top: 10dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: flex-end;
+                gap: 10dp;
+            }
+
+            .gold-icon-position
+            {
+                width:20dp;
+                height:20dp;
+                display:block;
+            }
+
+            #tooltip-item-name
+            {
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+                color: title;
+                width: 90%;
+                text-anchor: start;
+                text-wrap: auto;
+                margin-top: 15dp;
+            }
+
+            .requirement-skill-container
+            {
+                width: 25dp;
+                height: 25dp;
+                display: block;
+                margin-left: 5dp;
+            }
+
+            .stat-value-icon
+            {
+                width: 25dp;
+                height: 25dp;
+                display: block;
+                mask-image: image(skills-slot-square-default-mask contain);
+                z-index: 2;
+            }
+
+            .not-learned
+            {
+                color: red;
+            }
+
+            #requirement-skill-icon
+            {
+                width: 25dp;
+                height: 25dp;
+                position: relative;
+                display: block;
+                mask-image: image(skills-slot-square-default-mask contain);
+                z-index: 2;
+            }
+
+            #skill-frame
+            {
+                width: 25dp;
+                height: 25dp;
+                position: relative;
+                display: block;
+                top: -25dp;
+                decorator: image(skills-slot-square-default contain);
+                z-index: 1;
+            }
+
+            .left-details
+            {
+                width: 65%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap:3dp;
+                margin-top: 10dp;
+            }
+
+            .right-details
+            {
+                width: 35%;
+                height: 95%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                margin-top: -5dp;
+            }
+
+            #weapon-slots-panel
+            {
+                margin-top: 10dp;
+            }
+
+            .mastery-panel
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                height:30dp;
+                width: 100%;
+                font-size: 1.5vh;
+                align-items: center;
+                margin-bottom: 5dp;
+                decorator: image(skills-background-title-light);
+            }
+
+            #mastery-requirements-panel
+            {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 90%;
+            }
+
+            .defence-damage-type-bar
+            {
+                width: 50%;
+                height: 1vh;
+                margin-left: -12dp;
+                margin-top: 3dp;
+            }
+
+            .primary-value-text
+            {
+                font-family: Inria Sans;
+                color: secondary-list-value;
+                font-size: 2.5vh;
+                line-height: 2.0vh;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                text-anchor: end;
+            }
+
+            .nav-button
+            {
+                width: auto;
+                min-width: 20dp;
+                height: 20dp;
+            }
+
+            .prompt-style
+            {
+                font-family: "Inria Sans";
+                font-size: 1.9vh;
+                color: primary-element-label;
+            }
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events" style="z-index: 100;">
+
+    <panel id="tooltip-panel" class="tooltip-generic tooltip-background">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+
+                    <div id="tooltip-item-name"></div>
+
+                    <div style="width: 90%; display: flex; flex-direction: row; height: 120dp" class="debug-red-off">
+                        <div class ="left-details">
+                            <div id="tooltip-item-wearer-class" style="font-size: 2vh; font-family: Inria Sans;"></div>
+                            <div>
+                                <div style="color:gray; font-size: 2vh; font-family: Inria Sans">Level:  </div>
+                                <div style="font-size: 2vh;" id="tooltip-item-level"></div>
+                            </div>
+                            <div id="tooltip-item-hold-type" style="color:yellow; font-size: 2vh; "></div>
+                            <div id="weapon-slots-panel" style="display: flex; flex-direction: row; gap: 5dp; height: 25dp;"></div>
+
+                        </div>
+
+                        <div class ="right-details" id="icon-panel">
+                            <img id="tooltip-item-icon" class=""/>
+                        </div>
+                    </div>
+
+
+                    <div  id="mastery-requirements-panel">
+                        <div style="margin-bottom: 3dp;" class="separator"></div>
+                        <div id="tooltip-skill-needed"></div>
+                        <div class="mastery-panel">
+
+                            <div class="requirement-skill-container">
+                                <img id="requirement-skill-icon"/>
+                                <div id="skill-frame"></div>
+                            </div>
+                            <div id="tooltip-item-mastery-requirements" class="mastery-text"></div>
+                        </div>
+                        <div class="separator"></div>
+                    </div>
+
+                    <div id="defence-values">
+                        <div class="damage-values-text-container">
+                            <div class="stat-name">2305326351</div>
+                            <div class="defence-damage-container">
+                                <div class="defence-damage-bars  debug-red">
+                                    <progress id="physical-defence-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="ice-defence-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="fire-defence-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="magic-defence-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="poison-defence-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="primary-value-text">
+                            <div id="defence-value">1-1</div>
+                        </div>
+                    </div>
+
+                    <div id="damage-values">
+                        <div class ="damage-values-text-container">
+                            <div class="stat-name">2743939745</div>
+                            <div class="defence-damage-container">
+                                <div class="defence-damage-bars">
+                                    <progress id="physical-damage-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="ice-damage-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="fire-damage-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="magic-damage-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                    <progress id="poison-damage-bar" class ="defence-damage-type-bar"  direction="right" value="1.0"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="primary-value-text">
+                            <div id="damage-value" >1-1</div>
+                        </div>
+                    </div>
+
+                    <div id="dynamic-bonus-stats">
+                    </div>
+
+                    <div id="set-bonus-title" style="width:90%; font-size: 2vh; color: green; margin-top: 5dp; margin-bottom: 5dp;">
+                        <div style="margin-right: 10dp;">0109714400</div>
+                        <div id="set-completion">1/10</div>
+                    </div>
+                    <div id="set-bonus">
+                    </div>
+
+                </div>
+
+                <div class="price">
+                    <div style="color: secondary-list-value; font-family: OptimusPrinceps; font-size: 2.5vh;" id="price-type">1626887310</div>
+                    <div style="color: secondary-list-value; font-family: OptimusPrinceps; font-size: 2.5vh;">:</div>
+                    <div style="color: secondary-list-value; font-family: OptimusPrinceps; font-size: 2.5vh;" id="price-value">XYZ</div>
+                    <div class="gold-icon gold-icon-position"></div>
+                </div>
+                <div class="input-prompts" id="input-prompts-panel">
+                    <div class="input-prompt-line" id ="move-item-line"><div class="nav-button item-inventory-move"></div><div>2344539091</div></div>
+                    <div class="input-prompt-line" id ="sell-item-line"><div class="nav-button item-inventory-move"></div><div>1353533368</div></div>
+                    <div class="input-prompt-line" id ="transfer-item-line"><div class="nav-button item-inventory-move"></div><div>1665815133</div></div>
+                    <div class="input-prompt-line" id ="equip-item-line"><div class="nav-button item-inventory-equip"></div><div>1853403845</div></div>
+                    <div class="input-prompt-line" id ="buy-item-line"><div class="nav-button item-inventory-move"></div><div>0279217039</div></div>
+                    <div class="input-prompt-line" id ="use-item-line"><div class="nav-button item-inventory-equip"></div><div>3956540136</div></div>
+                    <div class="item-inventory-drop-container" id ="drop-item-line"><div class="nav-button item-inventory-drop"></div><div>3833920709</div></div>
+                    <div class="item-inventory-scrap-container" id ="scrap-item-line">
+                        <div class="nav-button item-inventory-scrap"></div>
+                        <div>1086212733</div>
+                        <div>0298682421</div>
+                    </div>
+                    <div class="item-inventory-quick-sell-container" id ="quick-sell-item-line">
+                        <div class="nav-button left-ctrl-button"></div>
+                        <div class="nav-button item-inventory-move"></div>
+                        <div class="prompt-style">1353533368</div>
+                    </div>
+                    <div class="input-prompt-line" id ="compare-item-line"><div class="nav-button item-inventory-compare"></div><div>3670332394</div></div>
+
+                </div>
+                <div class="bottom-margin"></div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

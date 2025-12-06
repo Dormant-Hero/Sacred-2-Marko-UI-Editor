@@ -1,0 +1,382 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../items_FilterTabbar.rcss"/>
+        <link type="text/rcss" href="tooltip.rcss"/>
+        <link type="text/rcss" href="items_Grid.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>trader_blacksmith</title>
+        <style>
+            #trader-inventory-panel
+            {
+                pointer-events: auto;
+                width: 275dp;
+                height: 624dp;
+                top:10%;
+                right: 1.5%;
+                position: absolute;
+                decorator: image(Dialog-background);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .buttons
+            {
+                position: absolute;
+                left: 50%;
+                bottom: 3%;
+                transform: translateX(-50%);
+                height:75dp;
+                width: 85%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .header-image
+            {
+                decorator: image(Textures\data\backgrounds\t_ui-bg-blacksmith_do-x4.dds);
+                mask-image: image(Blacksmith-background-mask);
+                position: relative;
+                width: 100%;
+                height: 140dp;
+                top: -10dp;
+            }
+
+            .shop-title-panel
+            {
+                position: relative;
+                width: 80%;
+                height: 40dp;
+                font-size: 2.5vh;
+                color:title;
+                line-height: 40dp;
+                text-align: center;
+                font-family: OptimusPrinceps;
+                decorator: image(TitleOrnamentBack);
+                top:-120dp;
+            }
+
+            .smith-panel
+            {
+                display: flex;
+                flex-direction: row;
+                width: 90%;
+                height: 150dp;
+            }
+
+            .blacksmith-arts-panel
+            {
+                width: 50dp;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+
+            .empty-rune-slot
+            {
+                width: 40dp;
+                height: 40dp;
+                display: block;
+				padding: 1dp;
+				justify-content: space-evenly;
+            }
+
+            .empty-rune-slot:hover {
+                border-width: 1dp;
+				padding: 0dp;
+                border-color: yellow;
+            }
+
+            .forged-in-item
+            {
+                width: 40dp;
+                height: 40dp;
+                display: block;
+                z-index: 10;
+            }
+
+            .blacksmith-art-icon
+            {
+                width: 35dp;
+                height: 35dp;
+                display: block;
+            }
+
+            .blacksmith-art-icon:hover
+            {
+                border-width: 1dp;
+                border-color: yellow;
+                border-radius: 25dp;
+            }
+
+            .blacksmith-art
+            {
+                width: 40dp;
+                height: 60dp;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                decorator: image(forge-art-background contain);
+            }
+
+
+            .target-item
+            {
+                height: 150dp;
+                width: 150dp;
+                decorator: image(blacksmith-item-background contain);
+                pointer-events: auto;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+            }
+
+            .target-item:hover
+            {
+                decorator: image(blacksmith-item-background-hover contain);
+            }
+
+            .target-item:selected
+            {
+                decorator: image(blacksmith-item-background-selected contain);
+            }
+
+            #target-item-icon
+            {
+                height: 150dp;
+                width: auto;
+                pointer-events: none;
+                object-fit: contain;
+                position: relative;
+            }
+
+            #item-slots-panel
+            {
+                width: 50dp;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .item-tooltip-text
+            {
+                position: relative;
+                display: block;
+                width: 100dp;
+                font-size: 1.8vh;
+                color: primary-list-label;
+                font-family: Inria Sans;
+                text-align: center;
+            }
+
+            .gold-icon-position
+            {
+
+                width:20dp;
+                height:20dp;
+                display:block;
+                margin-top: -4dp;
+            }
+
+            .can-be-purchased
+            {
+                color:title;
+            }
+
+            .too-expensive
+            {
+                color:red;
+            }
+
+            .blacksmith-button
+            {
+                max-width: 90%;
+                max-height: 2vh;
+                text-align: center;
+                gap: 5dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            #dynamic-bonus-stats
+            {
+                margin-top: 20dp;
+            }
+
+            .ornament-left
+            {
+                decorator: image(title-ornament flip-horizontal contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .ornament-right
+            {
+                decorator: image(title-ornament contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .trader-name-panel
+            {
+                height: 25dp;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+                flex-direction: row;
+                margin-top: 15dp;
+                gap: 10dp;
+            }
+
+            .panel-name
+            {
+                color: #7f7f76;
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+            }
+
+            .minus-margin
+            {
+                margin-top: -50dp;
+            }
+
+            .separator
+            {
+                width: 100%;
+                decorator: image(skills-dooted-line-short);
+                height: auto;
+                min-height: 1dp;
+                margin-top: 3dp;
+                margin-bottom: 3dp;
+            }
+
+            .nav-button
+            {
+                width: auto;
+                min-width: 20dp;
+                height: 20dp;
+            }
+
+            .tooltip-panel
+            {
+               /* decorator: image(skills-background-skills-dark-m);*/
+                width: 320dp;
+                height: auto;
+                display: flex;
+                position: absolute;
+                bottom: 0dp;
+                left: -345dp;
+                z-index: 95;
+                padding: 10dp;
+                justify-content: center;
+                flex-direction: column;
+				font-size: 1.4vh;
+				color: #7f7f76;
+            }
+
+            .tooltip-text
+            {
+                display: block;
+                width: 98%;
+                height: auto;
+            }
+
+            .blacksmith-art .mini-tooltip {
+                display: none;
+                position: absolute;
+                font-size: 1.5vh;
+                padding: 10dp;
+                pointer-events: none;
+                width: 150dp;
+                transform: translateX(-187dp);
+				color: #72797c;
+            }
+
+            .blacksmith-art-icon:hover + .mini-tooltip,
+            .blacksmith-art:hover .mini-tooltip {
+                display: block;
+                z-index: 100;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="trader-inventory-panel">
+
+        <!-- Title -->
+        <div class="header-image"></div>
+        <div class="shop-title-panel">1553069460</div>
+
+        <div class="trader-name-panel minus-margin">
+            <div class="ornament-left"></div>
+            <div class="panel-name">2876884530</div>
+            <div class="ornament-right"></div>
+        </div>
+
+        <div class="tooltip-panel tooltip-background">
+            <div class="tooltip-text">0145139700</div>
+        </div>
+
+        <div class="smith-panel">
+            <div class="blacksmith-arts-panel">
+                <div class="blacksmith-art" id="offence-button" onclick="OnDamageForgeArtButton">
+                    <img class= "blacksmith-art-icon" src="Textures/data/icons/items/010379a.dds"/>
+                    <div class="mini-tooltip tooltip-background" id="offence-tooltip">2875470761</div>
+                </div>
+                <div class="blacksmith-art" id="defence-button" onclick="OnDefenceForgeArtButton">
+                    <img class= "blacksmith-art-icon"  src="Textures/data/icons/items/010377a.dds"/>
+                    <div class="mini-tooltip tooltip-background" id="defence-tooltip">1779091789</div>
+                </div>
+                <div class="blacksmith-art" id="magical-button" onclick="OnMagicForgeArtButton">
+                    <img class= "blacksmith-art-icon"  src="Textures/data/icons/items/010378a.dds"/>
+                    <div class="mini-tooltip tooltip-background" id="magical-tooltip">0443645221</div>
+                </div>
+            </div>
+
+            <div class="target-item" onclick="OnBlacksmithTargetItemSlotClick">
+                <img id="target-item-icon"/>
+                <div id="item-tooltip" class="item-tooltip-text">0498844380</div>
+            </div>
+            <div id="item-slots-panel"><!-- Dynamic added here --> </div>
+        </div>
+
+        <div class="trader-name-panel">
+            <div class="ornament-left"></div>
+            <div class="panel-name">1186337115</div>
+            <div class="ornament-right"></div>
+        </div>
+
+        <div id="dynamic-bonus-stats">
+        </div>
+
+        <div class ="buttons">
+            <button class ="blacksmith-button" id="forge-button" onclick="OnForge">
+                <div style="display: flex;flex-direction: row; justify-items: center; align-content: center;justify-content: center; gap:3dp;">
+                    <div>0674715107</div>
+                    <div id="forge-price"></div>
+                    <div class="gold-icon gold-icon-position"></div>
+                </div>
+            </button>
+            <button class="blacksmith-button" onclick="OnCloseTrader">
+                <div style="margin-right: 5dp; margin-left: 30dp;" id="close-button-text">0135808154</div>
+                <div class="nav-button end-trade" id="close-button-prompt" onclick="OnCloseTrader"></div>
+            </button>
+        </div>
+    </panel>
+    </body>
+</rml>

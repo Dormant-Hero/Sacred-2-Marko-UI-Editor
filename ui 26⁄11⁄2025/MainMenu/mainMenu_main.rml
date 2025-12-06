@@ -1,0 +1,136 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="globalElements.rcss"/>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>mainMenu_main</title>
+        <style>
+            body {
+                width: 50%;
+            }
+
+            .sidebar {
+                decorator: image(Main-menu-bg contain);
+                width: 250dp;
+                height: 750dp;
+                position: absolute;
+                top: 5dp;
+                margin-left: 100dp;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                width: 250dp;
+                height: 300dp;
+                margin-top: 72dp;
+                margin-bottom: 24dp;
+                decorator: image("s2_logo_small" contain);
+            }
+
+            .button-panel {
+                width: 200dp;
+                height: 250dp;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                margin-bottom: 10dp;
+                padding-left: 2%;
+                padding-right: 2%;
+                gap: 1%;
+            }
+
+            .vertical-spacer {
+                height: 5%;
+            }
+
+            #first-focus:focus, #first-game-button:focus, #invite-friend-button:focus, #movies-button:focus, #settings-button:focus,
+            #credits-button:focus, #exit-button:focus {
+            }
+
+            button {
+                width: 100%;
+                line-height: 50%;
+            }
+
+            #lobby-member-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                padding: 5dp;
+                left: 355dp;
+                top: 575dp; /*80dp;*/
+                width: 180dp;
+                height: 100dp;
+                opacity: 0.9;
+                background-color: #182126;
+                border-style: solid;
+                border-width: 1px;
+                border-color: rgba(189, 185, 150, 128);
+            }
+
+            .lobby-member-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 4dp;
+                width: 100%;
+            }
+
+            .lobby-member {
+                width: 100%;
+                font-family: "Inria Sans";
+                line-height: 16dp;
+                font-size: 1.5vh;
+            }
+
+            .green-circle {
+                width: 6dp;
+                height: 6dp;
+                border-radius: 10px;
+                background-color: #51e351;
+                opacity: 0.9;
+            }
+
+            .lobby-member-list-title {
+                width: 100%;
+                font-family: "OptimusPrinceps";
+                line-height: 16dp;
+                font-size: 1.7vh;
+            }
+
+        </style>
+    </head>
+    <body onshow="OnShow_MainMenu">
+    <div class="sidebar">
+        <div class="logo"></div>
+        <div id="main-buttons" class="button-panel">
+
+            <button id="first-focus" class="character-selection-button" onclick="LoadCharacterSelectionScreen" style="nav-down: #first-game-button; nav-up: #exit-game-button">0136942928</button>
+            <button id="first-game-button" onclick="LoadFirstGameSlot" style="nav-down: #invite-friend-button; nav-up: #first-focus">3317340868</button>
+            <button id="invite-friend-button" onclick="ShowInviteFriendOverlay" style="nav-down: #settings-button; nav-up: #first-game-button">3746930420</button>
+            <button id="settings-button" onclick="LoadOptionsScreen" style="nav-down: #credits-button; nav-up: #invite-friend-button">1247404381</button>
+            <button id="movies-button" onclick="LoadMoviesScreen" style="nav-down: #credits-button; nav-up: #settings-button">0089437767</button>
+            <button id="credits-button" onclick="LoadCreditsScreen" style="nav-down: #exit-game-button; nav-up: #settings-button">0812097651</button>
+            <div class="vertical-spacer"></div>
+            <div class="vertical-spacer"></div>
+            <div class="vertical-spacer"></div>
+            <div class="vertical-spacer"></div>
+            <button id="exit-game-button" onclick="OnExitGameRequested" style="nav-down: #first-focus; nav-up: #credits-button">3719681223</button>
+        </div>
+
+        <div id="settings-buttons" class="button-panel" style="display: none;">
+            <button id="graphics-button" onclick="OnClick_GraphicsButton" style="nav-down: #gameplay-button; nav-up: #controls-button">1927439701</button>
+            <button id="gameplay-button" onclick="OnClick_GameplayButton" style="nav-down: #sound-button; nav-up: #graphics-button">2568947533</button>
+            <button id="sound-button" onclick="OnClick_SoundButton" style="nav-down: #controls-button; nav-up: #gameplay-button">3744564474</button>
+            <button id="controls-button" onclick="OnClick_ControlsButton" style="nav-down: #exit-options-button; nav-up: #sound-button">1670293390</button>
+            <div class="vertical-spacer"></div>
+            <button id="exit-settings-button" onclick="OnClick_ExitSettings" style="nav-down: #graphics-button; nav-up: #controls-button">2417289527</button>
+        </div>
+    </div>
+    <div id="lobby-member-list">
+    </div>
+    </body>
+</rml>

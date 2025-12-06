@@ -1,0 +1,348 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>mainMenu_credits</title>
+        <style>
+            #first-focus {
+                width: 20vh;
+                margin-top: 2vh;
+                height: 3vh;
+            }
+
+            h1 {
+                font-size: 7vh;
+                font-family: OptimusPrinceps;
+                color: title;
+                margin-top: 80dp;
+            }
+
+            h2 {
+                font-size: 3vh;
+                font-family: OptimusPrinceps;
+                color: title;
+                margin-top: 15dp;
+                margin-bottom: 2dp;
+            }
+
+            p {
+                font-size: 2.5vh;
+            }            
+
+            p strong {
+                font-size: 2.5vh;
+                font-family: OptimusPrinceps;
+                font-effect: outline(2dp black);
+                color: title;
+            }
+
+            .main-container {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 150);
+                align-items: center;
+            }
+
+            .credits-scroll {
+                overflow-y: auto;
+                display: block;
+                width: 100%;
+                height: 85%;
+                padding: 2vh;
+                font-size: 2vh;
+                font-family: OptimusPrinceps;
+                color: white;
+            }
+
+            .scroll-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .legal {
+                font-size: 2vh;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="main-container">
+        <div id="scroll-element" class="credits-scroll">
+            <div class="scroll-inner">
+                <p style="height: 650dp;"></p>
+                <h1>Sparklingbit</h1>
+                <h2>Vision Keeper</h2>
+                <p>Franz Stradal</p>
+                <h2>COO</h2>
+                <p>Dmitry Fitisov</p>
+                <h2>Lore Creator</h2>
+                <p>Prof. Dr. Michael Bhatty</p>
+                <h2>QA & UX</h2>
+                <p>Marc Oberhäuser</p>
+                <p>Andreas Liebeskind</p>
+                <h2>Lead UX</h2>
+                <p>Andrzej Stanisław Bieniek</p>
+                <h2>QA Coordinator, UX, Programmer & Community Manager</h2>
+                <p>Nora Meßmann</p>
+                <h2>Lead Programmer</h2>
+                <p>Yannik Lobsensky</p>
+                <h2>Programmer</h2>
+                <p>Valeria "Luna" Bobicova</p>
+                <p>Ole Seelandt</p>
+                <h2>Keyboard Administrator</h2>
+                <p>Edwin VanCleef</p>
+                <h2>Art and Game Design Support</h2>
+                <p>Peter Hann</p>
+                <h2>Tester</h2>
+                <p>Nils Wachter</p>
+                <p>Niklas Schniheiß</p>
+                <p>Moon Stradal</p>
+                <p>Zoe Stradal</p>
+                <p>Hugh Willoughby</p>
+                <p>Felix Schuller</p>
+                <p>Imrael</p>
+                <p>Ocoma</p>
+                <p>Spooky</p>
+                <p>Bernd Moser</p>
+                <p>Markus "PowerPyxeL" Kobbe</p>
+                <h2>UI</h2>
+                <p>Naja Jelec</p>
+                <p>Anika Artz</p>
+                <p>Francesca Frenken</p>
+                <h1>Funatics</h1>
+                <h2>Senior Developer</h2>
+                <p>Thomas "Mavwarf" Häuser</p>
+                <p>Nils "Lyve" Schneider</p>
+                <h2>Senior Tech Art</h2>
+                <p>Mario "Dr. Snoelk" Röske</p>
+                <h1>Multiplayer Mode Support by Nukklear</h1>
+                <h2>Production</h2>
+                <p>Julian Bock</p>
+                <p>Bernd Willuweit</p>
+                <h2>Programmer</h2>
+                <p>Yannik Lobsensky</p>
+                <p>Ole Seelandt</p>
+                <h1>Zeppelin Studio</h1>
+                <h2>Lead Programmer</h2>
+                <p>Alexander Rieder</p>
+                <h2>Programmer</h2>
+                <p>Bernhard Klemenjak</p>
+                <p>Michael Egger</p>
+                <h2>Production</h2>
+                <p>Michael Benda</p>
+                <p>Philipp Gong</p>
+                <h1>Jumpgate AB</h1>
+                <h2>Management</h2>
+                <p>Harald Riegler</p>
+                <p>Florian Bohn</p>
+                <h2>Project Management</h2>
+                <p>Alexander Hendler</p>
+                <h2>2D Art</h2>
+                <p>Lukas Jevcak</p>
+                <h1>THQ Nordic</h1>
+                <h2>Executive Producer</h2>
+                <p>Michael Paeck</p>
+                <h2>Head of Localization</h2>
+                <p>Gennaro Giani</p>
+                <h2>THQ Nordic Online Programming</h2>
+                <p>Wojciech Knopf</p>
+                <h2>Game Data Analytics</h2>
+                <p>Agnieszka Knopf</p>
+                <h2>QA & UX Manager</h2>
+                <p>Frank Kofler</p>
+                <h2>Project QA Analysts</h2>
+                <p>Samantha Radak</p>
+                <h2>Additional QA Analysts</h2>
+                <p>Jérémy Soulet</p>
+                <p>Markus Rohringer</p>
+                <p>Aaricia Lambrigts</p>
+                <p>Christoph Ruehmkorf</p>
+                <p>Suvad Catic</p>
+                <p>Aleksandra Paluch</p>
+                <h2>UX Researcher</h2>
+                <p>Markus Rohringer</p>
+                <h2>Release Management & Age Rating Coordinators</h2>
+                <p>Martin Habermann</p>
+                <p>Amber Chalmers</p>
+                <h2>Art Director</h2>
+                <p>Randis Albion</p>
+                <h2>Video Editor</h2>
+                <p>Johannes Lehner</p>
+                <p>Eduard Jaworek</p>
+                <p>Noran Abdalla</p>
+                <h2>Director of Marketing, PR, and Media</h2>
+                <p>Melanie Klose</p>
+                <h2>Head of Social Media and Programmatic Advertisement</h2>
+                <p>Manuel Karl</p>
+                <h2>Social Media</h2>
+                <p>Fabian Neubauer</p>
+                <p>Markus Kublar</p>
+                <p>Lukas Zainzinger</p>
+                <h2>Marketing Managers</h2>
+                <p>Lillian Salvadori</p>
+                <p>Tom Moore</p>
+                <p>Alexander Heather</p>
+                <h2>Head of Public Relations</h2>
+                <p>Florian Emmerich</p>
+                <p>Public Relations</p>
+                <p>Liz Pieri</p>
+                <p>Golnas Eftekhari</p>
+                <p>Jennifer Bigell</p>
+                <h2>Director of Community & Communications</h2>
+                <p>Philipp Brock</p>
+                <h2>Head of Community Management</h2>
+                <p>Per "Zyddie" Hollenbo</p>
+                <h2>Community Management</h2>
+                <p>Jack "Home" Roberts</p>
+                <p>Silvia "Lanani" Fromm</p>
+                <h2>Lead Graphic Artist</h2>
+                <p>Ernst Satzinger</p>
+                <h2>Graphic Asset Team</h2>
+                <p>Janet Weiss</p>
+                <p>Noah Diem</p>
+                <p>Johanna Rossoll</p>
+                <h2>Web Developer</h2>
+                <p>Manuel Metzger</p>
+                <h2>Director Human Resources</h2>
+                <p>Jan Binsmaier</p>
+                <h2>Head of Merchandise and Specialty Products</h2>
+                <p>Barbara Kugler</p>
+                <h2>Publishing Director</h2>
+                <p>Georg Klotzberg</p>
+                <h2>Publishing Coordinator</h2>
+                <p>Markus Nitter</p>
+                <h2>Sales & Business Development USA</h2>
+                <p>Adrienne Lauer</p>
+                <h2>Director Physical Sales Operations</h2>
+                <p>Anne Lyon</p>
+                <h2>Digital and Retail Distribution</h2>
+                <p>Nik Blower</p>
+                <p>Thomas Reisinger</p>
+                <p>Reinhold Schor</p>
+                <p>Hong Le Sun</p>
+                <p>Ian Warley</p>
+                <p>Steffen Hippe</p>
+                <p>Alexandra Dubovan</p>
+                <p>Fanny Rossi</p>
+                <h2>Director Global Operations, Treasury and Procurement</h2>
+                <p>Anton Seicarescu</p>
+                <h2>Global Operations & Procurement Coordinator</h2>
+                <p>Ljilja Merdanovic</p>
+                <h2>Key Account Manager, Global Manufacturing, Logistics & Warehousing</h2>
+                <p>Frank Klinker</p>
+                <h2>Business Data Analysis & Reporting</h2>
+                <p>Christoph Himmer</p>
+                <p>Sebastian Tscherny</p>
+                <p>Finance</p>
+                <p>Almir Malohodzic</p>
+                <p>Andreja Djoja</p>
+                <p>Monja Lang</p>
+                <p>Sabine Pöchhacker</p>
+                <p>Brigitte Brandl</p>
+                <p>Marion Mayer</p>
+                <p>Amra Delic</p>
+                <h2>Group General Counsel</h2>
+                <p>Silvia Wandl</p>
+                <h2>IT</h2>
+                <p>Christian Bonow</p>
+                <p>Gernot Bonow</p>
+                <p>Clemens Esslberger</p>
+                <p>Peter Hambsch</p>
+                <h2>Business & Product Development Director</h2>
+                <p>Reinhard Pollice</p>
+                <h2>CEO THQ Nordic</h2>
+                <p>Klemens Kreuzer</p>
+                <h2>Assistant to CEO</h2>
+                <p>Melanie Klose</p>
+                <h2>CAO THQ Nordic</h2>
+                <p>Izeta Kadic</p>
+                <h2>Senior Controller</h2>
+                <p>Martin Martinez</p>
+                <h2>Chief Reporting and Treasury Officer</h2>
+                <p>Michael Moll</p>
+                <h2>Senior Manager Finance</h2>
+                <p>Benjamin Bodzenta</p>
+                <h2>THQ Nordic Inc.</h2>
+                <h2>CEO Eric Wuestmann</h2>
+                <p>Klemens Kreuzer</p>
+                <p>David Knudsen</p>
+                <h2>THQ Nordic Japan KK</h2>
+                <p>Junko Kato</p>
+                <p>Yuji Kato</p>
+                <p>Hiroshi Ogawa</p>
+                <h2>THQ Nordic France SAS</h2>
+                <p>Klemens Kreuzer</p>
+                <h1>Community Developers</h1>
+                <p>Ben "Flix" Geddes</p>
+                <p>Pascal "Lindor" Pahl</p>
+                <p>"Zerisius"</p>
+                <p>Dmitriy S. Moiseenko aka “Dimitrius154”</p>
+                <h1>Quantic Lab</h1>
+                <h2>CEO & Founder</h2>
+                <p>Stefan Seicarescu</p>
+                <h2>Head of Business Development</h2>
+                <p>Marius Popa</p>
+                <h2>Business Development Team Lead</h2>
+                <p>Alexandra Nitescu</p>
+                <h2>Operational Sales Team Lead</h2>
+                <p>Raluca Cozma</p>
+                <h2>Technical Director</h2>
+                <p>Szilveszter Pap</p>
+                <h2>Quality Control Director</h2>
+                <p>Gizella Varga</p>
+                <h2>Project Manager</h2>
+                <p>Alexandra-Dumitrita Leuca</p>
+                <h2>QA Managers</h2>
+                <p>Raluca Maria Buzdug</p>
+                <h2>QA Lead Testers</h2>
+                <p>Ioan-Daniel Huluptuc-Popa</p>
+                <p>Daniela Catalina Rodean</p>
+                <h2>QA Testers</h2>
+                <p>Andrei Dorin Pop</p>
+                <p>Daniela Casian</p>
+                <p>Alexandru Neagos</p>
+                <p>Paula Ghilan</p>
+                <p>Claudiu Ioan Bulugea</p>
+                <h2>IT Infrastructure Managers</h2>
+                <p>Ionel Aurelian Rau</p>
+                <h2>System Administrator</h2>
+                <p>Levente Szabo</p>
+                <h1>To our families</h1>
+                <p>Thank you for staying with us through the long nights, the missed weekends, and the moments when we were barely present.
+                    This project demanded more than we expected - time, energy, and parts of ourselves we didn't know we'd have to give.
+                    But you kept believing, even when we struggled to.
+                    Your patience, your love, and your quiet strength carried us through.</p>
+                <p style="height: 100dp;"></p>
+                <p class="legal">Portions of this software utilize The Forge technology (©2017 - 2025 The Forge Interactive, Inc.). The Forge is a registered trademark of The Forge Interactive, Inc. All rights reserved.</p>
+                <p style="height: 10dp;"></p>
+                <p class="legal">Granny 3D. Copyright (c) 1999-2012 by RAD Game Tools, Inc.</p>
+                <p style="height: 10dp;"></p>
+                <p class="legal">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AS IS AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+                    CONTRIBUTORS BE
+                    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+                    IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+                <h1>Special Thanks...</h1>
+                <h2>Gentleland</h2>
+                <p>Jacky Martin</p>
+                <p>Anon Mall</p>
+                <p>Nadar Ait-Laouad</p>
+                <p>Vitali Wagner</p>
+                <p>Elham Nizam</p>
+                <p style="height: 30dp;"></p>
+                <p>...to the development team of the original Sacred games!</p>
+                <p>...to the creators of the RmlUi Tool (https://github.com/mikke89/RmlUi)!</p>
+                <p>...to Blind Guardian for providing the musical awesomeness!</p>
+                <h2>...to you!</h2>
+                <h1>Thank you for playing!</h1>
+                <p style="height: 50dp;"></p>
+            </div>
+        </div>
+        <button id="first-focus" onclick="ReturnToMainMenu">2417289527</button>
+    </div>
+    </body>
+</rml>
+

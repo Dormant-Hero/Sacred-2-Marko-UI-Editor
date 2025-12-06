@@ -1,0 +1,41 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <title>mainMenu_platformProfile</title>
+        <style>
+
+            .platform-profile{
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                top: 5dp;
+                right: 100dp;
+                max-width: 200dp;
+                max-height: 50dp;
+            }
+
+            .profilename {
+                display: inline-block;
+                color: title;
+                text-align: center;
+                margin: 7dp;
+                margin-left: 10dp;
+                margin-right: 10dp;
+                font-size: 16dp;
+                line-height: 16dp;
+                font-family: OptimusPrinceps;
+                font-effect: outline(2dp black);
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+        <div class="platform-profile" id="platform-profile">
+            <span class="profilename" id="profilename">
+                gamer#1234
+            </span>
+        </div>
+    </body>
+</rml>

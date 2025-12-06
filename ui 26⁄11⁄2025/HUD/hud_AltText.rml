@@ -1,0 +1,52 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>hud_AltText</title>
+        <style>
+            .alt-text
+            {
+                font-family: "Inria Sans";
+                font-size: 2vh;
+                position: absolute;
+                top:0;
+                left:0;
+                transform: translateX(-50%);
+                opacity: 1;
+                display: flex;
+                flex-direction: row;
+                justify-items: center;
+                width: auto;
+                height: auto;
+                decorator: image(skills-background-skills-dark);
+				max-width: 300dp;
+                line-height: 15dp;
+                color: title;
+            }
+
+            .alt-text:hover,
+            .alt-text:focus,
+            .alt-text:focus-visible
+            {
+				decorator: image(skills-background-skills-dark);
+                color: white;
+                font-size: 2.2vh;
+            }
+
+            .gold-icon-position
+            {
+                width:20dp;
+                height:20dp;
+                display:block;
+                margin-top: 4dp;
+				margin-left: 4dp;
+            }
+
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+        <button id="text-content" class="alt-text no-fake-event-attributes" onclick="OnShowAltTextButtonDetails"></button>
+    </body>
+</rml>

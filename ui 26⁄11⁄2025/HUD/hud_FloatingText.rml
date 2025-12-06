@@ -1,0 +1,23 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <title>hud_FloatingText</title>
+        <style>
+
+            .floating-text
+            {
+                font-family: "Inria Sans";
+                font-size: 4.0vh;
+                position: absolute;
+                top:0;
+                left:0;
+                transform: translateX(-50%);
+                opacity: 1;
+				font-effect: outline(1dp black);
+            }
+        </style>
+    </head>
+    <body class="no-pointer-events">
+        <div id="text-content" class="floating-text"></div>
+    </body>
+</rml>

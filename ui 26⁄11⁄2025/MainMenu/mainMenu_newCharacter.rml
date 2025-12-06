@@ -1,0 +1,1148 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <link type="text/rcss" href="mainMenu_Backgrounds.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <title>mainMenu_newCharacter</title>
+        <style>
+
+            .gods-panel,
+            .customisation-panel
+            {
+                position: absolute;
+                top:7%;
+                left:3%;
+                width: 475dp;
+                height: 90%;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .gods-panel
+            {
+                decorator: image(MainMenu-CharacterCreationGods-background);
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            .customisation-panel
+            {
+                decorator: image(MainMenu-CharacterCreationCustomization-background);
+                align-items: center;
+                justify-content: center;
+            }
+
+            #character-selection
+            {
+                position: absolute;
+                top:7%;
+                left:3.5%;
+                width: 450dp;
+                height: 90%;
+                display: flex;
+                overflow: hidden;
+                decorator: image(MainMenu-CharacterCreation-background);
+            }
+            .class-selection-panel
+            {
+                margin-left: 2%;
+                width: 25%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                z-index:2;
+            }
+            .character-details
+            {
+                margin-left: 5%;
+                padding-left :5%;
+                width: 70%;
+                height: 100%;
+                display: block;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                font-size: 2vh;
+
+                overflow: hidden;
+            }
+
+            .left-panel
+            {
+                position: absolute;
+                left:33%;
+                width: 67%;
+                height: 100%;
+                padding: 10dp;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .icon
+            {
+                width: 100%;
+                height: 100%;
+            }
+            .icon-god
+            {
+                width: 90%;
+                height: 90%;
+                margin-bottom: 5.5%;
+            }
+
+            .rotate-buttons-container
+            {
+                display: flex;
+                position:absolute;
+                top: 45%;
+                width: 60%;
+                height: 5%;
+                justify-content:  space-between;
+                padding-left: 20%;
+                padding-right: 20%;
+                justify-content: space-between;
+
+            }
+
+            .bottom-bar-buttons-container
+            {
+                display: flex;
+                height: 20%;
+                width:100%;
+                justify-content: space-between;
+                gap:3%;
+                pointer-events: auto;
+            }
+
+            button.rotate-button
+            {
+                width: 25dp;
+                height: 25dp;
+            }
+
+            input.hero-name-input
+            {
+                margin-top: 3%;
+                margin-bottom: 2%;
+                width:90%;
+                height:5%;
+                font-size: 3.1vh;
+                text-align: center;
+                decorator: image(TitleOrnamentBack);
+                padding-top: 1%;
+                padding-bottom: 1%;
+                color: #af9e59;
+            }
+
+
+            #hero-description
+            {
+                display:block;
+                font-family: Inria Sans;
+                width: 93%;
+                height: 31%;
+                margin-top: 3%;
+                overflow-y: scroll;
+                font-size: 2vh;
+                clip: always;
+            }
+
+            .character-numeric-details
+            {
+                display: block;
+                flex-direction: column;
+                height: 50%;
+                width: 90%;
+            }
+
+            .stats
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content : space-between;
+                height: 25%;
+                width: 100%;
+            }
+
+            .stat-container
+            {
+                width: 30%;
+                height: 90%;
+                justify-content : center;
+                align-items: flex-end;
+                z-index: 2;
+                display: flex;
+            }
+
+            .stat-value
+            {
+                display: flex;
+                decorator: tiled-horizontal-no-stretch( CounterBack-l, CounterBack-m, CounterBack-r );
+                width: 65%;
+                height: 45%;
+                z-index:3;
+                margin-bottom: -10%;
+                justify-content: center;
+                align-items: center;
+                font-face: SemiBold;
+                font-size: 2.5vh;
+                color: primary-list-value;
+            }
+
+            #health, #damage ,#armor
+            {
+                z-index: 4;
+                width: 90%;
+                height: 90%;
+                text-align: center;
+                padding-top:10%;
+            }
+
+            .attributes
+            {
+                margin-top: 5%;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height:68%;
+                gap: 1.5%;
+                justify-content: space-between;
+            }
+
+            .attribute-line
+            {
+                decorator: tiled-horizontal-no-stretch( CounterBack-l, CounterBack-m, CounterBack-r );
+                width: 100%;
+                height: 15%;
+                display: block;
+            }
+
+            .attribute-background
+            {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: row;
+            }
+
+            .attribute-value
+            {
+                display: block;
+                width: 12%;
+                height: 100%;
+                text-align: left;
+                padding-top:3%;
+                font-face:SemiBold;
+                color: primary-list-value;
+                font-size: 2.7vh;
+                line-height: 2.0vh;
+            }
+
+            .attribute-name
+            {
+                display: block;
+                width: 50%;
+                height: 100%;
+                text-align: left;
+                padding-top:3%;
+                font-face: SemiBold;
+                color: primary-list-label;
+                font-size: 2.7vh;
+                line-height: 2.0vh;
+            }
+
+            .attribute-icon
+            {
+                margin-top: -3%;
+                margin-left: -4%;
+                display:block;
+                width: 20%;
+                height: 110%;
+            }
+
+            .hero-description-text
+            {
+                font-size: 1vh;
+                font-family: Inria Sans;
+                color: secondary-description;
+            }
+
+            #tabbar-background
+            {
+                position: absolute;
+                width: 100%;
+                height: 5%;
+                display: flex;
+                decorator: tiled-horizontal-no-stretch( Map-topmenu-slice,
+                Map-topmenu-slice, Map-topmenu-slice );
+                justify-content: center;
+
+            }
+
+            #tabbar-primary
+            {
+                width: 75%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                pointer-events: none;
+            }
+
+            .tabbar-gap
+            {
+                width: 1%;
+            }
+
+
+            button.bottomButton-back
+            {
+                height:50%;
+                pointer-events: auto;
+                z-index: 10;
+                display: flex;
+                flex-direction: row;
+                gap: 10dp;
+            }
+
+            button.bottomButton-start
+            {
+                height:50%;
+                pointer-events: auto;
+                z-index: 10;
+				display: flex;
+                flex-direction: row;
+                gap: 10dp;
+            }
+
+            .tabbar
+            {
+                width: 80%;
+                height:100%;
+                text-align: center;
+                gap: 1dp;
+                z-index: 10;
+            }
+
+            .campaign-section {
+                display: flex;
+                height: 35%;
+                width: 90%;
+                flex-direction: column;
+                padding-top: 20dp;
+                align-content: center;
+            }
+
+            .gods-section
+            {
+                display:flex;
+                width: 90%;
+                height: 20%;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .section-title
+            {
+                font-size:2vh;
+                margin-left: 1.5%;
+                width: 90%;
+                justify-content: space-between;
+                height: 10%;
+                color: secondary-description;
+            }
+
+            .button-group-campaign
+            {
+                display: flex;
+                width:95%;
+                height:85%;
+                justify-content: flex-end;
+            }
+            .campaign-button-container
+            {
+                width: 180dp;
+                height: 200dp;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            button.campaign-button
+            {
+                width: 180dp;
+                height: 180dp;
+                display:flex;
+            }
+
+            .button-group-gods
+            {
+                width:100%;
+                height: 70dp;
+                justify-content: space-evenly;
+                align-items: stretch;
+                display:flex;
+                flex-direction: row;
+                z-index:2;
+            }
+
+            #god-description
+            {
+                margin-top: 20dp;
+                font-size: 2vh;
+                text-align: left;
+                width: 80%;
+                height: 30%;
+                color: secondary-description;
+                margin-left : 5%;
+            }
+
+            .corner-menu
+            {
+                position: absolute;
+
+                bottom: 3%;
+                right: 3.5%;
+
+                height: 25%;
+                width: 26%;
+
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                gap:2%;
+            }
+
+            .visuals-selector
+            {
+                margin-top: 2.5%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 2vh;
+                focus: auto;
+                font-size: 3vh;
+            }
+
+            button.visuals-selector:hover .selector-name,
+            button.visuals-selector:focus-visible .selector-name,
+            button.visuals-selector:focus .selector-name {
+                color: title;
+                font-size: 3.1vh;
+            }
+
+            button.visuals-selector:hover .selector-button,
+            button.visuals-selector:focus-visible .selector-button,
+            button.visuals-selector:focus .selector-button {
+                transform: scale(1.2);
+            }
+
+            .selector-button
+            {
+                padding: 0;
+                z-index:2;
+                width: 50%;
+                height:200%;
+            }
+            .right-margin-negative
+            {
+                margin-right: -5%;
+            }
+            .left-margin-negative
+            {
+                margin-left: -5%;
+            }
+
+            .selector-background
+            {
+                display:flex;
+                decorator: image(skills-background-skills-dark fill);
+
+                width: 400%;
+                height: 200%;
+
+                z-index:1;
+
+                font-family: OptimusPrinceps;
+                font-size: 3vh;
+                line-height: 4vh;
+                text-align: left;
+                color: cream;
+            }
+
+            .selector-name
+            {
+                margin-left: 5%;
+                width: 41%;
+                white-space: nowrap;
+            }
+
+
+            .selector-dots
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5em;
+                width: 50%;
+            }
+
+            .selector-text-container
+            {
+                width: 50%;
+                color: cream;
+                display:flex;
+            }
+
+            .selector-text
+            {
+                width: 100%;
+                z-index:10;
+                font-family: OptimusPrinceps;
+                font-size: 3vh;
+                line-height: 4vh;
+                text-align: right;
+                padding-right: 5%;
+            }
+
+            .selector-dot
+            {
+                width: 25dp;
+                height: 25dp;
+                decorator: image(CombatArtPointEmpty contain);
+                z-index:10;
+            }
+
+            .selector-dot.selected
+            {
+                decorator: image(CombatArtPointFull contain);
+            }
+
+
+
+            .customisations-section-panel
+            {
+                width: 90%;
+                height: 95%;
+                display: flex;
+                justify-content: space-evenly;
+                flex-direction: column;
+            }
+            .customisations-section-text
+            {
+                margin-left: 1%;
+                margin-bottom: 3%;
+                font-size: 2vh;
+                color: primary-element-label;
+                font-family: OptimusPrinceps;
+                height: 6%;
+            }
+            .appearance-section
+            {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 38%;
+                width: 100%;
+                margin-bottom: 1%;
+                margin-top: -7%;
+                margin-left: -3%;
+            }
+            .difficulty-section
+            {
+                display: flex;
+                flex-direction: column;
+                height: 20%;
+                width: 100%;
+                gap:2.5%;
+            }
+            .difficulty-title
+            {
+                display: block;
+                height: 10%;
+            }
+            .difficulty-selectors
+            {
+                display: flex;
+                flex-direction: row;
+                height: 35%;
+                width: 100%;
+            }
+            .difficulty-button
+            {
+                height: 100%;
+                width: 35%;
+                display: flex;
+            }
+
+            .difficulty-type-text
+            {
+                display: block;
+                width: 40%;
+                text-align: center;
+                font-size: 2vh;
+                color: primary-element-label;
+            }
+
+            .difficulty-button:hover .difficulty-type-text,
+            .difficulty-button:focus .difficulty-type-text,
+            .difficulty-button:focus-visible .difficulty-type-text
+            {
+                transform: scale(1.15);
+            }
+
+            .difficulty-button:selected .difficulty-type-text
+            {
+                color: title;
+            }
+
+            #bronze-text
+            {
+                position: relative;
+                left: -180%;
+            }
+
+            #silver-text
+            {
+                position: relative;
+                left: 50%;
+            }
+
+            .bronze-container
+            {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                width: 48%;
+                height: 100%;
+            }
+            .silver-container
+            {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                width: 48%;
+                height: 100%;
+            }
+            #difficulty-description
+            {
+                display: block;
+                height: 40%;
+				margin-top: -2%;
+            }
+
+            .game-mode-section
+            {
+                display: flex;
+                justify-content: flex-start;
+                flex-direction: column;
+                height: 32%;
+                width: 100%;
+                margin-top: -2%;
+            }
+            .bronze
+            {
+                decorator: image(BronzeIcon contain);
+                height: 80%;
+                width: 80%;
+                position: relative;
+                left:17%;
+            }
+            .silver
+            {
+                decorator: image(SilverIcon contain);
+                height: 80%;
+                width: 80%;
+                position: relative;
+                left:17%;
+            }
+
+            .hardcore-panel
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 45%;
+            }
+            .expert-touch-panel
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 45%;
+            }
+            .game-mode-toggle
+            {
+                display: block;
+                width: 25%;
+                height: 90%;
+                margin-left: -15dp;
+            }
+
+            .game-mode-details
+            {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                height: 100%;
+            }
+
+            .game-mode-title
+            {
+                display: block;
+                color: title;
+                width: 100%;
+                height: 20%;
+                font-size: 2vh;
+            }
+
+            .game-mode-description
+            {
+                display: block;
+                color: secondary-description;
+                width: 100%;
+                height: 80%;
+                font-size: 1.7vh;
+            }
+            #difficulty-description
+            {
+                color: secondary-description;
+                font-size: 1.8vh;
+            }
+
+            button.character-button,
+            button.selected-button
+            {
+                display: flex;
+                padding: 0dp;
+                pointer-events:auto;
+                justify-content: center;
+                align-items: center;
+                decorator: none;
+                color: #17191b;
+            }
+
+            button.selected-button
+            {
+                decorator: image( Hero-active contain);
+            }
+
+            button.character-button:disabled:hover,
+            button.character-button:disabled:focus,
+            button.character-button:disabled:focus-visible,
+            button.character-button:disabled:active
+            {
+                decorator:none;
+            }
+            button.character-button:hover,
+            button.character-button:focus-visible,
+            button.character-button:focus
+            {
+                decorator: image( Hero-hover contain);
+            }
+
+            button.character-button:selected,
+            button.character-button:active
+            {
+                decorator: image( Hero-active contain);
+            }
+
+            .campaign-sprite
+            {
+                height: 100%;
+                width: 100%;
+                display: flex;
+            }
+            .campaign-name
+            {
+                height: 20%;
+                font-size: 3vh;
+                color: primary-element-label;
+            }
+            .campaign-name:selected
+            {
+                color: title;
+            }
+            .campaign-name:focus-visible,
+            .campaign-name:focus-visible
+            {
+                color: primary-action-button-active;
+            }
+            .campaign-name:disabled
+            {
+                color: primary-element-label;
+            }
+
+            .hardcore
+            {
+                decorator: image(HardcoreIcon contain);
+                width: 78%;
+                height: 78%;
+            }
+            .expert-touch
+            {
+                decorator: image(ExpertIcon contain);
+                width: 78%;
+                height: 78%;
+            }
+            .main-tab
+            {
+                height:90%;
+            }
+
+            .nav-button
+            {
+                width: 30dp;
+                height: 30dp;
+                text-align: center;
+                line-height: 30px;
+                cursor: pointer;
+                border-radius: 5px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-button:hover
+            {
+            }
+
+        </style>
+    </head>
+    <body  data-model="NewCharacterViewModel" class="">
+    <!-- Tabbar -->
+    <div id="tabbar-background">
+        <div id="tabbar-primary">
+            <div class="tabbar-gap"></div>
+            <div id="tab-prev" class="nav-button left-shoulder">
+                <div class = "left-shoulder"></div>
+            </div>
+            <div class="tabbar-gap"></div>
+
+            <tabset id="new-character-tab-menu" class="tabbar">
+                <tab id="characters-tab" class="secondary-tabbar-button main-tab">2962089998</tab>
+                <tab id="gods-tab" class="secondary-tabbar-button main-tab">3722451530</tab>
+                <tab id="customisation-tab" class="secondary-tabbar-button main-tab">3438085349</tab>
+            </tabset>
+
+            <div class="tabbar-gap"></div>
+            <div id="tab-next" class="nav-button right-shoulder"></div>
+            <div class="tabbar-gap"></div>
+        </div>
+    </div>
+
+    <!-- Character Panel -->
+    <div id="character-selection">
+        <div class="class-selection-panel">
+            <button id="character-seraphim" class="character-button scale-on-hover" style="nav-down: #character-dryadin; nav-up: #character-dragonmage" onclick="SelectedCharacter(0)">
+                <div class="icon seraphim"></div>
+            </button>
+
+            <button id="character-dryadin" class="character-button scale-on-hover" style="nav-down: #character-shadowwarrior; nav-up: #character-seraphim" onclick="SelectedCharacter(1)">
+                <div class="icon dryadin"></div>
+            </button>
+
+            <button id="character-shadowwarrior" class="character-button scale-on-hover" style="nav-down: #character-inquisitor; nav-up: #character-dryadin" onclick="SelectedCharacter(2)">
+                <div class="icon shadowwarrior"></div>
+            </button>
+
+            <button id="character-inquisitor" class="character-button scale-on-hover" style="nav-down: #character-highelve; nav-up: #character-shadowwarrior" onclick="SelectedCharacter(3)">
+                <div class="icon inquisitor"></div>
+            </button>
+
+            <button id="character-highelve" class="character-button scale-on-hover" style="nav-down: #character-templeguard; nav-up: #character-inquisitor" onclick="SelectedCharacter(4)">
+                <div class="icon highelve"></div>
+            </button>
+
+            <button id="character-templeguard" class="character-button scale-on-hover" style="nav-down: #character-dragonmage; nav-up: #character-highelve" onclick="SelectedCharacter(5)">
+                <div class="icon templeguard"></div>
+            </button>
+
+            <button id="character-dragonmage" class="character-button scale-on-hover" style="nav-down: #character-seraphim; nav-up: #character-templeguard" onclick="SelectedCharacter(6)">
+                <div class="icon dragonmage"></div>
+            </button>
+        </div>
+
+        <div class="character-details" >
+            <!-- Character details for the selected class will be displayed here -->
+            <input  id ="hero-name" class="hero-name-input" type="text" maxlength="12"/>
+
+            <div class="character-numeric-details">
+                <div class="stats optimus-text">
+                    <div class="stat-container health-stat">
+                        <div class="stat-value"><div id ="health"></div></div>
+                    </div>
+                    <div class="stat-container damage-stat">
+                        <div class="stat-value"><div id ="damage"></div></div>
+                    </div>
+                    <div class="stat-container defence-stat">
+                        <div class="stat-value"><div id ="armor"></div></div>
+                    </div>
+                </div>
+
+                <div class="attributes optimus-text">
+                    <!-- Strength -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon strength-icon"></div>
+                            <div class="attribute-name">3547774722</div>
+                            <div class="attribute-value" id= "strength">26</div>
+                        </div>
+                    </div>
+
+                    <!-- Stamina -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon stamina-icon"></div>
+                            <div class="attribute-name">3728098348</div>
+                            <div class="attribute-value" id= "stamina">26</div>
+                        </div>
+                    </div>
+
+                    <!-- Vitality -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon vitality-icon"></div>
+                            <div class="attribute-name">3728135431</div>
+                            <div class="attribute-value" id= "vitality">26</div>
+                        </div>
+                    </div>
+
+                    <!-- Dexterity -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon dexterity-icon"></div>
+                            <div class="attribute-name">3727905141</div>
+                            <div class="attribute-value" id= "dexterity">26</div>
+                        </div>
+                    </div>
+
+                    <!-- Intelligence -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon intelligence-icon"></div>
+                            <div class="attribute-name">3727969999</div>
+                            <div class="attribute-value" id= "intelligence">26</div>
+                        </div>
+                    </div>
+
+                    <!-- Willpower -->
+                    <div class="attribute-line">
+                        <div class="attribute-background">
+                            <div class="attribute-icon willpower-icon"></div>
+                            <div class="attribute-name">3728148192</div>
+                            <div class="attribute-value" id= "willpower">26</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="hero-description" class="hero-description-text">{{HewHeroDescription}}</div>
+        </div>
+    </div>
+
+    <!-- Gods Panel -->
+    <div id="gods-selection" class="gods-panel">
+        <!-- Campaign Section -->
+        <div class="campaign-section">
+            <p class="section-title optimus-text highlight-text">0909948666</p>
+            <div class="button-group-campaign">
+                <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 100%">
+                <div class="campaign-button-container">
+                    <button style="nav-right:#shadow-campaign-button; nav-down:#god-lumen" id="light-campaign-button" class ="character-button campaign-button scale-on-hover" onclick="SelectLightPath">
+                        <div id="light-campaign-button-texture" class ="campaign-sprite light"/>
+                    </button>
+                    <div id="light-campaign-button-name" class ="campaign-name">0518159196</div>
+                </div>
+
+                <div class="campaign-button-container">
+                    <button style="nav-left:#light-campaign-button; nav-down:#god-tasta" id="shadow-campaign-button" class ="character-button campaign-button scale-on-hover" onclick="SelectShadowPath">
+                        <div id="shadow-campaign-button-texture" class ="campaign-sprite dark"/>
+                    </button>
+                    <div id="shadow-campaign-button-name" class ="campaign-name">0202089043</div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gods Section -->
+        <div class="gods-section">
+            <p class="section-title optimus-text highlight-text">3722451530</p>
+            <div class="button-group-gods">
+                <button style="nav-right:#god-kybele; nav-left:#god-ker; nav-up:#light-campaign-button;" id="god-lumen" class="character-button scale-on-hover" onclick="SelectGod(0)">
+                    <div id="god-lumen-texture" class="icon-god lumen" />
+                </button>
+
+                <button style="nav-right:#god-forens; nav-left:#god-lumen; nav-up:#light-campaign-button;" id="god-kybele" class="character-button scale-on-hover" onclick="SelectGod(1)">
+                    <div id="god-kybele-texture" class="icon-god kybele"/>
+                </button>
+
+                <button style="nav-right:#god-tasta; nav-left:#god-kybele; nav-up:#light-campaign-button;" id="god-forens" class="character-button scale-on-hover" onclick="SelectGod(2)">
+                    <div id="god-forens-texture" class="icon-god forens"/>
+                </button>
+
+                <button style="nav-right:#god-kuan; nav-left:#god-forens; nav-up:#shadow-campaign-button;" id="god-tasta" class="character-button scale-on-hover" onclick="SelectGod(3)">
+                    <div id="god-tasta-texture" class="icon-god tasta"/>
+                </button>
+
+                <button style="nav-right:#god-ker; nav-left:#god-tasta; nav-up:#shadow-campaign-button;" id="god-kuan" class="character-button scale-on-hover" onclick="SelectGod(4)">
+                    <div id="god-kuan-texture" class="icon-god kuan"/>
+                </button>
+
+                <button style="nav-right:#god-lumen; nav-left:#god-kuan; nav-up:#shadow-campaign-button;" id="god-ker" class="character-button scale-on-hover" onclick="SelectGod(5)">
+                    <div id="god-ker-texture" class="icon-god ker"/>
+                </button>
+            </div>
+        </div>
+
+        <div id="god-description" class="" style="overflow-y: scroll; width: 90%"></div>
+
+    </div>
+
+    <!-- Customisation Panel -->
+    <div id="customisations-section" class="customisation-panel">
+        <div class="customisations-section-panel">
+            <p class="customisations-section-text optimus-text">3438085349</p>
+            <div class="appearance-section">
+                <!-- Hairstyle Selector -->
+                <button class="no-decorator visuals-selector" id ="hair-style-section" style="nav-down:#hair-color-section-1;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevHairStyle"/>
+                    <div class="selector-background">
+                        <div class="selector-name">1934292424</div>
+                        <div class="selector-dots" id="hair-selector-dots"></div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextHairStyle"/>
+                </button>
+
+                <!-- Hair Color Selector -->
+                <button class="no-decorator visuals-selector" id ="hair-color-section-1" style="nav-down:#hair-color-section-2; nav-up:#hair-style-section;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevHairColor1"/>
+                    <div class="selector-background" id="hair-color-selector-1">
+                        <div class="selector-name">2268128233</div>
+                        <div class ="selector-text"  id="hair-color-selector-text-1">1 / 16</div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextHairColor1"/>
+                </button>
+                <button class="no-decorator visuals-selector" id ="hair-color-section-2" style="nav-down:#hair-color-section-3; nav-up:#hair-color-section-1;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevHairColor2"/>
+                    <div class="selector-background" id="hair-color-selector-2">
+                        <div class="selector-name">3285154879</div>
+                        <div class ="selector-text"  id="hair-color-selector-text-2">1 / 16</div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextHairColor2"/>
+                </button>
+                <button class="no-decorator visuals-selector" id ="hair-color-section-3" style="nav-down:#skin-tone-section; nav-up:#hair-color-section-2;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevHairColor3"/>
+                    <div class="selector-background" id="hair-color-selector-3">
+                        <div class="selector-name">2872424886</div>
+                        <div class ="selector-text"  id="hair-color-selector-text-3">1 / 16</div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextHairColor3"/>
+                </button>
+
+                <!-- Skin Tone Selector -->
+                <button class="no-decorator visuals-selector" id ="skin-tone-section" style="nav-down:#imp-skin-tone-section; nav-up:#hair-color-section-3;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevSkinTone"/>
+                    <div class="selector-background">
+                        <div class="selector-name">2498501112</div>
+                        <div class="selector-text-container">
+                            <div class ="selector-text"  id="skin-tone-selector-text">1 / 32</div>
+                        </div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextSkinTone"/>
+                </button>
+
+                <!-- Imp Skin Tone Selector -->
+                <button class="no-decorator visuals-selector" id ="imp-skin-tone-section" style="nav-down:#bronze-difficulty; nav-up:#skin-tone-section;">
+                    <button class="selector-button arrow-left right-margin-negative" onclick="PrevImpSkinTone"/>
+                    <div class="selector-background">
+                        <div class="selector-name">0236209445</div>
+                        <div class="selector-text-container">
+                            <div class ="selector-text"  id="imp-skin-tone-selector-text">1 / 32</div>
+                        </div>
+                    </div>
+                    <button class="selector-button arrow-right left-margin-negative" onclick="NextImpSkinTone"/>
+                </button>
+            </div>
+            <div class="difficulty-section">
+                <div class="difficulty-title">
+                    <p class="customisations-section-text optimus-text">0910045053</p>
+                </div>
+
+                <div class="difficulty-selectors">
+                    <div class="bronze-container">
+
+                        <button class="character-button difficulty-button scale-on-hover" id="bronze-difficulty" onclick="SelectBronzeDifficulty" style="nav-right:#silver-difficulty; nav-left:#silver-difficulty; nav-up:#imp-skin-tone-section;  nav-down:#hardcore-toggle;">
+                            <div class="bronze"></div>
+                            <div class="difficulty-type-text" id="bronze-text">1514130466</div>
+                        </button>
+                    </div>
+                    <div class="silver-container ">
+                        <button class="character-button difficulty-button scale-on-hover"  id="silver-difficulty"  onclick="SelectSilverDifficulty" style="nav-right:#bronze-difficulty; nav-left:#bronze-difficulty; nav-up:#imp-skin-tone-section;  nav-down:#hardcore-toggle;">
+                            <div class="silver"></div>
+                            <div class="difficulty-type-text" id="silver-text">3242676412</div>
+                        </button>
+                    </div>
+                </div>
+                <div id="difficulty-description">
+                    here is the difficulty description
+                </div>
+
+            </div>
+            <div class ="game-mode-section ">
+                <p class="customisations-section-text optimus-text">3870329705</p>
+
+                <div class="hardcore-panel">
+                    <button style="nav-up:#bronze-difficulty;  nav-down:#expert-touch-toggle" id="hardcore-toggle" class="character-button game-mode-toggle scale-on-hover"  onclick="HardcoreToggle" onmouseout="HardcoreMouseOut">
+                        <div class="hardcore"></div>
+                    </button>
+                    <div class ="game-mode-details">
+                        <div class="game-mode-title hardcore-title">3529036510</div>
+                        <div class="game-mode-description">1120509276</div>
+                    </div>
+                </div>
+
+                <div class="expert-touch-panel">
+                    <button style="nav-up:#hardcore-toggle" id="expert-touch-toggle" class="character-button game-mode-toggle scale-on-hover" onclick="ExpertTouchToggle" onmouseout="ExpertTouchMouseOut">
+                        <div  class="expert-touch"></div>
+                    </button>
+                    <div class ="game-mode-details expert-touch-title">
+                        <div class="game-mode-title">1316804448</div>
+                        <div class="game-mode-description">3354249863</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="corner-menu optimus-text">
+        <div class = "bottom-bar-buttons-container">
+            <button id="back-button" class="bottomButton-back" onclick="ReturnToCharacterSelection">
+                <div class="button-label ">2417289527</div>
+                <div class="button-prompt  right-button"></div>
+            </button>
+            <button id ="start-button" class="bottomButton-start" onclick="StartGameWithNewCharacter">
+			    <div class="button-label ">1693972363</div>
+                <div class="button-prompt  settings-button"></div>
+			</button>
+        </div>
+    </div>
+
+    <div class="left-panel">
+        <div class = "rotate-buttons-container">
+            <button class="rotate-button arrow-left-no-active-state" onmouseover="RotateCharacterLeft" onmouseout="StopRotatingCharacter"></button>
+            <button class="rotate-button arrow-right-no-active-state" onmouseover="RotateCharacterRight" onmouseout="StopRotatingCharacter"></button>
+        </div>
+
+    </div>
+    </body>
+</rml>

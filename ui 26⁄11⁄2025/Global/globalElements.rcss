@@ -1,0 +1,394 @@
+@spritesheet Logo {
+    src: "Textures/Spritesheets/Logo.dds";
+    s2_logo_large: 0px 0px 1594px 2048px;
+    s2_logo_small: 1594px 0px 512px 658px;
+}
+
+@spritesheet buttonsAndTabs {
+    src: "Textures/Spritesheets/ButtonsAsset.dds";
+
+    Slidebar-t: 108px 80px 8px 4px;
+    Slidebar-c: 98px 84px 8px 8px;
+    Slidebar-b: 108px 86px 6px 4px;
+    Slidebar-active-t: 108px 74px 8px 4px;
+    Slidebar-active-c: 98px 74px 8px 8px;
+    Slidebar-active-b: 108px 92px 6px 4px;
+    PromptBack-r: 126px 416px 16px 56px;
+    PromptBack-m: 82px 416px 24px 56px;
+    PromptBack-l: 108px 416px 16px 56px;
+    OrnamentTitle-tr: 0px, 446px, 72px, 28px;
+    OrnamentTitle-tl: 0px, 416px, 72px, 28px;
+}
+
+@spritesheet Map {
+    src: "Textures/Spritesheets/Map.dds";
+    Map-topmenu-slice: 375px 0px 111px 112px;
+    Map-top-divider-big: 374px 112px 12px 79px;
+    Map-top-divider-small: 386px 112px 12px 12px;
+
+}
+
+/* In order to work around the vertical lines in button 3 tiles I start the region for middle parts 1 px later and end 1px earlier
+left part ends 1px earlier, right part starts 1px earlier. If we need to reimport the assets, need to adjust the json values like mentioned if vertical lines appear
+also add empty: 0px 0px 1px 1px;
+ */
+@spritesheet Buttons {
+    src: "Textures/Spritesheets/Buttons.dds";
+    empty: 0px 0px 1px 1px;
+    primary-button-active-l: 0px 0px 79px 104px;
+    tab-active-l: 80px 0px 39px 120px;
+    tab-active-r: 1px 104px 39px 120px;
+    tab-default-l: 40px 104px 39px 120px;
+    primary-button-active-r: 81px 120px 79px 104px;
+    primary-button-default-l: 120px 0px 79px 104px;
+    primary-button-default-r: 161px 104px 79px 104px;
+    primary-button-disabled-l: 200px 0px 79px 104px;
+    primary-button-disabled-r: 161px 208px 79px 104px;
+    tab-default-r: 1px 224px 39px 120px;
+    tab-disabled-l: 40px 224px 39px 120px;
+    tab-disabled-r: 81px 224px 39px 120px;
+    tab-hover-l: 120px 224px 39px 120px;
+    primary-button-hover-l: 160px 312px 79px 104px;
+    primary-button-hover-r: 1px 344px 79px 104px;
+    tab-hover-r: 81px 344px 39px 120px;
+    tab-active-m: 121px 344px 30px 120px;
+    tab-default-m: 241px 104px 30px 120px;
+    secondary-button-active-l: 240px 224px 39px 104px;
+    secondary-button-active-r: 273px 104px 39px 104px;
+    secondary-button-default-l: 280px 0px 39px 104px;
+    tab-disabled-m: 281px 208px 30px 120px;
+    secondary-button-default-r: 241px 328px 39px 104px;
+    secondary-button-disabled-l: 280px 328px 39px 104px;
+    secondary-button-disabled-r: 313px 104px 39px 104px;
+    secondary-button-hover-l: 320px 0px 39px 104px;
+    secondary-button-hover-r: 313px 208px 39px 104px;
+    tab-hover-m: 321px 312px 30px 120px;
+    primary-button-active-m: 353px 104px 30px 104px;
+    primary-button-default-m: 361px 0px 30px 104px;
+    primary-button-disabled-m: 353px 208px 30px 104px;
+    primary-button-hover-m: 353px 312px 30px 104px;
+    secondary-button-active-m: 385px 104px 30px 104px;
+    secondary-button-default-m: 393px 0px 30px 104px;
+    secondary-button-disabled-m: 385px 208px 30px 104px;
+    secondary-button-hover-m: 385px 312px 30px 104px;
+}
+
+
+@spritesheet sampleInvader {
+    src: "Textures/invader.dds";
+    gauge: 0px 271px 100px 86px;
+    gauge-fill: 0px 356px 100px 86px;
+    progress-l: 103px 267px 13px 34px;
+    progress-c: 116px 267px 54px 34px;
+    progress-r: 170px 267px 13px 34px;
+    progress-fill-l: 110px 302px 6px 34px;
+    progress-fill-c: 140px 302px 6px 34px;
+    progress-fill-r: 170px 302px 6px 34px;
+    tableheader-l: 127px 192px 16px 31px;
+    tableheader-c: 143px 192px 2px 31px;
+    tableheader-r: 145px 192px 15px 31px;
+}
+
+@spritesheet locksSprites {
+    src: "Textures/Spritesheets/skills-lock.dds";
+    Lock-button-active: 0px 0px 57px 64px;
+    Lock-button-inactive: 57px 0px 57px 64px;
+
+}
+
+@keyframes animation-burn-fade {
+    from {
+        filter: burn(-1.0)
+    }
+    to {
+        filter: burn(1.0)
+    }
+}
+
+@keyframes animation-burn-fade-out {
+    from {
+        filter: burn(1.0)
+    }
+    to {
+        filter: burn(-1.0)
+    }
+}
+
+@keyframes animation-fade-opacity-out {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes animation-fade-opacity-in {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+body {
+    font-family: Inria Sans;
+    height: 100%;
+    width: 100%;
+}
+
+.scale-on-hover:hover,
+.scale-on-hover:focus,
+.scale-on-hover:focus-visible {
+    transform: scale(1.15);
+}
+
+div {
+}
+
+button.no-decorator:disabled:hover,
+button.no-decorator:disabled:focus,
+button.no-decorator:disabled:focus-visible,
+button.no-decorator:disabled:active,
+button.no-decorator:hover,
+button.no-decorator:focus-visible,
+button.no-decorator:focus,
+button.no-decorator:selected,
+button.no-decorator:active,
+button.no-decorator:disabled,
+button.no-decorator {
+    decorator: none;
+}
+
+button.disabled:disabled:hover,
+button.disabled:disabled:focus,
+button.disabled:disabled:focus-visible,
+button.disabled:disabled:active,
+button.disabled:hover,
+button.disabled:focus-visible,
+button.disabled:focus,
+button.disabled:selected,
+button.disabled:active,
+button.disabled:disabled,
+button.disabled {
+    decorator: tiled-horizontal-no-stretch(primary-button-disabled-l, primary-button-disabled-m, primary-button-disabled-r);
+    color: primary-action-button-disabled;
+}
+
+
+.button-label {
+    display: block;
+    text-align: center;
+    width: 85%;
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button-prompt {
+    width: 15%;
+    height: 88%;
+    display: block;
+    transform: scale(2.0);
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    decorator: tiled-horizontal-no-stretch(primary-button-default-l, primary-button-default-m, primary-button-default-r);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    font-family: OptimusPrinceps;
+    color: primary-action-button-default;
+    font-size: 2.25vh;
+    pointer-events: auto;
+    focus: auto;
+    tab-index: auto;
+    padding: 10dp;
+    line-height: 100%;
+}
+
+button:selected {
+    decorator: tiled-horizontal-no-stretch(primary-button-active-l, primary-button-active-m, primary-button-active-r);
+    color: primary-action-button-default;
+}
+
+button:hover {
+    decorator: tiled-horizontal-no-stretch(primary-button-hover-l, primary-button-hover-m, primary-button-hover-r);
+    color: primary-action-button-hover;
+}
+
+button:focus-visible {
+    decorator: tiled-horizontal-no-stretch(primary-button-hover-l, primary-button-hover-m, primary-button-hover-r);
+    color: primary-action-button-active;
+}
+
+button:focus {
+    decorator: tiled-horizontal-no-stretch(primary-button-hover-l, primary-button-hover-m, primary-button-hover-r);
+    color: primary-action-button-active;
+}
+
+button:active {
+    decorator: tiled-horizontal-no-stretch(primary-button-active-l, primary-button-active-m, primary-button-active-r);
+    color: primary-action-button-active;
+}
+
+
+button:disabled {
+    decorator: tiled-horizontal-no-stretch(primary-button-disabled-l, primary-button-disabled-m, primary-button-disabled-r);
+    color: primary-action-button-disabled;
+}
+
+button.secondaryButton {
+    decorator: tiled-horizontal-no-stretch(secondary-button-default-l, secondary-button-default-m, secondary-button-default-r);
+    color: secondary-action-button-default;
+}
+
+button.secondaryButton:hover {
+    decorator: tiled-horizontal-no-stretch(secondary-button-hover-l, secondary-button-hover-m, secondary-button-hover-r);
+    color: secondary-action-button-hover;
+}
+
+button.secondaryButton:active {
+    decorator: tiled-horizontal-no-stretch(secondary-button-active-l, secondary-button-active-m, secondary-button-active-r);
+    color: secondary-action-button-active;
+}
+
+button.secondaryButton:focus-visible {
+    decorator: tiled-horizontal-no-stretch(secondary-button-hover-l, secondary-button-hover-m, secondary-button-hover-r);
+    color: secondary-action-button-active;
+}
+
+button.secondaryButton:focus {
+    decorator: tiled-horizontal-no-stretch(secondary-button-hover-l, secondary-button-hover-m, secondary-button-hover-r);
+    color: secondary-action-button-active;
+}
+
+button.secondaryButton:disabled {
+    decorator: tiled-horizontal-no-stretch(secondary-button-disabled-l, secondary-button-disabled-m, secondary-button-disabled-r);
+    color: secondary-action-button-disabled;
+}
+
+tab {
+    display: inline-block;
+    pointer-events: auto;
+    font-size: 3vh;
+    padding-right: 5%;
+    padding-left: 5%;
+    decorator: tiled-horizontal-no-stretch(tab-disabled-l, tab-disabled-m, tab-disabled-r);
+    color: #7f7f76;
+}
+
+tab:disabled {
+    decorator: tiled-horizontal-no-stretch(tab-disabled-l, tab-disabled-m, tab-disabled-r);
+    color: tabs-disabled;
+}
+
+tab:hover {
+    decorator: tiled-horizontal-no-stretch(tab-hover-l, tab-hover-m, tab-hover-r);
+    color: tabs-hover;
+}
+
+tab:focus-visible:selected,
+tab:focus:selected,
+tab:hover:selected,
+tab:selected {
+    decorator: tiled-horizontal-no-stretch(tab-active-l, tab-active-m, tab-active-r);
+    color: tabs-active;
+}
+
+tab:focus-visible {
+    decorator: tiled-horizontal-no-stretch(tab-hover-l, tab-hover-m, tab-hover-r);
+    color: tabs-default;
+}
+
+tab:focus {
+    decorator: tiled-horizontal-no-stretch(tab-hover-l, tab-hover-m, tab-hover-r);
+    color: tabs-active;
+}
+
+.popup {
+    decorator: image("Textures/Spritesheets/Backgrounds/Popup-background.dds");
+}
+
+.secondary-list-label {
+    color: secondary-list-label;
+    font-family: Inria Sans;
+    font-size: 1.8vh;
+}
+
+.secondary-list-value {
+    color: secondary-list-value;
+    font-family: Inria Sans;
+    font-size: 1.7vh;
+}
+
+.highlight-text {
+    color: highlight;
+}
+
+.optimus-text {
+    font-family: OptimusPrinceps;
+}
+
+.no-pointer-events {
+    pointer-events: none;
+}
+
+.debug-red {
+    background-color: red;
+}
+
+.debug-green {
+    background-color: green;
+}
+
+.debug-blue {
+    background-color: blue;
+}
+
+.debug-yellow {
+    background-color: yellow;
+}
+
+.navigation-input-box {
+    width: 5%;
+    height: 100%;
+    background-color: #333;
+    text-align: center;
+    line-height: 100%;
+    color: white;
+    font-size: 18dp;
+    border: 1dp solid black;
+}
+
+.lock-icon {
+    decorator: image(Lock-button-active contain);
+    width: 90%;
+    height: 90%;
+}
+
+.lock-icon-unlocked {
+    decorator: image(Lock-button-inactive contain);
+    width: 100%;
+    height: 100%;
+}
+
+.unusable {
+    image-color: red;
+}
+
+.usable {
+    image-color: green;
+}

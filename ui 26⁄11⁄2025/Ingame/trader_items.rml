@@ -1,0 +1,236 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="items_FilterTabbar.rcss"/>
+        <link type="text/rcss" href="items_Grid.rcss"/>
+        <title>trader_items</title>
+
+        <style>
+            #trader-inventory-panel
+            {
+                pointer-events: auto;
+                width: 350dp;
+                height: 624dp;
+                top:10%;
+                right: 1.5%;
+                position: absolute;
+                decorator: image(Trader-background-grid);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .scrollable
+            {
+                top:104dp;
+                left:20dp;
+                width: 325dp;
+                height: 415dp;
+                display:flex;
+                flex-direction: column;
+                position: absolute;
+                pointer-events: auto;
+                overflow-y: scroll;
+                overflow-style: auto;
+            }
+
+            #background-grid,
+            #inventory-container
+            {
+                width: 370dp;
+                height: 1000dp;
+                display:flex;
+                flex-direction: column;
+                pointer-events: none;
+                flex-shrink: 0;
+                overflow-y: scroll;
+            }
+
+            scrollbarvertical
+            {
+                width: 5dp;
+            }
+
+            .trader-button,
+            #buy-button
+            {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 5dp;
+            }
+
+            #buy-button
+            {
+                visibility: hidden;
+            }
+
+            .buttons
+            {
+                position: absolute;
+                bottom:10dp;
+                left:50%;
+                transform: translateX(-53%);
+                height: 75dp;
+                width: 85%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                justify-items: center;
+            }
+
+            .combomaster-button
+            {
+                max-width: 90%;
+                max-height: 2vh;
+                text-align: center;
+                gap: 5dp;
+            }
+
+            .gold-icon-position
+            {
+                width:20dp;
+                height:20dp;
+                display:block;
+            }
+
+            .can-be-purchased
+            {
+                color:title;
+            }
+
+            .too-expensive
+            {
+                color:red;
+            }
+
+            #inventory-filters
+            {
+                display: flex;
+                width: auto;
+                height: 100%;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .trader-name-panel
+            {
+                height: 25dp;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+                flex-direction: row;
+                margin-top: 15dp;
+                gap: 10dp;
+            }
+
+            #trader-name
+            {
+                color: title;
+                font-family: OptimusPrinceps;
+                font-size: 2.5vh;
+            }
+
+            .ornament-left
+            {
+                decorator: image(title-ornament flip-horizontal contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .ornament-right
+            {
+                decorator: image(title-ornament contain);
+                width: 30dp;
+                height: 20dp;
+                display: flex;
+            }
+
+            .secondary-tabbar-button
+            {
+                height: 40dp;
+                width: 30dp;
+                display: flex;
+                flex: 1;
+                margin-right: 4dp;
+                margin-left: 4dp;
+            }
+
+            .nav-button
+            {
+                width: auto;
+                min-width: 20dp;
+                height: 20dp;
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="trader-inventory-panel">
+        <div class="trader-name-panel">
+            <div class="ornament-left"></div>
+            <div id="trader-name">1513760128</div>
+            <div class="ornament-right"></div>
+        </div>
+
+        <div id="tabbar-container-secondary">
+            <div id="secondary-tab-prev" class="navigation-input-box-secondary left-trigger"></div>
+            <tabset id="inventory-filters">
+                <tab id="all-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-all"></div>
+                </tab>
+                <tab id="weapons-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-weapon"></div>
+                </tab>
+                <tab id="armor-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-cloth"></div>
+                </tab>
+                <tab id="potions-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-consumable"></div>
+                </tab>
+                <tab id="misc-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-gem"></div>
+                </tab>
+            </tabset>
+            <div id="secondary-tab-next" class="navigation-input-box-secondary right-trigger"></div>
+        </div>
+
+        <div id="item-trader-scroll-container" class="scrollable" onclick="OnTradeGridClick" onscroll="OnTradeScroll">
+            <!-- Inventory -->
+            <div id="background-grid">
+                PLACEHOLDER_TRADER
+                <!-- Grid will be dynamically added here -->
+            </div>
+
+            <div id="inventory-container">
+                <!-- Items will be dynamically added here -->
+            </div>
+        </div>
+
+
+        <div class ="buttons">
+            <!-- Buy -->
+            <button class="trader-button" id="buy-button" onclick="OnBuySelectedItem">
+                <div >1857289789</div>
+                <div id="price-value">XYZ</div>
+                <div style="margin-right: 5dp;" class="gold-icon gold-icon-position"></div>
+                <div class="nav-button item-trader-buy" id="buy-button-prompt" onclick="OnBuySelectedItem"></div>
+            </button>
+            <!-- Close trade / deselect -->
+            <button class="trader-button" onclick="OnCloseTrader">
+                <div style="margin-right: 5dp; margin-left: 30dp;" id="close-button-text">0135808154</div>
+                <div class="nav-button end-trade" id="close-button-prompt" onclick="OnCloseTrader"></div>
+            </button>
+        </div>
+    </panel>
+    </body>
+</rml>

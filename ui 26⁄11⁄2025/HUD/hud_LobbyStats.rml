@@ -1,0 +1,41 @@
+<rml>
+    <head>
+        <title>hud_LobbyStats</title>
+        <style>
+            body {
+                position: absolute;
+                left: 16dp;
+                top: 48dp;
+                width: 250dp;
+                height: 70dp;
+                display: block;
+                background-color: black;
+                opacity: 0.75;
+            }
+
+            ul {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+            }
+
+            .stat-item {
+                width: 100%;
+                height: 16dp;
+                font-family: "Inria Sans";
+                font-size: 10dp;
+                color: white;
+            }
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <ul>
+        <li id="login-state" class="stat-item">N/A</li>
+        <li id="lobby-member-count" class="stat-item">N/A</li>
+        <li id="client-type" class="stat-item">N/A</li>
+        <li id="game-state" class="stat-item">N/A</li>
+    </ul>
+    </body>
+</rml>

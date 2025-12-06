@@ -1,0 +1,51 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../global/globalElements.rcss"/>
+        <title>mainMenu_movies</title>
+        <style>
+            .main-container {
+                display: flex;
+                flex-direction: column;
+                width: 1280dp;
+                height: 720dp; /* feste Höhe notwendig */
+                background-color: rgba(0, 0, 0, 150);
+                align-items: center;
+                justify-content: center;
+            }
+
+            .button-container {
+                display: flex;
+                flex-direction: column;
+                gap: 5dp;
+                width: 320dp;
+                height: 310dp;
+            }
+
+            button {
+                width: 300dp;
+                height: 24dp;
+                text-align: center;
+                line-height: 24dp;
+            }
+
+            .disabled {
+                /*opacity: 0.9;*/
+
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="main-container">
+        <div id="movie-buttons" class="button-container">
+            <button id="video1" onclick="OnClick_PlayVideoIntroduction" style="nav-down: #video2;">0036008687</button>
+            <button id="video2" onclick="OnClick_PlayVideoGameEndLight" style="nav-down: #video3; nav-up: #video1;">3986635587</button>
+            <button id="video3" onclick="OnClick_PlayVideoGameEndShadow" style="nav-down: #video4; nav-up: #video2;">3762909921</button>
+            <button id="video4" onclick="OnClick_PlayVideoConcert" style="nav-down: #first-focus; nav-up: #video3;">2827208689</button>
+            <button id="first-focus" onclick="ReturnToMainMenu" style="nav-up: #video4;">2417289527</button>
+        </div>
+    </div>
+    </body>
+</rml>

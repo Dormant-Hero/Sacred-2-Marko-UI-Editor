@@ -1,0 +1,100 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/tooltip.rcss"/>
+        <link type="text/rcss" href="../Ingame/spells.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>combo_Tooltip</title>
+        <style>
+            #tooltip-panel
+            {
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+            }
+
+            #tooltip-ca-name
+            {
+                font-size: 2.5vh;
+                color: title;
+                height: 10dp;
+                margin-top: 15dp;
+                margin-bottom: 30dp;
+            }
+
+            #aspect-icon
+            {
+                height: 28dp;
+                width: 30dp;
+                display: block;
+                margin-top: 8dp;
+            }
+
+            .primary-value-text
+            {
+                font-family: Inria Sans;
+                color: secondary-list-value;
+                font-size: 2.2vh;
+                line-height: 2.0vh;
+                width: 50%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                text-anchor: end;
+            }
+
+            .min-tooltip-size
+            {
+                min-height: 90dp;
+            }
+
+            #tooltip-empty-text
+            {
+                font-family: "Inria Sans";
+                font-size: 2.2vh;
+                width: 90%;
+                color: primary-element-label;
+                text-align: center;
+            }
+
+            .stats-icon-combo
+            {
+                width: 32dp;
+                height: 26dp;
+                display: block;
+            }
+
+
+            .stat-name-combo
+            {
+                font-family: Inria Sans;
+                color: secondary-list-label;
+                font-size: 2.0vh;
+                width: 40%;
+                height: auto;
+                text-anchor: start;
+            }
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events">
+    <panel id="tooltip-panel" class="tooltip-generic tooltip-background min-tooltip-size">
+        <div id="tooltip-panel-gradient" class="tooltip-gradient rare-0-gradient">
+            <div id="tooltip-panel-frame" class="tooltip-frame rare-0-frame">
+                <div class="tooltip-data">
+
+                    <div id="tooltip-ca-name"></div>
+                    <div id="tooltip-empty-text"></div>
+                    <div id="dynamic-bonus-stats">
+                    </div>
+                    <div class="bottom-margin"></div>
+                </div>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>

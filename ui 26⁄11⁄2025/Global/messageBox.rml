@@ -1,0 +1,85 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="globalElements.rcss"/>
+        <title>messageBox</title>
+        <style>
+            .message-box-container
+            {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 400dp;
+                height: auto;
+                text-align: center;
+                display:flex;
+                flex-direction: column;
+                padding: 10dp;
+                align-items: center;
+
+            }
+
+            .message-box-buttons
+            {
+                display: flex;
+                flex-direction: row;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+                gap: 15dp;
+                padding: 15dp;
+                width: 100%;
+            }
+
+            .message-box-title
+            {
+                font-size: 20dp;
+                font-weight: bold;
+                margin-bottom: 10dp;
+                color: title;
+                font-family: OptimusPrinceps;
+                margin-top: 10dp;
+            }
+
+            .message-box-text
+            {
+                font-size: 16dp;
+                margin-bottom: 3dp;
+                display: block;
+            }
+
+            .messageBoxButton
+            {
+                padding: 10dp;
+                margin-top: 15dp;
+                width:42%;
+                text-align: center;
+                display: flex;
+                height: 2.5vh;
+            }
+
+        </style>
+    </head>
+
+    <body>
+    <div class="message-box-container popup"   data-model="MessageBoxViewModel">
+        <h1 class="message-box-title" id="message-box-title">{{Title}}</h1>
+        <p class="message-box-text" id="message-box-text">{{Text}}</p>
+        <div class="message-box-buttons">
+            <button  style="nav-right:#message-box-cancel-button;" id="message-box-ok-button" class="messageBoxButton" onclick="OnOkSelected">
+                <div class = "button-container">
+                    <div id="message-box-ok-text" class="button-label "> {{OkText}}</div>
+                    <div id="down-button-prompt" class="button-prompt  down-button"></div>
+                </div>
+            </button>
+
+            <button  style="nav-left:#message-box-ok-button;" id="message-box-cancel-button" class="messageBoxButton" onclick="OnCancelSelected" data-if="ShowCancelButton">
+                <div class = "button-container">
+                    <div id="message-box-cancel-text" class="button-label ">{{CancelText}}</div>
+                    <div id="right-button-prompt" class="button-prompt  right-button"></div>
+                 </div>
+            </button>
+        </div>
+    </div>
+    </body>
+</rml>

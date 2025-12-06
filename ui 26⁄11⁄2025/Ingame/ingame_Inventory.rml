@@ -1,0 +1,432 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_FilterTabbar.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <title>ingame_Inventory</title>
+        <style>
+
+            /*Luna- I fucked it up and named all that is left right and all tht is right left, sorry but to late to change :(*/
+            .background-right-panels
+            {
+                width: 497dp;
+                height: 624dp;
+                top:10%;
+                left: 1.5%;
+                position: absolute;
+                display: block;
+                decorator: image(InventoryBackgroundL1);
+            }
+
+            #inventory-right-panel
+            {
+                pointer-events: auto;
+                width: 349dp;
+                height: 88.3%;
+                top:10%;
+                left: 1.5%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #inventory-equip-panel
+            {
+                pointer-events: auto;
+                width: 150dp;
+                top:83dp;
+                left: 365dp;
+                position: absolute;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                flex-direction: column;
+                /* ThHä: added gap to improve game pad navigation */
+                gap: 3dp;
+            }
+
+
+
+            #inventory-equip-panel-armor
+            {
+                width:100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #inventory-equip-panel-armor-right
+            {
+
+            }
+            #inventory-equip-panel-armor-left
+            {
+
+            }
+            #inventory-equip-panel-multi-purpose-top
+            {
+                display: flex;
+                flex-direction: row;
+                margin-top: 170dp;
+            }
+            #inventory-equip-panel-multi-purpose-bottom
+            {
+                display: flex;
+                flex-direction: row;
+            }
+            #inventory-equip-panel-jewelry-top,
+            #inventory-equip-panel-jewelry-bottom,
+            #inventory-equip-panel-orb-top,
+            #inventory-equip-panel-orb-bottom
+            {
+                display: flex;
+                flex-direction: row;
+                justify-items: center;
+            }
+
+
+            #background-grid,
+            #inventory-container
+            {
+                top:75dp;
+                left:18dp;
+                width: 350dp;
+                height: auto;
+                display:flex;
+                flex-direction: column;
+                position: absolute;
+                pointer-events: none;
+            }
+
+            #bottom-buttons-container
+            {
+                position: absolute;
+                bottom: 22dp;
+                left: 10dp;
+                width: 90%;
+                height: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            .gold-display
+            {
+                height: 100%;
+                width: 150dp;
+                gap:10dp;
+                margin-left: 5dp;
+                text-align: center;
+                line-height: 100%;
+                font-size: 18dp;
+                font-family: Inria Sans;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            #gold-amount-text
+            {
+                margin-top: 5dp;
+                margin-left: 5dp;
+            }
+
+            .gold-icon-position
+            {
+                margin-right: 10dp;
+                margin-top: 5dp;
+                width:20dp;
+                height:20dp;
+                display:block;
+            }
+
+            #scrap-button
+            {
+                margin-left: 5%;
+            }
+
+            .equipment-slot
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                pointer-events: auto;
+                box-sizing: border-box;
+                border-color: transparent;
+                border: 2dp solid;
+                width: 100%;
+                z-index: 1;
+            }
+
+            .equipment-slot-positive
+            {
+                background-color: green;
+            }
+
+            .equipment-slot-negative
+            {
+                background-color: red;
+            }
+
+            .equip-item-icon
+            {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
+                pointer-events: none;
+            }
+
+            .feedback-overlay
+            {
+                z-index: 100;
+                opacity: 0.8;
+                pointer-events: none;
+            }
+
+            .orb-preset-selector-button
+            {
+                width: 31dp;
+                height: 31dp;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+                color: title;
+                decorator: image(Orb-button-default contain);
+            }
+
+            .orb-preset-selector-button:hover,
+            .orb-preset-selector-button:focus,
+            .orb-preset-selector-button:focus-visible 
+			{
+			    decorator: image(Orb-button-focus contain);
+            }
+
+            .orb-preset-selector-button:selected
+            {
+                decorator: image(Orb-button-active contain);
+            }
+			
+			.orb-preset-selector-button:hover:selected,
+            .orb-preset-selector-button:focus:selected,
+			.orb-preset-selector-button:hover:focus:selected,
+            .orb-preset-selector-button:focus-visible:selected {
+			    decorator: image(Orb-button-active-focus contain);
+			}
+
+            .orb-preset
+            {
+                width: 85%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .panel-1-1-orb
+            {
+                decorator: image(Orb-background-default contain);
+            }
+
+            .panel-1-1-orb-inactive
+            {
+                decorator: image(Orb-background-inactive contain);
+            }
+
+            #inventory-filters
+            {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            #tabbar-container-secondary-inventory
+            {
+                justify-content: space-evenly;
+            }
+
+            .secondary-tabbar-button
+            {
+                height: 40dp;
+                width: 30dp;
+                display: flex;
+                flex: 1;
+                margin-right: 4dp;
+                margin-left: 4dp;
+            }
+
+            .gray-out-item
+            {
+                filter: grayscale(0.5);
+            }
+
+            #mount-panel
+            {
+                position: absolute;
+                pointer-events: auto;
+                bottom: 75dp;
+                left: 30dp;
+                width: 175dp;
+                height: 300dp;
+                decorator: image(mount-background contain);
+                display: flex;
+                flex-direction: column;
+                visibility: hidden;
+                gap: 15dp;
+                justify-content: space-evenly;
+                align-items: center;
+                z-index: 100;
+            }
+
+            #mounts-button,
+            #scrap-button
+            {
+
+                text-align: center;
+                line-height: 100%;
+                font-size: 13dp;
+                width: 25%;
+                z-index: 101;
+            }
+
+            #mounts-button
+            {
+                max-width: 80dp;
+            }
+
+            #scrap-button
+            {
+                margin-left: 3dp;
+                max-width: 100dp;
+            }
+
+            .mount-selector-button
+            {
+                width: 130dp;
+                height: 130dp;
+                display: block;
+                decorator: image(blacksmith-item-background contain);
+            }
+
+            .mount-selector-button:hover
+            {
+                decorator: image(blacksmith-item-background-hover contain);
+            }
+
+            .mount-selector-button:selected
+            {
+                decorator: image(blacksmith-item-background-selected contain);
+            }
+
+            .mount-icon
+            {
+                mask-image: image(Blacksmith-circle-mask);
+                width: 95dp;
+                height: 95dp;
+                display: block;
+                left: 20dp;
+                top: 20dp;
+                position: relative;
+
+            }
+
+            .statistic-button-style
+            {
+                font-size: 1.5vh;
+                max-width: 100dp;
+            }
+
+
+
+        </style>
+    </head>
+
+    <body class="no-pointer-events">
+    <div class="background-right-panels"></div>
+    <panel id="inventory-right-panel" onmouseover="InventoryActive" onmouseout="InventoryInactive">
+
+        <div id="tabbar-container-secondary-inventory">
+            <div id="secondary-tab-prev" class="navigation-input-box-secondary left-trigger"></div>
+            <tabset id="inventory-filters" class="debug-yellow-off">
+                <tab id="all-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-all"></div>
+                </tab>
+                <tab id="weapons-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-weapon"></div>
+                </tab>
+                <tab id="armor-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-cloth"></div>
+                </tab>
+                <tab id="potions-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-consumable"></div>
+                </tab>
+                <tab id="jewels-tab" class="secondary-tabbar-button icon-tab" onclick="OnInventoryFilterSelected">
+                    <div class="tabbar-icon filter-gem"></div>
+                </tab>
+            </tabset>
+            <div id="secondary-tab-next" class="navigation-input-box-secondary right-trigger"></div>
+        </div>
+
+        <!-- Inventory -->
+        <div id="background-grid">
+            <!-- Grid will be dynamically added here -->
+        </div>
+
+        <div id="inventory-container">
+            <!-- Items will be dynamically added here -->
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div id="bottom-buttons-container">
+            <button id="mounts-button" onclick="OnMountButtonClick">3601274375</button>
+            <button id="scrap-button" onclick="OnScrapItem">2602462658</button>
+            <div class="gold-display points-back">
+                <div id="gold-amount-text" style="color: secondary-list-value; font-family: OptimusPrinceps; font-size: 2.7vh;">0</div>
+                <div class="gold-icon gold-icon-position"></div>
+            </div>
+        </div>
+    </panel>
+
+    <panel id="mount-panel">
+        <div class="mount-selector-button" id="normal-mount-button">
+            <img class="mount-icon" id="normal-mount-icon" onclick="OnSelectNormalMount" onmouseover="OnHoverNormalMount" onmouseout="OnHoverNormalMountEnd"/>
+        </div>
+        <div class="mount-selector-button" id="special-mount-button">
+            <img class="mount-icon" id="special-mount-icon" onclick="OnSelectSpecialMount" onmouseover="OnHoverSpecialMount" onmouseout="OnHoverSpecialMountEnd"/>
+        </div>
+    </panel>
+
+    <panel id="inventory-equip-panel">
+        <div id="inventory-equip-panel-armor">
+            <div id="inventory-equip-panel-armor-left">
+            </div>
+
+            <div id="inventory-equip-panel-armor-right">
+            </div>
+        </div>
+        <div id="inventory-equip-panel-jewelry-top"></div>
+        <div id="inventory-equip-panel-jewelry-bottom"></div>
+        <div class="orb-preset">
+            <div class="orb-preset-selector-button" id="orb-preset-1" onclick="OnSelectFirstOrbPreset">
+                <img style="height:50%;" sprite ="Orb-button-letter-I"/>
+            </div>
+            <div id="inventory-equip-panel-orb-top"></div>
+        </div>
+        <div class="orb-preset">
+            <div class="orb-preset-selector-button" id="orb-preset-2" onclick="OnSelectSecondOrbPreset">
+                <img style="height:50%;" sprite ="Orb-button-letter-II"/>
+            </div>
+            <div id="inventory-equip-panel-orb-bottom"></div>
+        </div>
+        <button id="statistics-button"  class="statistic-button-style" onclick="OnStatsButtonClick">4246066798</button>
+    </panel>
+    </body>
+</rml>

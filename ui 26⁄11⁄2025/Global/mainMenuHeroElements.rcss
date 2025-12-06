@@ -1,0 +1,350 @@
+
+@spritesheet PortraitsAndOrnaments
+{
+    src: "Textures/Spritesheets/PortraitsAndOrnaments.dds";
+    /*SacredLogo: 0px 0px 832px 1034px;*/
+    TitleOrnamentBack: 0px 1465px 696px 112px;
+    Checkbox-default: 740px 1396px 56px 56px;
+    Checkbox-active: 760px 1978px 56px 56px;
+    ArrowR-hover: 1574px 417px 88px 88px;
+    ArrowR-disabled: 1450px 288px 88px 88px;
+    ArrowR-default: 698px 1465px 88px 88px;
+    ArrowR-active: 740px 1306px 88px 88px;
+    ArrowL-hover: 740px 1216px 88px 88px;
+    ArrowL-disabled: 740px 1126px 88px 88px;
+    ArrowL-default: 1664px 417px 88px 88px;
+    ArrowL-active: 740px 1036px 88px 88px;
+}
+
+@spritesheet PortraitsAndOrnamentsNew
+{
+    src: "Textures/Spritesheets/PortraitsAndOrnamentsNew.dds";
+    PortraitOrnaments: 2px 2px 510px 71px;
+    DarkPathIcon-disabled: 2px 77px 368px 427px;
+    DarkPathIcon: 2px 508px 368px 427px;
+    LightPathIcon-disabled: 516px 2px 368px 427px;
+    LightPathIcon: 374px 433px 368px 427px;
+    Path-active: 888px 2px 352px 352px;
+    Path-hover: 888px 358px 352px 352px;
+    DragonMageIcon: 2px 939px 232px 264px;
+    DriadIcon: 238px 939px 232px 264px;
+    Hero-active: 474px 864px 232px 264px;
+    Hero-hover: 710px 864px 232px 264px;
+    HighElfIcon: 946px 714px 232px 264px;
+    InquisitorIcon: 2px 1207px 232px 264px;
+    SeraphimIcon: 238px 1207px 232px 264px;
+    ShadowWariorIcon: 946px 982px 232px 264px;
+    TempleGuardianIcon: 474px 1132px 232px 264px;
+    DivineGiftFrame: 710px 1132px 224px 227px;
+    DamageBigIcon: 938px 1250px 200px 200px;
+    DefenseBigIcon: 1244px 2px 200px 200px;
+    HealthBigIcon: 1244px 206px 200px 200px;
+    God1Icon-disabled: 1244px 410px 164px 180px;
+    God1Icon: 1244px 594px 164px 180px;
+    God2Icon-disabled: 1142px 1250px 164px 180px;
+    God2Icon: 1182px 778px 164px 180px;
+    God3Icon-disabled: 1182px 962px 164px 180px;
+    God3Icon: 1448px 2px 164px 180px;
+    God4Icon-disabled: 1412px 554px 164px 180px;
+    God4Icon: 1412px 738px 164px 180px;
+    God5Icon-disabled: 1350px 922px 164px 180px;
+    God5Icon: 1350px 1106px 164px 180px;
+    God6Icon-disabled: 1448px 186px 164px 180px;
+    God6Icon: 1448px 370px 164px 180px;
+    God-active: 1310px 1290px 177px 177px;
+    BronzeIcon: 2px 1475px 161px 161px;
+    ExpertIcon: 167px 1475px 161px 161px;
+    HardcoreIcon: 332px 1475px 161px 161px;
+    SilverIcon: 1142px 1434px 161px 161px;
+    StatDexterityIcon: 374px 77px 136px 104px;
+    StatInteligenceIcon: 746px 433px 136px 104px;
+    StatStaminaIcon: 374px 185px 136px 104px;
+    StatStrengthIcon: 746px 541px 136px 104px;
+    StatVitalityIcon: 374px 293px 136px 104px;
+    StatWillpowerIcon: 746px 649px 136px 104px;
+    LvlCounterBack: 474px 1400px 104px 67px;
+}
+
+@spritesheet HeroElements
+{
+    src: "Textures/Spritesheets/CharacterSelectSpritesheet.dds";
+
+    ElementBack-l: 968px 0px 24px 96px;
+    ElementBack-m: 408px 904px 96px 96px;
+    ElementBack-r: 992px 0px 24px 96px;
+
+    CounterBack-l: 959px 112px 24px 72px; /*added 1 px to start*/
+    CounterBack-r: 982px 112px 24px 72px;
+    CounterBack-m: 833px 744px 119px 72px; /*added 1 px to start and removed one from end*/
+
+    OrnamentTitle-bl: 928px 312px 72px 28px;
+    OrnamentTitle-br: 928px 340px 72px 28px;
+    OrnamentTitle-tl: 232px 840px 72px 28px;
+    OrnamentTitle-tr: 304px 840px 72px 28px;
+
+    PromptBack-l: 968px 640px 16px 56px;
+    PromptBack-m: 984px 640px 24px 56px;
+    PromptBack-r: 952px 744px 16px 56px;
+
+    DottedLine-slice: 1006px 112px 8px 12px;
+
+    Slidebar-active-b: 968px 96px 8px 4px;
+    Slidebar-active-c: 696px 104px 8px 8px;
+    Slidebar-active-t: 976px 96px 8px 4px;
+    Slidebar-b: 984px 96px 8px 4px;
+    Slidebar-c: 704px 104px 8px 8px;
+    Slidebar-t: 992px 96px 8px 4px;
+}
+
+@spritesheet MainMenuBackground
+{
+    src: "Textures\Spritesheets\Backgrounds\MainMenu.dds";
+    Main-menu-bg: 0px 0px 832px 2048px;
+
+    Main-menu-bg-l: 0px 0px 150px 2048px;
+    Main-menu-bg-m: 150px 0px 600px 2048px;
+    Main-menu-bg-r: 682px 0px 832px 2048px;
+}
+
+@spritesheet ChooseSave
+{
+    src: "Textures\Spritesheets\Backgrounds\ChooseSave.dds";
+    Choose-save-bg: 0px 0px 832px 1664px;
+    Choose-save-dotted-line: 0px 1664px 684px 4px;
+    Choose-save-ornament-l: 684px 1664px 70px 70px;
+    Choose-save-ornament-r: 0px 1668px 70px 70px;
+    Choose-save-mask: 832px 0px 800px 648px;
+}
+
+
+scrollbarvertical
+{
+    width: 5dp;
+}
+scrollbarhorizontal
+{
+    height: 5dp;
+}
+scrollbarvertical slidertrack,
+scrollbarhorizontal slidertrack
+{
+    background: #333;
+}
+scrollbarvertical slidertrack
+{
+    width: 5dp;
+}
+
+scrollbarhorizontal slidertrack
+{
+    height: 15dp;
+}
+scrollbarvertical sliderbar,
+scrollbarhorizontal sliderbar
+{
+    background: #193944;
+    border-color: #193944;
+}
+scrollbarvertical sliderbar
+{
+    decorator: tiled-vertical( Slidebar-t,
+    Slidebar-c, Slidebar-b );
+}
+
+.arrow-left,
+.arrow-left-no-active-state
+{
+    decorator: image(ArrowL-default contain);
+}
+
+button.arrow-left:hover,
+button.arrow-left:focus-visible,
+button.arrow-left:focus,
+button.arrow-left-no-active-state:hover,
+button.arrow-left-no-active-state:focus-visible,
+button.arrow-left-no-active-state:focus,
+button.arrow-left-no-active-state:selected,
+button.arrow-left-no-active-state:active
+{
+    decorator: image(ArrowL-hover contain);
+}
+
+button.arrow-left:selected,
+button.arrow-left:active
+{
+    decorator: image(ArrowL-active contain);
+}
+
+.arrow-right,
+.arrow-right-no-active-state
+{
+    decorator: image(ArrowR-default contain);
+}
+button.arrow-right:hover,
+button.arrow-right:focus-visible,
+button.arrow-right:focus,
+button.arrow-right-no-active-state:hover,
+button.arrow-right-no-active-state:focus-visible,
+button.arrow-right-no-active-state:focus,
+button.arrow-right-no-active-state:selected,
+button.arrow-right-no-active-state:active
+{
+    decorator: image(ArrowR-hover contain);
+}
+button.arrow-right:selected,
+button.arrow-right:active
+{
+    decorator: image(ArrowR-active contain);
+}
+
+.willpower-icon
+{
+    decorator: image(StatWillpowerIcon contain);
+}
+
+.intelligence-icon
+{
+    decorator: image(StatInteligenceIcon contain);
+}
+
+.dexterity-icon
+{
+    decorator: image(StatDexterityIcon contain);
+}
+
+.vitality-icon
+{
+    decorator: image(StatVitalityIcon contain);
+}
+
+.stamina-icon
+{
+    decorator: image(StatStaminaIcon contain);
+}
+
+.strength-icon
+{
+    decorator: image(StatStrengthIcon contain);
+}
+
+.defence-stat
+{
+    decorator: image(DefenseBigIcon contain);
+}
+
+.damage-stat
+{
+    decorator: image(DamageBigIcon contain);
+}
+
+.health-stat
+{
+    decorator: image(HealthBigIcon contain);
+}
+
+.seraphim
+{
+    decorator: image(SeraphimIcon contain);
+}
+
+.dryadin
+{
+    decorator: image(DriadIcon contain);
+}
+
+.shadowwarrior
+{
+    decorator: image(ShadowWariorIcon contain);
+}
+
+.highelve
+{
+    decorator: image(HighElfIcon contain);
+}
+
+.templeguard
+{
+    decorator: image(TempleGuardianIcon contain);
+}
+
+.dragonmage
+{
+    decorator: image(DragonMageIcon contain);
+}
+
+.inquisitor
+{
+    decorator: image(InquisitorIcon contain);
+}
+
+.lumen
+{
+    decorator: image(God1Icon contain);
+}
+.kybele
+{
+    decorator: image(God2Icon contain);
+}
+.forens
+{
+    decorator: image(God3Icon contain);
+}
+.tasta
+{
+    decorator: image(God4Icon contain);
+}
+.kuan
+{
+    decorator: image(God5Icon contain);
+}
+.ker
+{
+    decorator: image(God6Icon contain);
+}
+.lumen:disabled
+{
+    decorator: image(God1Icon-disabled contain);
+}
+.kybele:disabled
+{
+    decorator: image(God2Icon-disabled contain);
+}
+.forens:disabled
+{
+    decorator: image(God3Icon-disabled contain);
+}
+.tasta:disabled
+{
+    decorator: image(God4Icon-disabled contain);
+}
+.kuan:disabled
+{
+    decorator: image(God5Icon-disabled contain);
+}
+.ker:disabled
+{
+    decorator: image(God6Icon-disabled contain);
+}
+.light
+{
+    decorator: image( LightPathIcon contain);
+}
+.dark
+{
+    decorator: image( DarkPathIcon contain);
+}
+.light:disabled
+{
+    decorator: image( LightPathIcon-disabled contain);
+}
+.dark:disabled
+{
+    decorator: image( DarkPathIcon-disabled contain);
+}
+
+.lowhealth-icon
+{
+    decorator: image(Textures/low_health_warning.dds);
+}
+
+

@@ -1,0 +1,41 @@
+
+#physical-damage-bar,
+#physical-defence-bar
+{
+    fill-image: GmgTypeNormal;
+    value_start:0;
+    value_end:1;
+    z-index: 5;
+}
+#fire-damage-bar,
+#fire-defence-bar
+{
+    fill-image: GmgTypeFire;
+    value_start:0;
+    value_end:1;
+    z-index: 6;
+}
+#ice-damage-bar,
+#ice-defence-bar
+{
+    fill-image: GmgTypeIce;
+    value_start:0;
+    value_end:1;
+    z-index: 7;
+}
+#magic-damage-bar,
+#magic-defence-bar
+{
+    fill-image: GmgTypeMagic;
+    value_start:0;
+    value_end:1;
+    z-index: 8;
+}
+#poison-damage-bar,
+#poison-defence-bar
+{
+    fill-image: GmgTypePoison;
+    value_start:0;
+    value_end:1;
+    z-index: 9;
+}

@@ -1,0 +1,216 @@
+<rml>
+    <head>
+        <title>ingame_Options</title>
+        <link type="text/rcss" href="../Global/globalElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <style>
+            body {
+                position: relative;
+                width: 300dp;
+                height: 400dp;
+                margin-left: 20dp;
+                margin-top: 75dp;
+                pointer-events: auto;
+            }
+
+            button {
+                position: relative;
+                display: block;
+                padding: 10dp;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15dp;
+                width: 170dp;
+                text-align: center;
+                height: 2.5vh;
+            }
+			
+			#unstuck-player {
+                position: relative;
+                display: block;
+                padding: 10dp;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15dp;
+                width: 170dp;
+                text-align: center;
+                height: 4vh;
+            }
+
+            .button-container {
+                position: relative;
+                display: block;
+                width: 100%;
+                height: 100%;
+                top: 38dp;
+                padding: 50dp;
+                left: -50dp;
+                decorator: image(Main-menu-bg contain);
+
+            }
+
+            .controller-panel
+            {
+                position: absolute;
+                width: 920dp;
+                height: 500dp;
+                left: 280dp;
+                top: 38dp
+            }
+
+            .input-prompt-line
+            {
+                display: flex;
+                flex-direction: row;
+                gap:2dp;
+                justify-content: flex-start;
+                position: absolute;
+            }
+
+            .input-prompt-icon
+            {
+                display: block;
+                width: 23dp;
+                height: 23dp;
+            }
+
+            .input-prompt-text
+            {
+                font-family: "Inria Sans";
+                font-size: 1.7vh;
+                line-height: 23dp;
+            }
+
+
+            .ps-5-image
+            {
+                decorator: image("Textures/Spritesheets/Prompts/Ps5ControllerLayout.dds" contain);
+                width: 700dp;
+                height: 100%;
+                display: block;
+            }
+
+            .xbox-image
+            {
+                decorator: image("Textures/Spritesheets/Prompts/XboxControllerLayout.dds" contain);
+                width: 700dp;
+                height: 100%;
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+
+    <div style="width: 100%; height: 100%" id ="controller-panels">
+        <panel class="xbox-controller-panel controller-panel">
+            <div class="xbox-image">
+                <div class="input-prompt-line" style="top: 78dp; left:185dp;"><div class="input-prompt-icon Xbox-LT"></div><div class="input-prompt-text">2648926478</div></div>
+                <div class="input-prompt-line" style="top: 78dp; left:390dp;"><div class="input-prompt-icon Xbox-RT"></div><div class="input-prompt-text">4278981857</div></div>
+
+                <div class="input-prompt-line" style="top: 110dp; left:105dp;"><div class="input-prompt-icon Xbox-LB"></div><div class="input-prompt-text">4198606243</div></div>
+                <div class="input-prompt-line" style="top: 120dp; left:470dp;"><div class="input-prompt-icon Xbox-RB"></div><div class="input-prompt-text">4290499883</div><div class ="input-prompt-text"> / </div><div class ="input-prompt-text">4211026665</div></div>
+
+				<div class="input-prompt-line" style="top: 130dp; left:105dp;"><div class="input-prompt-icon Xbox-LB"></div><div class="input-prompt-text">1086212733</div><div class="input-prompt-text">1514033040</div></div>
+                <div class="input-prompt-line" style="top: 170dp;  left:10dp;"><div class="input-prompt-icon Xbox-Status"></div><div class="input-prompt-text">4236132920</div></div>
+                <div class="input-prompt-line" style="top: 192dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-t"></div><div class="input-prompt-text">0428011359</div></div>
+
+                <div class="input-prompt-line" style="top: 217dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-l"></div><div class="input-prompt-text">2674060632</div></div>
+                <div class="input-prompt-line" style="top: 237dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-l"></div><div class="input-prompt-text">2674060633</div></div>
+                <div class="input-prompt-line" style="top: 257dp; left:10dp;"><div class="input-prompt-icon Xbox-Dpad-l"></div><div class="input-prompt-text">2674060634</div></div>
+
+                <div class="input-prompt-line" style="top: 282dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-r"></div><div class="input-prompt-text">1271370482</div></div>
+                <div class="input-prompt-line" style="top: 302dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-r"></div><div class="input-prompt-text">1271370483</div></div>
+                <div class="input-prompt-line" style="top: 322dp; left:10dp;"><div class="input-prompt-icon Xbox-Dpad-r"></div><div class="input-prompt-text">1271370484</div></div>
+
+                <div class="input-prompt-line" style="top: 347dp;  left:10dp;"><div class="input-prompt-icon Xbox-Dpad-d"></div><div class ="input-prompt-text">1x:</div><div class="input-prompt-text">2835771744</div></div>
+                <div class="input-prompt-line" style="top: 367dp; left:10dp;"><div class="input-prompt-icon Xbox-Dpad-d"></div><div class ="input-prompt-text">1x:</div><div class="input-prompt-text">0278968278</div></div>
+                <div class="input-prompt-line" style="top: 387dp; left:10dp;"><div class="input-prompt-icon Xbox-Dpad-d"></div><div class ="input-prompt-text">1086212733</div><div class="input-prompt-text">0896328218</div></div>
+
+                <div class="input-prompt-line" style="top: 357dp;  left:200dp;"><div class="input-prompt-icon Controller-LStick"></div><div class="input-prompt-text">0994858804</div></div>
+                <div class="input-prompt-line" style="top: 377dp; left:200dp;"><div class="input-prompt-icon Xbox-LStick-click"></div><div class="input-prompt-text">2972021396</div></div>
+
+
+                <div class="input-prompt-line" style="top: 357dp;  left:360dp;"><div class="input-prompt-icon Controller-RStick-lr"></div><div class="input-prompt-text">1567326167</div></div>
+                <div class="input-prompt-line" style="top: 377dp;  left:360dp;"><div class="input-prompt-icon Controller-RStick-td"></div><div class="input-prompt-text">0600565041</div><div class="input-prompt-text">/</div><div class="input-prompt-text">3439417682</div></div>
+                <div class="input-prompt-line" style="top: 398dp; left:360dp;"><div class="input-prompt-icon Xbox-RStick-click"></div><div class="input-prompt-text">2078186379</div></div>
+
+                <div class="input-prompt-line" style="top: 160dp; left:510dp;"><div class="input-prompt-icon Xbox-Settings"></div><div class="input-prompt-text">0694821261</div></div>
+
+                <div class="input-prompt-line" style="top: 184dp; left:535dp;"><div class="input-prompt-icon Xbox-Y"></div><div class="input-prompt-text">0066507434</div></div>
+                <div class="input-prompt-line" style="top: 204dp; left:535dp;"><div class="input-prompt-icon Xbox-Y"></div><div class="input-prompt-text">1086212733</div><div class="input-prompt-text">3291679112</div></div>
+
+                <div class="input-prompt-line" style="top: 226dp; left:535dp;"><div class="input-prompt-icon Xbox-X"></div><div class="input-prompt-text">3567402537</div></div>
+                <div class="input-prompt-line" style="top: 249dp; left:535dp;"><div class="input-prompt-icon Xbox-B"></div><div class="input-prompt-text">1505724223</div></div>
+                <div class="input-prompt-line" style="top: 271dp; left:535dp;"><div class="input-prompt-icon Xbox-A"></div><div class="input-prompt-text">4211026665</div><div class="input-prompt-text"> / </div><div class="input-prompt-text">0080861440</div></div>
+            </div>
+        </panel>
+
+        <panel class="ps-5-controller-panel controller-panel">
+            <div class="ps-5-image">
+                <div class="input-prompt-line" style="top: 80dp; left:185dp;"><div class="input-prompt-icon Ps-L2"></div><div class="input-prompt-text">2648926478</div></div>
+                <div class="input-prompt-line" style="top: 80dp; left:390dp;"><div class="input-prompt-icon Ps-R2"></div><div class="input-prompt-text">4278981857</div></div>
+
+                <div class="input-prompt-line" style="top: 112dp; left:291dp;"><div class="input-prompt-icon Ps4-touch"></div><div class="input-prompt-text">4198606243</div></div>
+                <div class="input-prompt-line" style="top: 114dp; left:105dp;"><div class="input-prompt-icon Ps-L1"></div><div class="input-prompt-text">4198606243</div></div>
+                <div class="input-prompt-line" style="top: 122dp; left:470dp;"><div class="input-prompt-icon Ps-R1"></div><div class="input-prompt-text">3236447459</div></div>
+
+                <div class="input-prompt-line" style="top: 134dp; left:105dp;"><div class="input-prompt-icon Ps-L1"></div><div class="input-prompt-text">1086212733</div><div class="input-prompt-text">1514033040</div></div>
+                <div class="input-prompt-line" style="top: 170dp;  left:10dp;"><div class="input-prompt-icon Ps5-Share"></div><div class="input-prompt-text">2195354022</div></div>
+                <div class="input-prompt-line" style="top: 190dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-t"></div><div class="input-prompt-text">0428011359</div></div>
+
+                <div class="input-prompt-line" style="top: 220dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-l"></div><div class="input-prompt-text">2674060632</div></div>
+                <div class="input-prompt-line" style="top: 240dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-l"></div><div class="input-prompt-text">2674060633</div></div>
+                <div class="input-prompt-line" style="top: 260dp; left:10dp;"><div class="input-prompt-icon Ps-Dpad-l"></div><div class="input-prompt-text">2674060634</div></div>
+
+                <div class="input-prompt-line" style="top: 285dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-r"></div><div class="input-prompt-text">1271370482</div></div>
+                <div class="input-prompt-line" style="top: 305dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-r"></div><div class="input-prompt-text">1271370483</div></div>
+                <div class="input-prompt-line" style="top: 325dp; left:10dp;"><div class="input-prompt-icon Ps-Dpad-r"></div><div class="input-prompt-text">1271370484</div></div>
+
+                <div class="input-prompt-line" style="top: 350dp;  left:10dp;"><div class="input-prompt-icon Ps-Dpad-d"></div><div class ="input-prompt-text">1x:</div><div class="input-prompt-text">2835771744</div></div>
+                <div class="input-prompt-line" style="top: 370dp; left:10dp;"><div class="input-prompt-icon Ps-Dpad-d"></div><div class ="input-prompt-text">1x:</div><div class="input-prompt-text">0278968278</div></div>
+                <div class="input-prompt-line" style="top: 390dp; left:10dp;"><div class="input-prompt-icon Ps-Dpad-d"></div><div class ="input-prompt-text">1086212733</div><div class="input-prompt-text">0896328218</div></div>
+
+                <div class="input-prompt-line" style="top: 360dp;  left:200dp;"><div class="input-prompt-icon Controller-LStick"></div><div class="input-prompt-text">0994858804</div></div>
+                <div class="input-prompt-line" style="top: 381dp; left:200dp;"><div class="input-prompt-icon Ps-LStick-click"></div><div class="input-prompt-text">2972021396</div></div>
+
+
+                <div class="input-prompt-line" style="top: 360dp;  left:360dp;"><div class="input-prompt-icon Controller-RStick-lr"></div><div class="input-prompt-text">1567326167</div></div>
+                <div class="input-prompt-line" style="top: 381dp;  left:360dp;"><div class="input-prompt-icon Controller-RStick-td"></div><div class="input-prompt-text">0600565041</div><div class="input-prompt-text">/</div><div class="input-prompt-text">3439417682</div></div>
+                <div class="input-prompt-line" style="top: 401dp; left:360dp;"><div class="input-prompt-icon Ps-RStick-click"></div><div class="input-prompt-text">2078186379</div></div>
+
+                <div class="input-prompt-line" style="top: 160dp; left:510dp;"><div class="input-prompt-icon Ps5-Options"></div><div class="input-prompt-text">0694821261</div></div>
+
+                <div class="input-prompt-line" style="top: 187dp; left:535dp;"><div class="input-prompt-icon Ps-Triangle"></div><div class="input-prompt-text">0066507434</div></div>
+                <div class="input-prompt-line" style="top: 208dp; left:535dp;"><div class="input-prompt-icon Ps-Triangle"></div><div class="input-prompt-text">1086212733</div><div class="input-prompt-text">3291679112</div></div>
+
+                <div class="input-prompt-line" style="top: 230dp; left:535dp;"><div class="input-prompt-icon Ps-Square"></div><div class="input-prompt-text">3567402537</div></div>
+                <div class="input-prompt-line" style="top: 252dp; left:535dp;"><div class="input-prompt-icon Ps-Circle"></div><div class="input-prompt-text">1505724223</div></div>
+                <div class="input-prompt-line" style="top: 277dp; left:535dp;"><div class="input-prompt-icon Ps-Ex"></div><div class="input-prompt-text">4211026665</div><div class="input-prompt-text">0080861440</div></div>
+
+            </div>
+        </panel>
+    </div>
+
+    <div class="button-container">
+        <div id="main-buttons">
+            <button id="first-focus" onclick="ContinueGame" style="margin-top:25dp; nav-down: #invite-friend-button; nav-up: #save-and-exit">2214850355</button>
+            <button id="invite-friend-button" onclick="ShowInviteFriendOverlay" style="nav-down: #options; nav-up: #first-focus">3746930420</button>
+            <button id="options" onclick="Options" style="nav-down: #quick-save; nav-up: #invite-friend-button">3414272697</button>
+            <button id="quick-save" onclick="QuickSaveGame" style="nav-down: #unstuck-player; nav-up: #options">2494467974</button>
+			<button id="unstuck-player" onclick="UnstuckPlayer" style="nav-down: #save-and-exit; nav-up: #quick-save">3363329857</button>
+			<button id="save-and-exit" onclick="SaveAndExit" style="nav-down: #first-focus; nav-up: #unstuck-player">0478123068</button>
+        </div>
+
+        <div id="settings-buttons" style="display: none;">
+            <button id="graphics-button" onclick="OnClick_GraphicsButton" style="nav-down: #gameplay-button; nav-up: #controls-button">1927439701</button>
+            <button id="gameplay-button" onclick="OnClick_GameplayButton" style="nav-down: #sound-button; nav-up: #graphics-button">2568947533</button>
+            <button id="sound-button" onclick="OnClick_SoundButton" style="nav-down: #controls-button; nav-up: #gameplay-button">3744564474</button>
+            <button id="controls-button" onclick="OnClick_ControlsButton" style="nav-down: #exit-options-button; nav-up: #sound-button">1670293390</button>
+            <button id="exit-settings-button" onclick="OnClick_ExitSettings" style="nav-down: #graphics-button; nav-up: #controls-button">2417289527</button>
+        </div>
+    </div>
+    <!--    <div class="controller-input-mapping"></div>-->
+    </body>
+</rml>

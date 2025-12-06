@@ -1,0 +1,892 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="skill-icons.rcss"/>
+        <link type="text/rcss" href="skills.rcss"/>
+        <link type="text/rcss" href="../HUD/hud_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Shared/damageArmorMix.rcss"/>
+        <link type="text/rcss" href="../Ingame/journal_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_Grid.rcss"/>
+        <title>ingame_Attributes</title>
+        <style>
+
+            .nav-button {
+                width: 35dp;
+                height: 35dp;
+                text-align: center;
+                line-height: 35dp;
+                cursor: pointer;
+                border-radius: 5dp;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .background-left-panels
+            {
+                width: 500dp;
+                height: 634dp;
+                top: 10%;
+                left: 1.5%;
+                position: absolute;
+                display: block;
+            }
+
+            .attribute-background-image {
+                decorator: image("Textures/Spritesheets/Backgrounds/StatsBackgroundL.dds");
+            }
+
+            .skills-background-image {
+                decorator: image("Textures/Spritesheets/Backgrounds/SkillsBackground.dds");
+            }
+
+            .main-container {
+                pointer-events: auto;
+                width: 520dp;
+                height: 634dp;
+                top: 72dp;
+                left: 15dp;
+                position: absolute;
+                display: flex;
+                align-items: flex-start;
+                gap: 3dp;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            #tabbar-container-secondary {
+                margin-top: 20dp;
+                margin-left: 25dp;
+                width: 300dp;
+                height: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                z-index: 10;
+            }
+
+            .tab-content-attributes {
+                margin-left: 25dp;
+                width: 350dp;
+                height: 90%;
+                margin-top: 22dp;
+            }
+
+            .tab-content-skills {
+                margin-left: 25dp;
+                width: 450dp;
+                height: 90%;
+                margin-top: 22dp;
+            }
+
+            #attributes-right-panel {
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            #skills-right-panel {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            #skill-slots {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 90%;
+                width: 100%;
+                margin-top: 10dp;
+                gap: 3dp;
+            }
+
+            .skill-slot,
+            .skill-slot-locked {
+                width: 100%;
+                height: 46dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: left;
+                align-items: center;
+                line-height: 48dp;
+                font-family: Inria Sans;
+                font-size: 16dp;
+                gap: 10dp;
+            }
+
+            .skill-slot {
+                decorator: image(skills-background-skillsSlots-dark);
+            }
+
+            .skill-slot-locked {
+                decorator: image(skills-background-skillsSlots-dark);
+            }
+
+            .skill-slot:hover {
+                decorator: image(skills-slot-big-default);
+            }
+
+            .lock-icon {
+                decorator: image(Lock-button-active contain);
+                width: 25dp;
+                height: 25dp;
+                display: block;
+                left: 0dp;
+                margin-left: 5dp;
+            }
+
+            .lock-icon-unlocked {
+                decorator: image(Lock-button-inactive contain);
+                width: 25dp;
+                height: 25dp;
+                display: block;
+                margin-left: 5dp;
+            }
+
+            .lock-icon-unlocked:hover {
+                border-color: yellow;
+                border-width: 1px;
+            }
+
+            .skill-level-text {
+                display: block;
+                width: 24dp;
+            }
+
+            .no-skill-text {
+                display: block;
+                width: 24dp;
+                height: 100%;
+                line-height: 48dp;
+                margin-right: 15dp;
+            }
+
+            .title-text {
+                color: title;
+            }
+
+            .available-skill-container {
+                width: 100%;
+                height: 75%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .skill-level-value {
+                font-family: OptimusPrinceps;
+                font-size: 16dp;
+                color: title;
+                width: 24dp;
+                height: 100%;
+                margin-left: 5dp;
+                margin-right: 5dp;
+                text-anchor: end;
+                text-align: center;
+                line-height: 38dp;
+            }
+
+            .learned-skill-icon {
+                display: block;
+                width: 100%;
+                height: 100%;
+                mask-image: image(skills-slot-big-default-mask contain);
+				background-size: contain;
+				background-repeat: no-repeat;
+                img-position: center;
+            }
+
+            .learned-skill-icon-frame
+            {
+                display: block;
+                width: 90dp;
+                height: 40dp;
+                decorator: image(skills-slot-big-default contain);
+            }
+
+            learned-skill-icon-frame:hover
+            {
+                decorator: image(skills-slot-big-default contain);
+            }
+
+            .skill-name-value {
+                font-family: Inria Sans;
+                font-size: 1vh;
+                color: primary-list-label;
+                height: 25%;
+                width: 100%;
+            }
+
+            .learned-skills {
+                width: 180dp;
+                height: 100%;
+                margin-right: 20dp;
+            }
+
+            .available-skills {
+                width: 400dp;
+                height: 100%;
+            }
+
+            .attribute-points-container {
+                width: 300dp;
+                height: 25dp;
+                display: flex;
+                font-family: "Inria Sans";
+                decorator: image(skills-background-title-light);
+                z-index: 10;
+                align-items: center;
+                font-size: 3vh;
+                padding-left: 12dp;
+                color: primary-list-label;
+            }
+
+            .attribute-points-container div {
+                text-align: center;
+            }
+
+            div.attribute-points-caption {
+                font-size: 14dp;
+                width: 80%;
+            }
+
+            div.available-points-value {
+                text-align: right;
+                padding-right: 8dp;
+            }
+
+            .skill-points-container {
+                padding-left: 10dp;
+                width: 300dp;
+                height: 25dp;
+                display: flex;
+                justify-content: space-around;
+                z-index: 10;
+                align-items: center;
+                font-size: 3vh;
+                font-family: "Inria Sans";
+                decorator: image(skills-background-title-light);
+                z-index: 10;
+                color: primary-list-label;
+            }
+
+            .attributes,
+            .skills {
+                margin-top: 3%;
+                display: flex;
+                flex-direction: column;
+                gap: 3dp;
+                justify-content: space-between;
+            }
+
+            .skills {
+                width: 100%;
+                height: 90%;
+            }
+
+            .not-available {
+                filter: grayscale(0.5);
+            }
+
+            .attributes {
+                width: 90%;
+                height: 35%;
+            }
+
+            .base-stats-container {
+                font-family: Inria Sans;
+                margin-top: 5%;
+                display: flex;
+                flex-direction: column;
+                width: 90%;
+                height: 40%;
+                gap: 3dp;
+                justify-content: flex-start;
+            }
+
+            .attribute {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .attribute-line {
+                decorator: tiled-horizontal-no-stretch(CounterBack-l, CounterBack-m, CounterBack-r);
+                width: 90%;
+                height: 100%;
+            }
+
+            .attribute-background {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-direction: row;
+            }
+			
+			.attribute:hover .attribute-line .attribute-background {
+				decorator: tiled-horizontal-no-stretch(HoverFrame-l, HoverFrame-m, HoverFrame-r);;
+			}
+			
+			.attribute:hover .plusButton {
+				decorator: image(PlusBTN-hover contain);
+			}
+			
+			.attribute:hover .plusButton:disabled {
+				decorator: image(PlusBTN-inactive contain);
+			}
+
+            .attribute-value {
+                display: block;
+                width: 24dp;
+                height: 24dp;
+                text-align: right;
+                padding-top: 0dp;
+                font-face: SemiBold;
+                color: primary-list-value;
+                font-size: 2.7vh;
+                line-height: 24dp;
+            }
+
+            .attribute-name {
+                display: block;
+                width: 50%;
+                height: 100%;
+                text-align: left;
+                padding-top: 3%;
+                font-face: SemiBold;
+                color: primary-list-label;
+                font-size: 2.7vh;
+                line-height: 2.0vh;
+                transform: translateX(-26dp);
+            }
+
+            .attribute-icon {
+                display: block;
+                width: 50dp;
+                height: 100%;
+                transform: translateX(-12dp) scale(1.1);
+            }
+
+
+
+            .attribute-increase-button {
+                display: block;
+                width: 12dp;
+                height: 12dp;
+            }
+
+            .skill-group {
+                display: flex;
+                flex-direction: column;
+                height: 25%;
+                width: 100%;
+                justify-content: space-evenly;
+                gap: 10dp;
+            }
+
+            .skill-subgroup {
+                display: flex;
+                flex-direction: row;
+                height: 45%;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10dp;
+                decorator: image(skills-background-skills-dark);
+            }
+
+            .skill-group-name {
+                height: 10%;
+                font-family: OptimusPrinceps;
+                font-size: 2.3vh;
+                color: primary-list-label;
+            }
+
+            .skill-icon-frame {
+                display: block;
+                height: 40dp;
+                width: 40dp;
+                decorator: image(skills-slot-square-default contain);
+            }
+
+            .skill-icon-frame-smaller {
+                display: block;
+                height: 35dp;
+                width: 35dp;
+                transform: scale(0.88);
+                decorator: image(skills-slot-square-default contain);
+            }
+
+            .skill-icon-frame-already-learned
+            {
+                display: flex;
+                justify-items: center;
+                justify-content: center;
+                align-items: center;
+                height: 40dp;
+                width: 40dp;
+                transform: scale(1.2);
+                decorator: image(Slots-Item-rune-gold contain);
+            }
+
+            .skill-icon-frame:hover,
+            .skill-icon-frame-already-learned:hover
+            {
+                decorator: image(skills-slot-square-hover contain);
+            }
+
+            .skill-icon {
+                display: block;
+                width: 100%;
+                height: 100%;
+                mask-image: image(skills-slot-square-default-mask contain);
+                opacity: 0.75;
+            }
+
+            .skill-icon:hover {
+                opacity: 1;
+            }
+
+            .skill-base-group-icon,
+            .skill-advanced-group-icon,
+            .skill-advanced-group-icon-2{
+                height: 25dp;
+                width: 15dp;
+                decorator: image(skills-letter-I);
+                margin-left: 15dp;
+            }
+
+            .skill-advanced-group-icon
+            {
+                margin-left: 22dp;
+            }
+
+            .skill-advanced-group-icon-2
+            {
+                transform: translateX(-50dp);
+                margin-right: -47dp;
+            }
+
+            .skill-increase-button {
+                width: 12dp;
+                height: 12dp;
+                margin-left: 5dp;
+            }
+			
+			.skill-increase-button:hover button.plusButton{
+			    decorator: image(PlusBTN-hover contain);
+			}
+
+            .skill-learn-button {
+                width: 100%;
+                height: 100%;
+                mask-image: image(skills-slot-square-default-mask contain);
+            }
+
+            .skill-icon-frame .skill-learn-button:hover {
+                decorator: image(skills-slot-square-hover contain);
+            }
+
+            .skill-icon-overlay-unlearnable {
+                position: relative;
+                height: 100%;
+                width: 100%;
+            }
+
+
+
+            #attributes-tabset {
+                display: block;
+                flex-direction: row;
+                justify-content: space-evenly;
+                justify-items: center;
+                width:auto;
+                height: 35dp;
+            }
+
+            tabset tab
+            {
+                flex-grow: 1;
+                text-align: center;
+                padding: 10dp;
+            }
+
+            .secondary-tabbar-button
+            {
+                height: 15dp;
+                width: auto;
+                display: inline-block;
+                flex: 1;
+                line-height: 15dp;
+                font-size: 1.99vh;
+            }
+
+            #last-enemy-panel
+            {
+                display: flex;
+                width: 310dp;
+                position: absolute;
+                top: 55%;
+                left: 23dp;
+                height: 200dp;
+                align-content: center;
+                align-items: center;
+            }
+
+
+            .enemy-panel
+            {
+                display: flex;
+                width: 260dp;
+                height: 230dp;
+                justify-items: center;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .selector-button
+            {
+                display: block;
+                padding: 0;
+                z-index:2;
+                width: 25dp;
+                height: 25dp;
+                margin-top: -45dp;
+            }
+
+            .selector-button:hover {
+               transform: scale(1.2);
+            }
+
+            .enemy-title
+            {
+                decorator: tiled-horizontal-no-stretch(CounterBack-l, CounterBack-m, CounterBack-r);
+                font-family: OptimusPrinceps;
+                font-size: 2vh;
+                color: primary-element-label;
+                text-align: center;
+                padding-top: 5dp;
+                padding-bottom: 5dp;
+                width: 100%;
+            }
+
+            .enemy-info-basics
+            {
+                width: 250dp;
+                height: 100dp;
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                margin-top: 20dp;
+                margin-left: -5dp;
+
+            }
+
+            .enemy-info-basics-values
+            {
+                width: 170dp;
+                height: 100dp;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 5dp;
+            }
+
+            .arrow-left
+            {
+                margin-right: 10dp;
+            }
+
+            .arrow-right
+            {
+                margin-left: 10dp;
+            }
+
+            #enemy-name
+            {
+                width: auto;
+                display: block;
+                align-items: center;
+                font-family: OptimusPrinceps;
+                font-size: 1.8vh;
+                color: title;
+            }
+
+            .damage-armor-caption
+            {
+                display: flex;
+                flex-direction: row;
+                font-family: OptimusPrinceps;
+                font-size: 1.7vh;
+                justify-content: space-between;
+                margin-bottom: 5dp;
+                width: 100dp;
+            }
+
+            .damage-armor-name {
+                color: gray;
+            }
+
+            .damage-armor-total-value {
+                color: title;
+                font-family: OptimusPrinceps;
+                font-size: 1.9vh;
+                margin-top: -1.5dp;
+            }
+
+            .defence-damage-bars {
+                height: 15dp;
+                display: flex;
+                justify-content: center;
+                width: 150dp;
+            }
+
+            .defence-damage-type-bar {
+                position: absolute;
+                width: 50%;
+                height: 1vh;
+            }
+
+            #enemy-level
+            {
+                width: auto;
+                display: block;
+                align-items: center;
+                font-family: "Inria Sans";
+                font-size: 1.5vh;
+                color: primary-list-value;
+            }
+
+            .enemy-base-stat-line
+            {
+                width: 170dp;
+                font-size: 1.6vh;
+                font-family: "Inria Sans";
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .enemy-base-stat-line-label
+            {
+                color: primary-list-label;
+            }
+            .enemy-base-stat-line-value
+            {
+                color: primary-list-value;
+                text-align: right;
+            }
+
+            .enemy-icon-background
+            {
+                width: 85dp;
+                height: 85dp;
+                object-fit: contain;
+                display: flex;
+                decorator: image("Textures/Spritesheets/Backgrounds/SkillsBackground.dds");
+            }
+
+            #enemy-icon
+            {
+                width: 85dp;
+                height: 85dp;
+                object-fit: contain;
+                display: flex;
+            }
+
+            .lvl-required-message
+            {
+                display: block;
+                height: 10dp;
+                color: red;
+                width: auto;
+                position: absolute;
+                line-height: 10dp;
+                font-size: 1.5vh;
+                z-index: 50;
+                margin-left: 25dp;
+                margin-top: -5dp;
+                decorator: image("Textures/Spritesheets/Backgrounds/SkillsBackground.dds");
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <div class="background-left-panels" id="background-panel"></div>
+    <div class="main-container">
+        <!-- Tabbar -->
+        <div id="tabbar-container-secondary">
+            <div id="secondary-tab-prev" class="nav-button left-trigger"></div>
+            <tabset id="attributes-tabset">
+                <tab id="attributes-tab" class="secondary-tabbar-button" onclick="OnAttributesSelected">3003761940</tab>
+                <tab id="skills-tab" class="secondary-tabbar-button" onclick="OnSkillsSelected">4185934922</tab>
+            </tabset>
+            <div id="secondary-tab-next" class="nav-button right-trigger"></div>
+        </div>
+
+        <!-- Attributes -->
+        <panel id="attributes-right-panel" class="tab-content-attributes">
+            <div class="attribute-points-container">
+                <div id="attribute-points-text" class="attribute-points-caption">0302255548</div>
+                <div id="attribute-points-value" class="title-text available-points-value">0</div>
+            </div>
+            <div class="attributes optimus-text">
+                <!-- Strength -->
+                <div class="attribute">
+                    <button id="str-learn-button" class="plusButton attribute-increase-button" onclick="AddPointStr"  onmouseover="OnAttributeHover(0)" onmouseout="OnAttributeHoverEnd(0)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background" onclick="AddPointStr" onmouseover="OnAttributeHover(0)" onmouseout="OnAttributeHoverEnd(0)"> 
+                            <div class="attribute-icon strength-icon"></div>
+                            <div class="attribute-name">3547774722</div>
+                            <div class="attribute-value" id="strength" >26</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stamina -->
+                <div class="attribute">
+                    <button id="sta-learn-button" class="plusButton attribute-increase-button" onclick="AddPointSta"  onmouseover="OnAttributeHover(3)" onmouseout="OnAttributeHoverEnd(3)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background" onclick="AddPointSta" onmouseover="OnAttributeHover(3)" onmouseout="OnAttributeHoverEnd(3)">
+                            <div class="attribute-icon stamina-icon"></div>
+                            <div class="attribute-name">3728098348</div>
+                            <div class="attribute-value" id="stamina">26</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vitality -->
+                <div class="attribute">
+                    <button id="vit-learn-button" class="plusButton attribute-increase-button" onclick="AddPointVit" onmouseover="OnAttributeHover(4)" onmouseout="OnAttributeHoverEnd(4)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background" onclick="AddPointVit" onmouseover="OnAttributeHover(4)" onmouseout="OnAttributeHoverEnd(4)">
+                            <div class="attribute-icon vitality-icon"></div>
+                            <div class="attribute-name">3728135431</div>
+                            <div class="attribute-value" id="vitality" >26</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dexterity -->
+                <div class="attribute">
+                    <button id="dex-learn-button" class="plusButton attribute-increase-button" onclick="AddPointDex"  onmouseover="OnAttributeHover(1)" onmouseout="OnAttributeHoverEnd(1)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background" onclick="AddPointDex" onmouseover="OnAttributeHover(1)" onmouseout="OnAttributeHoverEnd(1)">
+                            <div class="attribute-icon dexterity-icon"></div>
+                            <div class="attribute-name">3727905141</div>
+                            <div class="attribute-value" id="dexterity">26</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intelligence -->
+                <div class="attribute">
+                    <button id="int-learn-button" class="plusButton attribute-increase-button" onclick="AddPointInt"  onmouseover="OnAttributeHover(2)" onmouseout="OnAttributeHoverEnd(2)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background"  onclick="AddPointInt" onmouseover="OnAttributeHover(2)" onmouseout="OnAttributeHoverEnd(2)">
+                            <div class="attribute-icon intelligence-icon"></div>
+                            <div class="attribute-name">3727969999</div>
+                            <div class="attribute-value" id="intelligence">26</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Willpower -->
+                <div class="attribute">
+                    <button id="wil-learn-button" class="plusButton attribute-increase-button" onclick="AddPointWil"  onmouseover="OnAttributeHover(5)" onmouseout="OnAttributeHoverEnd(5)"></button>
+                    <div class="attribute-line">
+                        <div class="attribute-background"  onclick="AddPointWil" onmouseover="OnAttributeHover(5)" onmouseout="OnAttributeHoverEnd(5)">
+                            <div class="attribute-icon willpower-icon"></div>
+                            <div class="attribute-name">3728148192</div>
+                            <div class="attribute-value" id="willpower">26</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </panel>
+
+        <!-- Skills -->
+        <panel id="skills-right-panel" class="tab-content-skills">
+
+            <div class="learned-skills">
+                <div style="position: relative; font-family: OptimusPrinceps; font-size: 16dp; top: 2dp; left: 0dp;">2065306313</div>
+                <div id="skill-slots">
+                </div>
+            </div>
+
+            <div class="available-skills">
+                <div class="skill-points-container">
+                    <div id="skill-points-text" class="attribute-points-caption">0525322880</div>
+                    <div id="skill-points-value" class="title-text available-points-value">0</div>
+                </div>
+                <div class="skills" id="available-skills-container">
+                    <!-- skills are dynamic added here -->
+                </div>
+            </div>
+        </panel>
+
+
+        <panel id="last-enemy-panel">
+            <button class="selector-button arrow-left" id="enemy-prev-button" onclick="OnPrevEnemy"/>
+            <div class="enemy-panel" id="enemy-info-panel">
+                <div id="enemy-title" class="enemy-title">TITLE</div>
+                <div class ="enemy-info-basics">
+                    <div class="enemy-icon-background">
+                        <img id="enemy-icon" src="" alt=""/>
+                    </div>
+                    <div class="enemy-info-basics-values">
+                        <div id="enemy-name">NAME</div>
+                        <div style="display: flex; flex-direction: row;">
+                            <div style="color:gray; font-size: 1.5vh; font-family: Inria Sans">Level:  </div>
+                            <div id="enemy-level">200</div>
+                        </div>
+
+                        <div class="enemy-base-stat-line" style="margin-top: 5dp;">
+                            <div class="enemy-base-stat-line-label">2012531032</div>
+                            <div class="enemy-base-stat-line-value" id="enemy-hp">value</div>
+                        </div>
+                        <div class="enemy-base-stat-line" style="margin-top: 5dp;">
+                            <div class="enemy-base-stat-line-label">0316699141</div>
+                            <div class="enemy-base-stat-line-value" id="enemy-chance-being-hit">value</div>
+                        </div>
+                        <div class="enemy-base-stat-line" style="margin-top: 5dp;">
+                            <div class="enemy-base-stat-line-label">2028198735</div>
+                            <div class="enemy-base-stat-line-value" id="enemy-hit-chance">value</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="damage-armor-caption" style="margin-top: 10dp;">
+                    <div class="damage-armor-name">2743939745</div>
+                    <div class="damage-armor-total-value" id="enemy-damage-value">0</div>
+                </div>
+                <div class="defence-damage-bars">
+                    <progress id="physical-damage-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="ice-damage-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="fire-damage-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="magic-damage-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="poison-damage-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                </div>
+
+
+                <div class="damage-armor-caption">
+                    <div class="damage-armor-name">2305326351</div>
+                    <div class="damage-armor-total-value" id="enemy-armor-value">0</div>
+                </div>
+                <div class="defence-damage-bars">
+                    <progress id="physical-defence-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="ice-defence-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="fire-defence-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="magic-defence-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                    <progress id="poison-defence-bar" class="defence-damage-type-bar" direction="right" value="1.0"/>
+                </div>
+            </div>
+            <button class="selector-button arrow-right" id="enemy-next-button" onclick="OnNextEnemy"/>
+        </panel>
+
+    </div>
+    </body>
+</rml>

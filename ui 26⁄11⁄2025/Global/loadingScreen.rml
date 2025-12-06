@@ -1,0 +1,52 @@
+<rml>
+    <head>
+        <link type="text/rcss" href="globalElements.rcss"/>
+        <title>loadingScreen</title>
+        <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: "Inria Sans";
+        }
+
+        .image-logo
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 90%;
+            decorator: image("s2_logo_large" contain);
+        }
+
+        .tip-container
+        {
+            bottom: 55dp;
+            font-size: 20dp;
+            color: #fff;
+            width: 80%;
+            font-family: "Inria Sans";
+
+            display: flex;
+
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="image-logo">
+<!--            <img sprite="s2_logo_large" style="width: auto; height: 100%; object-fit: contain;"/>-->
+        </div>
+<!--        <div class="tip-container" id="loading-tip" data-model="LoadingScreenViewModel">-->
+<!--            <span>{{ CurrentLoadingTip }}</span>-->
+<!--        </div>-->
+    </body>
+</rml>

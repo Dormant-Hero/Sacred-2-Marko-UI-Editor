@@ -1,0 +1,343 @@
+@spritesheet XboxPrompts
+{
+    src: Textures/Spritesheets/Prompts/Controller-Prompts.dds;
+    Controller-Empty: 2px 2px 80px 80px;
+    Controller-LStick-d: 86px 2px 80px 80px;
+    Controller-LStick-l: 170px 2px 80px 80px;
+    Controller-LStick-lr: 254px 2px 80px 80px;
+    Controller-LStick-r: 338px 2px 80px 80px;
+    Controller-LStick-t: 422px 2px 80px 80px;
+    Controller-LStick-td: 506px 2px 80px 80px;
+    Controller-LStick: 590px 2px 80px 80px;
+    Controller-RStick-d: 674px 2px 80px 80px;
+    Controller-RStick-l: 758px 2px 80px 80px;
+    Controller-RStick-lr: 842px 2px 80px 80px;
+    Controller-RStick-r: 926px 2px 80px 80px;
+    Controller-RStick-t: 2px 86px 80px 80px;
+    Controller-RStick-td: 86px 86px 80px 80px;
+    Controller-RStick: 170px 86px 80px 80px;
+    Ps-Circle: 254px 86px 80px 80px;
+    Ps-Dpad-d: 338px 86px 80px 80px;
+    Ps-Dpad-l: 422px 86px 80px 80px;
+    Ps-Dpad-r: 506px 86px 80px 80px;
+    Ps-Dpad-t: 590px 86px 80px 80px;
+    Ps-Dpad: 674px 86px 80px 80px;
+    Ps-Ex: 758px 86px 80px 80px;
+    Ps-L1: 842px 86px 80px 80px;
+    Ps-L2: 926px 86px 80px 80px;
+    Ps-LStick-click: 2px 170px 80px 80px;
+    Ps-R1: 86px 170px 80px 80px;
+    Ps-R2: 170px 170px 80px 80px;
+    Ps-RStick-click: 254px 170px 80px 80px;
+    Ps-Square: 338px 170px 80px 80px;
+    Ps-Triangle: 422px 170px 80px 80px;
+    Ps4-Options: 506px 170px 80px 80px;
+    Ps4-Share: 590px 170px 80px 80px;
+    Ps4-touch: 674px 170px 80px 80px;
+    Ps5-Options: 758px 170px 80px 80px;
+    Ps5-Share: 842px 170px 80px 80px;
+    Ps5-touch: 926px 170px 80px 80px;
+    Xbox-A: 2px 254px 80px 80px;
+    Xbox-B: 86px 254px 80px 80px;
+    Xbox-Dpad-d: 170px 254px 80px 80px;
+    Xbox-Dpad-l: 254px 254px 80px 80px;
+    Xbox-Dpad-r: 338px 254px 80px 80px;
+    Xbox-Dpad-t: 422px 254px 80px 80px;
+    Xbox-Dpad: 506px 254px 80px 80px;
+    Xbox-LB: 590px 254px 80px 80px;
+    Xbox-LStick-click: 674px 254px 80px 80px;
+    Xbox-LT: 758px 254px 80px 80px;
+    Xbox-RB: 842px 254px 80px 80px;
+    Xbox-RStick-click: 926px 254px 80px 80px;
+    Xbox-RT: 2px 338px 80px 80px;
+    Xbox-Screen: 86px 338px 80px 80px;
+    Xbox-Settings: 170px 338px 80px 80px;
+    Xbox-Status: 254px 338px 80px 80px;
+    Xbox-X: 338px 338px 80px 80px;
+    Xbox-Y: 422px 338px 80px 80px;
+}
+
+.interact-separator
+{
+    display: block;
+}
+
+.interact-rb
+{
+    decorator: image(Xbox-RB contain);
+}
+
+.item-inventory-scrap-container,
+.item-inventory-drop-container
+{
+    display: flex;
+    width: 100%;
+    height: 15dp;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap:10dp;
+    font-family: "Inria Sans";
+    font-size: 1.9vh;
+    color: primary-element-label;
+    margin-top: 5dp;
+}
+
+.item-inventory-drop,
+.item-inventory-scrap
+{
+    decorator: image(Xbox-Y contain);
+}
+
+.Xbox-Status
+{
+    decorator: image(Xbox-Status contain);
+}
+
+.Controller-LStick
+{
+    decorator: image(Controller-LStick contain);
+}
+
+.Controller-RStick-lr
+{
+    decorator: image(Controller-RStick-lr contain);
+}
+
+.Controller-RStick-td
+{
+    decorator: image(Controller-RStick-td contain);
+}
+
+.settings-button,
+.Xbox-Settings
+{
+    decorator: image(Xbox-Settings contain);
+}
+
+.Xbox-X
+{
+    decorator: image(Xbox-X contain);
+}
+
+.Xbox-B
+{
+    decorator: image(Xbox-B contain);
+}
+
+.Xbox-A
+{
+    decorator: image(Xbox-A contain);
+}
+
+.Xbox-Y
+{
+    decorator: image(Xbox-Y contain);
+}
+
+.Xbox-RStick-click
+{
+    decorator: image(Xbox-RStick-click contain);
+}
+
+.Xbox-LStick-click
+{
+    decorator: image(Xbox-LStick-click contain);
+}
+
+.Xbox-Dpad-d
+{
+    decorator: image(Xbox-Dpad-d contain);
+}
+
+.Xbox-Dpad-r
+{
+    decorator: image(Xbox-Dpad-r contain);
+}
+
+.Xbox-Dpad-l
+{
+    decorator: image(Xbox-Dpad-l contain);
+}
+
+.Xbox-Dpad-t
+{
+    decorator: image(Xbox-Dpad-t contain);
+}
+
+.Xbox-LB
+{
+    decorator: image(Xbox-LB contain);
+}
+
+.Xbox-RB
+{
+    decorator: image(Xbox-RB contain);
+}
+
+
+.Xbox-RT
+{
+    decorator: image(Xbox-RT contain);
+}
+
+.Xbox-LT
+{
+    decorator: image(Xbox-LT contain);
+}
+
+.xbox-controller-panel
+{
+    display: block;
+    decorator: tiled-horizontal-no-stretch(Main-menu-bg-l,Main-menu-bg-m,Main-menu-bg-r);
+}
+
+.ps-5-controller-panel
+{
+    display: none;
+}
+
+
+.select-on-map
+{
+    decorator: image(Xbox-A contain);
+}
+
+.zoom-map
+{
+    decorator: image(Controller-RStick-td contain);
+}
+
+.move-map
+{
+    decorator: image(Controller-LStick contain);
+}
+
+.focus-map
+{
+    decorator: image(Xbox-RT contain);
+}
+
+
+.item-trader-deselect,
+.end-trade
+{
+    decorator: image(Xbox-B contain);
+}
+
+.item-trader-buy,
+.item-inventory-move,
+.apply-settings
+{
+    decorator: image(Xbox-A contain);
+}
+
+.item-inventory-equip
+{
+    decorator: image(Xbox-A contain);
+}
+
+.item-inventory-compare
+{
+    decorator: image(Xbox-LStick-click contain);
+}
+
+.interact
+{
+    decorator: image(Xbox-A contain);
+}
+
+.use-buff
+{
+    decorator: image(Xbox-Dpad-r contain);
+}
+
+.use-potion
+{
+    decorator: image(Xbox-Dpad-l contain);
+}
+
+.use-godspell
+{
+    decorator: image(Xbox-Dpad-t contain);
+}
+
+.use-weapon
+{
+    decorator: image(Xbox-A contain);
+}
+
+.use-ca
+{
+    decorator: image(Xbox-X contain);
+}
+
+.switch-weapon
+{
+    decorator: image(Xbox-LT contain);
+}
+
+.switch-ca
+{
+    decorator: image(Xbox-RT contain);
+}
+
+.right-button
+{
+    decorator: image(Xbox-B contain);
+}
+
+.left-button
+{
+    decorator: image(Xbox-X contain);
+}
+
+.reset-settings
+{
+    decorator: image(Xbox-Y contain);
+}
+
+.up-button
+{
+    decorator: image(Xbox-Y contain);
+}
+
+.down-button
+{
+    decorator: image(Xbox-A contain);
+}
+
+.left-shoulder
+{
+    decorator: image(Xbox-LB contain);
+}
+
+.right-shoulder
+{
+    decorator: image(Xbox-RB contain);
+}
+
+.left-trigger
+{
+    decorator: image(Xbox-LT contain);
+}
+
+.right-trigger
+{
+    decorator: image(Xbox-RT contain);
+}
+.quick-access-inventory
+{
+    display: none;
+}
+.quick-access-combatArts
+{
+    display: none;
+}
+.quick-access-map
+{
+    display: none;
+}
+
+
+
+

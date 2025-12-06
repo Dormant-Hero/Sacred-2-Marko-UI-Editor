@@ -1,0 +1,191 @@
+@spritesheet hudSpritesheet
+{
+    src: Textures/Spritesheets/HudSpritesheet.dds;
+
+    @spritesheet hudSpritesheet
+    {
+        src: Textures/Spritesheets/HudSpritesheet.dds;
+
+        GmgTypeFire: 2px 2px 344px 16px;
+        GmgTypeIce: 350px 2px 344px 16px;
+        GmgTypeMagic: 698px 2px 344px 16px;
+        GmgTypeNormal: 1046px 2px 344px 16px;
+        GmgTypePoison: 1394px 2px 344px 16px;
+        MapEnemy: 1742px 2px 36px 36px;
+        MapHero: 1782px 2px 36px 36px;
+        MapMission: 1822px 2px 36px 36px;
+        EnemyHpDeffenseIcon: 1862px 2px 98px 56px;
+        EnemyHp: 2px 22px 862px 64px;
+        EnemyHpAttackIcon: 868px 22px 98px 68px;
+        HeroPortraitGem-active: 970px 22px 96px 96px;
+        HeroPortraitGem-unactive: 1070px 22px 96px 96px;
+        EnemyHpBack: 2px 94px 894px 96px;
+        TeamPortraitBack: 1170px 22px 200px 200px;
+        TeamPortraitHP: 1374px 22px 200px 200px;
+        TeamPortraitLvl: 1578px 42px 200px 200px;
+        HeroPortraitExp: 2px 194px 376px 376px;
+        HeroPortraitHp: 382px 194px 376px 376px;
+        HeroPortraitBack: 762px 194px 376px 488px;
+        MapFront: 1142px 246px 480px 480px;
+
+    }
+
+}
+
+@spritesheet slotsSpritesheetSmall
+{
+    src: "Textures/Spritesheets/SlotsSpritesheetSmall.dds";
+    Item-background-1x5: 0px 0px 100px 484px;
+    Item-background-1x4: 100px 0px 100px 388px;
+    Item-background-2x4: 200px 0px 196px 388px;
+    Item-background-1x3: 396px 0px 100px 292px;
+    Item-background-2x3: 0px 484px 196px 292px;
+    Item-background-1x2: 396px 292px 100px 196px;
+    Item-background-2x1: 196px 388px 196px 100px;
+    Item-background-2x2: 196px 488px 196px 196px;
+    CA-slot-selected: 496px 0px 160px 160px;
+    buff-slot-selected: 496px 160px 160px 160px;
+    item-slot-selected: 496px 320px 160px 160px;
+    potion-slot-selected: 496px 480px 160px 160px;
+    Item-background-1x1: 392px 488px 100px 100px;
+}
+
+
+@spritesheet slotsSpritesheet
+{
+    src: "Textures/Spritesheets/SlotsSpritesheet.dds";
+    HUD-Map-background: 0px 0px 376px 462px;
+    CA-slot-active: 0px 462px 168px 168px;
+    CA-slot-back: 168px 462px 168px 168px;
+    CA-slot-default: 336px 462px 168px 168px;
+    CA-slot-hover: 376px 0px 168px 168px;
+    CA-slot-locked: 376px 168px 168px 168px;
+    buff-slot-active: 504px 336px 168px 168px;
+    HUD-Map-icon-background: 376px 336px 96px 96px;
+    buff-slot-back: 544px 0px 168px 168px;
+    buff-slot-default: 544px 168px 168px 168px;
+    buff-slot-hover: 504px 504px 168px 168px;
+    buff-slot-locked: 0px 630px 168px 168px;
+    item-slot-active: 168px 630px 152px 152px;
+    item-slot-back: 320px 630px 152px 152px;
+    item-slot-default: 472px 672px 152px 152px;
+    item-slot-hover: 168px 782px 152px 152px;
+    item-slot-locked: 0px 798px 152px 152px;
+    potion-slot-active: 320px 782px 152px 152px;
+    potion-slot-back: 624px 672px 152px 152px;
+    potion-slot-default: 776px 672px 152px 152px;
+    potion-slot-hover: 672px 336px 152px 152px;
+    potion-slot-locked: 824px 336px 152px 152px;
+    HUD-Map-icon-character: 712px 0px 96px 96px;
+    HUD-Map-icon-hover-combined: 712px 96px 96px 96px;
+    HUD-Map-icon-hover: 712px 192px 96px 96px;
+    HUD-Map-icon-map: 808px 0px 96px 96px;
+    HUD-Map-icon-star: 808px 96px 96px 96px;
+
+
+}
+
+
+.hero-portrait-back
+{
+    decorator: image(HeroPortraitBack contain);
+}
+
+button.hudSlot
+{
+    decorator: image(item-slot-default contain);
+}
+
+button.hudSlot:focus,
+button.hudSlot:focus-visible,
+button.hudSlot:hover
+{
+    decorator: image(item-slot-selected contain);
+}
+
+button.hudSlot:selected,
+button.hudSlot:active
+{
+    decorator: image(item-slot-active contain);
+}
+
+button.hudSlot:disabled
+{
+    decorator: image(item-slot-locked contain);
+}
+
+/*potions*/
+
+button.hudSlotPotion
+{
+    decorator: image(potion-slot-default contain);
+}
+
+button.hudSlotPotion:focus,
+button.hudSlotPotion:focus-visible,
+button.hudSlotPotion:hover
+{
+    decorator: image(potion-slot-selected contain);
+}
+
+button.hudSlotPotion:selected,
+button.hudSlotPotion:active
+{
+    decorator: image(potion-slot-active contain);
+}
+
+button.hudSlotPotion:disabled
+{
+    decorator: image(potion-slot-locked contain);
+}
+
+/*buffs*/
+button.hudSlotBuff
+{
+    decorator: image(buff-slot-default contain);
+}
+
+
+button.hudSlotBuff:focus,
+button.hudSlotBuff:focus-visible,
+button.hudSlotBuff:hover
+{
+    decorator: image(buff-slot-selected contain);
+}
+
+button.hudSlotBuff:selected,
+button.hudSlotBuff:active
+{
+    decorator: image(buff-slot-active contain);
+}
+
+button.hudSlotBuff:disabled
+{
+    decorator: image(buff-slot-locked contain);
+}
+
+/*combat arts*/
+button.hudSlotCA
+{
+    decorator: image(CA-slot-default contain);
+}
+
+
+button.hudSlotCA:focus,
+button.hudSlotCA:focus-visible,
+button.hudSlotCA:hover
+{
+    decorator: image(CA-slot-selected contain);
+}
+
+button.hudSlotCA:selected,
+button.hudSlotCA:active
+{
+    decorator: image(CA-slot-active contain);
+}
+
+button.hudSlotCA:disabled
+{
+    decorator: image(CA-slot-locked contain);
+}
+

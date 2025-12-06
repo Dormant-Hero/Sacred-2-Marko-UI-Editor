@@ -1,0 +1,732 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../Ingame/journal_Spritesheet.rcss"/>
+        <link type="text/rcss" href="../Ingame/inventoryCaElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/items_FilterTabbar.rcss"/>
+        <link type="text/rcss" href="../Ingame/spells.rcss"/>
+        <link type="text/rcss" href="../Ingame/skills.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>ingame_CombatArts</title>
+        <style>
+            .ornament-left {
+                display: inline-block;
+                decorator: image(journal-ornament flip-horizontal contain);
+                width: 20dp;
+                height: 12dp;
+                margin-right: 10dp;
+            }
+
+            .ornament-right {
+                display: inline-block;
+                decorator: image(journal-ornament contain);
+                width: 20dp;
+                height: 12dp;
+                margin-left: 10dp;
+            }
+
+            .left-panel-title {
+                position: relative;
+                width: 100%;
+                height: 48dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: center; /* Zentriert vertikal */
+                align-items: center; /* Zentriert horizontal */
+            }
+
+            #combat-arts-left-panel {
+                pointer-events: none;
+                width: 501dp;
+                height: 624dp;
+                top: 10%;
+                right: 1.5%;
+                position: absolute;
+                display: flex;
+                gap: 1dp;
+
+                decorator: image(Combatarts-main-bg contain);
+            }
+
+            .aspects-panel {
+                width: 350dp;
+                height: 100%;
+                align-items: center;
+                justify-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .combo-panel {
+                width: 150dp;
+                height: 490dp;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 5dp;
+            }
+
+            .combo-button-ornament {
+                width: 80dp;
+                height: 80dp;
+                decorator: image("ComboOrnament" contain);
+            }
+
+            .combo-button,
+            .combo-button-not-allowed
+            {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                width: 48dp;
+                height: 48dp;
+                transform: translate(-50%, -50%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                decorator: image("ComboAdd" contain);
+                opacity: 1;
+            }
+
+            .combo-button:hover {
+                decorator: image("ComboAdd" contain);
+                opacity: 1;
+                background-color: rgba(109, 119, 126, 150);
+                border-radius: 50dp;
+            }
+
+            .combo-button-not-allowed:hover
+            {
+                decorator: image("ComboAdd" contain);
+                opacity: 1;
+                border-width: 3px;
+                border-color: red;
+                border-radius: 50dp;
+            }
+
+            .combo-button:focus,
+            .combo-button:focus-visible,
+            .combo-button:active,
+            .combo-button-not-allowed:focus{
+                decorator: image("ComboAdd" contain);
+                opacity: 1;
+            }
+
+            .combo-button:disabled,
+            .combo-button-not-allowed:disabled{
+                decorator: image("ComboAdd" contain);
+                opacity: 0.1;
+            }
+
+            #combo-button-1.assigned {
+                decorator: image("sps_combo_1" contain);
+            }
+
+            #combo-button-2.assigned {
+                decorator: image("sps_combo_2" contain);
+            }
+
+            #combo-button-3.assigned {
+                decorator: image("sps_combo_3" contain);
+            }
+
+            #combo-button-4.assigned {
+                decorator: image("sps_combo_4" contain);
+            }
+
+            .combo-sub-button {
+                position: absolute;
+                width: 12dp;
+                height: 12dp;
+                decorator: image("Combatarts-circle-active" contain);
+                z-index: 5;
+            }
+
+            .not-allowed-to-drop-skill
+            {
+                image-color: red;
+                transform: scale3d(1.1);
+            }
+
+            .combo-sub-button:hover {
+                decorator: image("Combatarts-circle-active" contain);
+            }
+
+            .combo-sub-button:focus {
+                decorator: image("Combatarts-circle-active" contain);
+            }
+
+            .combo-sub-button:disabled {
+                decorator: image("Combatarts-circle-inactive" contain);
+            }
+
+            .combo-sub-button-upgrade {
+                position: absolute;
+                width: 12dp;
+                height: 12dp;
+                decorator: image("Combatarts-square-active" contain);
+                z-index: 5;
+            }
+
+            .combo-sub-button-upgrade:disabled {
+                decorator: image("Combatarts-square-inactive" contain);
+            }
+
+            .circle {
+                position: absolute;
+                left: 0dp;
+                top: 0dp;
+                width: 12dp;
+                height: 12dp;
+                background-color: rgba(255, 0, 0, 0);
+                opacity: 1;
+                mask-image: image("Combatarts-circle-mask" contain);
+                pointer-events: none;
+            }
+
+            .combo-combat-art-icon {
+                position: absolute;
+                display: block;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                z-index: 1;
+                pointer-events: auto;
+            }
+
+            /* clockwise sorted combo sub buttons */
+            .combo-sub-button-1 {
+                left: 50%;
+                bottom: 0dp;
+                transform: translate(-50%, -30%);
+            }
+
+            .combo-sub-button-2 {
+                right: 25%;
+                bottom: 6dp;
+            }
+
+            .combo-sub-button-3 {
+                right: 12%;
+                bottom: 13dp;
+            }
+
+            .combo-sub-button-4 {
+                right: 6%;
+                bottom: 24dp;
+            }
+
+            .combo-edit-panel {
+                position: absolute;
+                right: 490dp;
+                top: 0dp;
+                width: 150dp;
+                height: 400dp;
+                display: none;
+                decorator: image("Combatarts-combopanel-bg" contain);
+            }
+
+            #tabbar {
+                width: 300dp;
+                height: 35dp;
+                margin-top: 15dp;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+
+            #combat-art-tabset {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: auto;
+                height: 35dp;
+            }
+
+            .tabbar-button {
+                height: 35dp;
+                width: 45dp;
+                display: inline-block;
+                margin-right: 5dp;
+                margin-left: 5dp;
+            }
+
+            .nav-button {
+                width: 35dp;
+                height: 35dp;
+                text-align: center;
+                line-height: 35dp;
+                cursor: pointer;
+                border-radius: 5px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .aspect-info-line {
+                margin-top: 10dp;
+                width: 90%;
+                height: 30dp;
+                align-items: center;
+                line-height: 25dp;
+                font-size: 2vh;
+                decorator: image(skills-background-skills-dark);
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-family: OptimusPrinceps;
+                color: primary-list-label;
+            }
+
+            .aspect-info-line-right {
+                margin-right: 5dp;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 3dp;
+                color: title;
+                font-size: 2.5vh;
+            }
+
+            .aspect-info-line-left {
+                margin-left: 5dp;
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+                gap: 3dp;
+            }
+
+            .dot {
+                width: 20dp;
+                height: 20dp;
+                decorator: image(PlusBTN-upgraded contain);
+            }
+
+            #combat-arts-container {
+                margin-top: 15dp;
+                width: 90%;
+                height: 500dp;
+                display: flex;
+                flex-direction: column;
+                pointer-events: auto;
+                gap: 5dp;
+            }
+
+            .combat-art {
+                width: 100%;
+                height: 96dp;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 6dp;
+            }
+
+            .combat-art-name-container
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                height: 10dp;
+                width: 100%;
+            }
+
+            .combat-art-prereq-icon {
+                height: 25dp;
+                width: 25dp;
+                margin-right: 5dp;
+                margin-bottom: -7.5dp;
+                z-index: 2;
+                mask-image: image(skills-slot-square-default-mask contain);
+            }
+
+            .combat-art-name
+            {
+                font-family: OptimusPrinceps;
+                color: primary-list-label;
+                font-size: 1.8vh;
+                width: 300dp;
+            }
+
+            .combat-art-name-decorator
+            {
+                decorator: image(skills-dooted-line-short contain);
+                max-width: 65%;
+                width: 100%;
+                height: 100%;
+                margin-left: 10dp;
+            }
+
+            .combat-art-progress-container {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 80dp;
+            }
+
+            .combat-art-icon,
+            .combat-art-icon-not-learned {
+                display: block;
+                width: 65dp;
+                height: 65dp;
+            }
+
+            .combat-art-icon:hover {
+                margin-left: -2dp;
+                padding-left: 2dp;
+                background-color: rgba(109, 119, 126, 150);
+                border-radius: 50dp;
+            }
+
+            .combat-art-level {
+                decorator: image(SmallCounterBack contain);
+                position: relative;
+                top: -25dp;
+                left: -7dp;
+                z-index: 2;
+                font-family: Inria Sans;
+                display: flex;
+                width: 40dp;
+                height: 23dp;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.5vh;
+            }
+
+            .combat-art-progress-path-container {
+                display: flex;
+                flex-direction: column;
+                width: 264dp;
+                height: 80dp;
+                margin-left: -10dp;
+                margin-top: -2dp;
+            }
+
+            .combat-art-progress-path {
+                display: flex;
+                flex-direction: row;
+                width: 264dp;
+                height: 40dp;
+            }
+
+            .path-element {
+                width: 33dp;
+                height: 33dp;
+            }
+
+            .path-upper,
+            .path-upper-banned {
+                decorator: image(CombatArtArrows-inactive-up);
+            }
+
+            .path-lower,
+            .path-lower-banned {
+                decorator: image(CombatArtArrows-inactive-down);
+            }
+
+            .path-upper-ready {
+                decorator: image(CombatArtArrows-active-up);
+            }
+
+            .path-lower-ready {
+                decorator: image(CombatArtArrows-active-down);
+            }
+
+            .path-upper-learned {
+                decorator: image(CombatArtArrows-learned-up);
+            }
+
+            .path-lower-learned {
+                decorator: image(CombatArtArrows-learned-down);
+            }
+
+            .node {
+                decorator: image(PlusBTN-inactive);
+            }
+
+            .node-ready {
+                decorator: image(PlusBTN-default);
+            }
+
+            .node-ready:hover {
+                background-color: rgba(109, 119, 126, 150);
+                border-radius: 50dp;
+            }
+
+            .node-learned {
+                decorator: image(PlusBTN-upgraded);
+            }
+
+            .node-learned:hover {
+                background-color: rgba(109, 119, 126, 150);
+                border-radius: 5dp;
+            }
+
+            .node-banned {
+                decorator: image(PlusBTN-banned);
+            }
+
+            .up {
+                transform: translateY(3dp);
+            }
+
+            .down {
+                transform: translateY(-3dp);
+            }
+
+            .up-flipped {
+                transform: translateY(3dp) scaleX(-1);
+            }
+
+            .down-flipped {
+                transform: translateY(-3dp) scaleX(-1);
+            }
+
+            .not-learned {
+                filter: grayscale(0.5);
+            }
+
+            .tabbar-icon {
+                display: inline-block;
+                z-index: 10;
+                width: 85%;
+                height: 100%;
+                object-fit: contain;
+                margin-left: 4dp;
+            }
+
+            .skill-frame {
+                width: 25dp;
+                height: 25dp;
+                position: relative;
+                display: block;
+                top: -25dp;
+                decorator: image(skills-slot-square-default contain);
+                z-index: 1;
+            }
+
+            .requirement-skill-container {
+                width: 25dp;
+                height: 25dp;
+                display: block;
+            }
+
+            #prerequisite-skills-container {
+                display: flex;
+                flex-direction: row;
+                gap: 4dp;
+                margin-right: 10dp;
+            }
+
+            .left-panel-title-text {
+                font-size: 2.3vh;
+                color: primary-element-label;
+                font-family: OptimusPrinceps;
+            }
+
+            .left-panel-title-text-panel {
+                font-size: 2.3vh;
+                color: primary-element-label;
+                font-family: OptimusPrinceps;
+                width: 100%;
+                text-align: center;
+            }
+
+            .combo-connector
+            {
+                width: 30dp;
+                height: 30dp;
+                decorator: image(Combatarts-line-default contain);
+                margin-top: -10dp;
+                margin-bottom:  -10dp;
+            }
+
+            .combo-connector:disabled
+            {
+                width: 25dp;
+                height: 25dp;
+                margin-top: -5dp;
+                margin-bottom:  -5dp;
+                decorator: image(Combatarts-line-inactive contain);
+            }
+
+        </style>
+    </head>
+    <body class="no-pointer-events">
+    <panel id="combat-arts-left-panel" data-model="CombatArtsViewModel">
+        <div id="combo-edit-panel" class="combo-panel combo-edit-panel">
+            <div class="left-panel-title ">
+                <p id="combo-edit-title" class="left-panel-title-text-panel">1643110358</p> <!-- Combo %1 -->
+            </div>
+            <div class="">
+                <button id="combo-edit-button-1" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <p class="combo-combat-art-icon"></p>
+                    <div class="combo-sub-button-upgrade combo-sub-button-1"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-2"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-3"></div>
+                </button>
+            </div>
+            <div class="combo-connector" id="combo-connector-1"></div>
+            <div class="">
+                <button id="combo-edit-button-2" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <p class="combo-combat-art-icon"></p>
+                    <div class="combo-sub-button-upgrade combo-sub-button-1"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-2"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-3"></div>
+                </button>
+            </div>
+            <div class="combo-connector" id="combo-connector-2"></div>
+            <div class="">
+                <button id="combo-edit-button-3" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <p class="combo-combat-art-icon"></p>
+                    <div class="combo-sub-button-upgrade combo-sub-button-1"></div>
+                    <div class="combo-sub-button-upgrade button combo-sub-button-2"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-3"></div>
+                </button>
+            </div>
+            <div class="combo-connector" id="combo-connector-3"></div>
+            <div class="">
+                <button id="combo-edit-button-4" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <p class="combo-combat-art-icon"></p>
+                    <div class="combo-sub-button-upgrade combo-sub-button-1"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-2"></div>
+                    <div class="combo-sub-button-upgrade combo-sub-button-3"></div>
+                </button>
+            </div>
+        </div>
+        <div class="combo-panel">
+            <div class="left-panel-title">
+                <div class="ornament-left"></div>
+                <p class="left-panel-title-text">1883750643</p> <!-- Combos -->
+                <div class="ornament-right"></div>
+            </div>
+            <div class="combo-button-ornament">
+                <button id="combo-button-1" raw_id="0" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <div class="combo-sub-button combo-sub-button-1"></div>
+                    <div class="combo-sub-button combo-sub-button-2"></div>
+                    <div class="combo-sub-button combo-sub-button-3"></div>
+                    <div class="combo-sub-button combo-sub-button-4"></div>
+                </button>
+            </div>
+            <div class="combo-button-ornament">
+                <button id="combo-button-2" raw_id="1" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <div class="combo-sub-button combo-sub-button-1"></div>
+                    <div class="combo-sub-button combo-sub-button-2"></div>
+                    <div class="combo-sub-button combo-sub-button-3"></div>
+                    <div class="combo-sub-button combo-sub-button-4"></div>
+                </button>
+            </div>
+            <div class="combo-button-ornament">
+                <button id="combo-button-3" raw_id="2" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <div class="combo-sub-button combo-sub-button-1"></div>
+                    <div class="combo-sub-button combo-sub-button-2"></div>
+                    <div class="combo-sub-button combo-sub-button-3"></div>
+                    <div class="combo-sub-button combo-sub-button-4"></div>
+                </button>
+            </div>
+            <div class="combo-button-ornament">
+                <button id="combo-button-4" raw_id="3" class="combo-button" onclick="" onmousedown="" onmouseup="" onmouseover="" onmouseout="">
+                    <div class="combo-sub-button combo-sub-button-1"></div>
+                    <div class="combo-sub-button combo-sub-button-2"></div>
+                    <div class="combo-sub-button combo-sub-button-3"></div>
+                    <div class="combo-sub-button combo-sub-button-4"></div>
+                </button>
+            </div>
+        </div>
+        <div class="aspects-panel">
+            <!-- Tabbar -->
+            <div id="tabbar">
+                <div id="secondary-tab-prev" class="nav-button left-trigger"></div>
+                <tabset id="combat-art-tabset">
+                    <tab id="aspect-tab-1" class="tabbar-button" onclick="OnAspect1Select">
+                        <img id="aspect-tab-icon-1" class="tabbar-icon"/>
+                    </tab>
+                    <tab id="aspect-tab-2" class="tabbar-button" onclick="OnAspect2Select">
+                        <img id="aspect-tab-icon-2" class="tabbar-icon"/>
+                    </tab>
+                    <tab id="aspect-tab-3" class="tabbar-button" onclick="OnAspect3Select">
+                        <img id="aspect-tab-icon-3" class="tabbar-icon"/>
+                    </tab>
+                </tabset>
+                <div id="secondary-tab-next" class="nav-button right-trigger"></div>
+            </div>
+
+            <div class="aspect-info-line">
+                <div class="aspect-info-line-left">
+                    <div id="prerequisite-skills-container">
+                        <div class="requirement-skill-container">
+                            <img data-attr-sprite="PrereqFocusSkillIcon" class="combat-art-prereq-icon"/>
+                            <div class="skill-frame"></div>
+                        </div>
+                        <div class="requirement-skill-container">
+                            <img data-attr-sprite="PrereqLoreSkillIcon" class="combat-art-prereq-icon"/>
+                            <div class="skill-frame"></div>
+                        </div>
+                    </div>
+                    <div style="font-size: 1.8vh;">1372893773</div>
+                    <div style="font-size: 1.8vh;"> :</div>
+                    <div style="font-size: 1.8vh; line-height: 1.8vh;" id="aspect-name"></div>
+                </div>
+                <div class="aspect-info-line-right" style="width: 65dp;">
+                    <div class="" style="line-height: 50%; font-size: 15dp;">
+                        <div id="current-level" data-class-disabled="HeroCard.IsMaxLevel">{{ CurrentLevel }}</div>
+                        <div id="needed-level">{{ NeededLevel }}</div>
+                    </div>
+                    <div id= "levels-dot-decorator" class="dot"></div>
+                </div>
+            </div>
+
+
+            <div id="combat-arts-container">
+                <div class="combat-art" data-for="CombatArt : CombatArts">
+                    <div class="combat-art-name-container">
+                        <div class="combat-art-name">{{ CombatArt.Name }}</div>
+                        <div class="combat-art-name-decorator"></div>
+                    </div>
+
+
+                    <div class="combat-art-progress-container">
+                        <img data-attr-sprite="CombatArt.Icon" class="combat-art-icon" onmousedown="HandleMouseDown" data-if="CombatArt.BaseLearned"/>
+                        <img data-attr-sprite="CombatArt.Icon" class="combat-art-icon-not-learned not-learned" onmousedown="HandleMouseDown" data-if="!CombatArt.BaseLearned"/>
+
+                        <div class="combat-art-progress-path-container">
+                            <div class="combat-art-progress-path" id="upper-path">
+                                <div class="mod1a-p path-element path-upper up"></div>
+                                <div class="mod1a path-element node up" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                                <div class="mod2a-r path-element path-upper up-flipped"></div>
+                                <div class="mod2a-p path-element path-upper up"></div>
+                                <div class="mod2a path-element node up" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                                <div class="mod3a-r path-element path-upper up-flipped"></div>
+                                <div class="mod3a-p path-element path-upper up"></div>
+                                <div class="mod3a path-element node up" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                            </div>
+                            <div class="combat-art-progress-path" id="lower-path">
+                                <div class="mod1b-p path-element path-lower down"></div>
+                                <div class="mod1b path-element node down" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                                <div class="mod2b-r path-element path-lower down-flipped"></div>
+                                <div class="mod2b-p path-element path-lower down"></div>
+                                <div class="mod2b path-element node down" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                                <div class="mod3b-r path-element path-lower down-flipped"></div>
+                                <div class="mod3b-p path-element path-lower down"></div>
+                                <div class="mod3b path-element node down" onmouseover="OnModeNodeHover" onmouseout="OnModeNodeHoverEnd"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="combat-art-level">
+                        <div>{{ CombatArt.Level }}</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </panel>
+    </body>
+</rml>

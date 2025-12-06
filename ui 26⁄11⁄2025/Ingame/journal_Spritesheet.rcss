@@ -1,0 +1,42 @@
+@spritesheet journal-icons
+{
+    src: "Textures/Spritesheets/journal-icons.dds";
+    JournalTabIcon-Achievements-active: 2px 2px 52px 62px;
+    JournalTabIcon-Achievements-inactive: 58px 2px 52px 62px;
+    JournalTabIcon-Books-active: 114px 2px 52px 62px;
+    JournalTabIcon-Books-inactive: 170px 2px 52px 62px;
+    JournalTabIcon-Quests-active: 226px 2px 52px 62px;
+    JournalTabIcon-Quests-inactive: 282px 2px 52px 62px;
+    Check-active: 338px 2px 72px 72px;
+    Checkbox-active: 414px 2px 72px 72px;
+    Checkbox-inactive: 490px 2px 72px 72px;
+    CheckboxSmall-active: 566px 2px 72px 72px;
+    CheckboxSmall-inactive: 642px 2px 72px 72px;
+    DifficultySlot-active: 718px 2px 72px 72px;
+    DifficultySlot-inactive: 794px 2px 72px 72px;
+    QuestIcon-failed: 870px 2px 72px 72px;
+    HoverFrame-l: 225px 215px 48px 128px;
+    HoverFrame-r: 833px 215px 48px 128px;
+    HoverFrame-m: 249px 215px 608px 128px;
+    Ellipse-active: 662px 78px 216px 216px;
+    MapFrame-default: 2px 210px 216px 216px;
+    Checkbox-Main: 940px 6px 82px 96px;
+    FocusFrame-active: 2px 78px 656px 128px;
+    Quest-active: 225px 215px 656px 128px;
+    FocusFrame-small-active: 2px 428px 656px 80px;
+    FocusFrame-small-hover: 2px 510px 656px 80px;
+    FocusFrame-large-active: 2px 592px 656px 176px;
+    FocusFrame-large-hover: 2px 770px 656px 176px;
+}
+
+@spritesheet journal-background
+{
+    src: "Textures/Spritesheets/Backgrounds/JournalBackgrounds.dds";
+    journal-background-L: 0px 0px 764px 1944px;
+    journal-background-R: 764px 0px 1072px 1936px;
+    journal-background-R-field: 1836px 0px 984px 316px;
+    journal-background-R-dottetline: 764px 1936px 941px 4px;
+    journal-background-R-ornament: 1836px 316px 944px 28px;
+    journal-ornament: 1836px 344px 64px 28px;
+    journal-dottedline: 1911px 320px 795px 12px;
+}

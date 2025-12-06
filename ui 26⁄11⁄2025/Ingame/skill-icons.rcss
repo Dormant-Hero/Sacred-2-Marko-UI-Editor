@@ -1,0 +1,27 @@
+
+@spritesheet skills
+{
+    src: "Textures/Spritesheets/skills.dds";
+    skills-dooted-line-long: 0px 0px 739px 4px;
+    skills-dooted-line-short: 0px 4px 684px 4px;
+    skills-letter-I: 739px 0px 24px 60px;
+    skills-slot-plus: 763px 0px 104px 104px;
+    skills-slot-big-default-mask: 0px 8px 236px 112px;
+    skills-slot-big-default: 236px 8px 236px 112px;
+    skills-slot-long-default-mask: 472px 8px 216px 144px;
+    skills-slot-square-active: 867px 0px 156px 156px;
+    skills-background-title-light: 0px 156px 952px 80px;
+    skills-background-skills-dark: 0px 236px 944px 128px;
+    skills-background-skills-light: 0px 364px 944px 128px;
+    skills-background-skillsSlots-dark: 0px 492px 392px 128px;
+    skills-slot-long-default: 392px 492px 216px 144px;
+    skills-slot-square-default-mask: 608px 492px 156px 156px;
+    skills-slot-square-default: 764px 492px 156px 156px;
+    skills-slot-square-hover: 0px 620px 156px 156px;
+
+    skills-background-skills-dark-l: 0px 236px 22px 128px;
+    skills-background-skills-dark-m: 22px 236px 72px 128px;
+    skills-background-skills-dark-r: 922px 236px 944px 128px;
+}
+
+

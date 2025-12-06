@@ -1,0 +1,481 @@
+<rml>
+    <head>
+        <link type="text/template" href="../global/fullscreenMenu.rml"/>
+        <link type="text/rcss" href="../global/mainMenuHeroElements.rcss"/>
+        <link type="text/rcss" href="../global/globalElements.rcss"/>
+        <link type="text/rcss" href="../Ingame/skill-icons.rcss"/>
+        <title>mainMenu_characterSelection</title>
+        <style>
+            img
+            {
+                image-fit: contain;
+            }
+
+            .main_container
+            {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            character_selection
+            {
+                width: 100%;
+                height: 100%;
+                font-family: "Inria Sans";
+                font-weight: normal;
+                font-style: normal;
+                font-size: 15dp;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .scrollable-card-container
+            {
+                display: flex;
+                overflow-x: auto; /* Enable horizontal scrolling ?*/
+                overflow-y: hidden; /* Disable vertical scrolling */
+                overscroll-behavior: contain;
+                gap: 20dp;
+                margin-top: 90dp;
+                height: 550dp;
+                width: 100%;
+                padding-left: 40dp;
+            }
+
+            .scrollable-card-container card
+            {
+                decorator: image(Choose-save-bg );
+                width: 260dp; /* Half Size of the Thumbnail for HD */
+                height: 100%;
+                flex-shrink: 0; /* Prevent cards from shrinking */
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .invisible-card
+            {
+                decorator: image(empty contain);
+                width: 260dp; /* Half Size of the Thumbnail for HD */
+                height: 100%;
+                flex-shrink: 0; /* Prevent cards from shrinking */
+                display: flex;
+                opacity: 0;
+            }
+
+            .card-header-container {
+                display: block;
+                align-items: center;
+                justify-content: center;
+                height: 40%;
+                width: 100%;
+                margin-top: -40%;
+                pointer-events: none;
+            }
+
+
+            card .image-logo {
+                decorator: image(s2_logo_small contain);
+                width: 80%;
+                height: 75%;
+                margin-left: 10dp;
+                margin-right: 10dp;
+                margin-top: 15%;
+                margin-bottom: 15dp;
+                transform: translateY(-65dp);
+            }
+
+
+            .char-icon {
+                height: 100%;
+                z-index: 3;
+                position: absolute; /* Or default positioning if Flexbox handles it */
+                top: 50%; /* Centers vertically */
+                left: 50%; /* Centers horizontally */
+                transform: translate(-50%, -70%); /* Offsets to perfectly center */
+            }
+
+            .char-level {
+                font-size: 14dp;
+                z-index: 5;
+                line-height: 100%;
+                text-align: center;
+                margin-top:15%;
+				color: #BDB996;
+            }
+            .char-level-frame
+            {
+                decorator: image(LvlCounterBack fill);
+                display:flex;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 20%;
+                height: 25%;
+                transform: translate(-50%, 0%);
+                z-index: 4;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .char-name {
+                width: 100%;
+                text-align: center;
+                font-size: 2.5vh;
+                font-effect: outline(1dp outline);
+            }
+
+            card name {
+                display: block;
+                text-align: center;
+            }
+
+            .hero-info
+            {
+                text-align: left;
+                font-size: 14dp;
+                width: 90%;
+                height: 35%;
+                padding-left: 10dp;
+                padding-right: 10dp;
+                min-height: 220dp;
+            }
+            .header-spacer
+            {
+                height: 15dp;
+            }
+
+            card .hero-info-header {
+                text-align: left;
+                font-size: 20dp;
+                width: 95%;
+                max-height: 20%;
+                padding-left: 10dp;
+                padding-right: 10dp;
+                margin-top: 20dp;
+                margin-bottom: 5dp;
+
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            card .hero-info div {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            card .hero-info div span {
+                font-weight: bold;
+                margin-top: 4dp;
+                margin-bottom: 4dp;
+            }
+
+            .char-icon-ornament {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                decorator: image(PortraitOrnaments contain);
+            }
+
+            .charname-ornament {
+                position: relative;
+                width: 20%;
+            }
+
+            .charname-ornament-left {
+                decorator: image(OrnamentTitle-tl contain);
+            }
+
+            .charname-ornament-right {
+                decorator: image(OrnamentTitle-tr contain);
+            }
+
+            .small-button {
+                margin-top: auto;
+                width: 80%;
+                height: 2.0vh;
+                line-height: 2.0vh;
+                max-height:  2.0vh;
+            }
+
+            .new-char-button
+            {
+                margin-bottom: -20%;
+                line-height: 2.1vh;
+            }
+
+            .play-button {
+                margin-bottom: 25dp;
+                width:90%;
+            }
+
+            .delete-button
+            {
+                margin-top: 25dp;
+            }
+
+
+            scrollbarhorizontal { height: 0dp; /* Hide scrollbar height */ }
+
+            scrollbarhorizontal slidertrack {
+                background: transparent;
+                height: 0dp;
+            }
+
+            scrollbarhorizontal sliderbar {
+                background: transparent;
+            }
+
+            .back-button-container {
+                position: relative;
+                width: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 15%;
+            }
+
+            .back-button {
+                position: relative;
+                height: 2.5vh;
+            }
+
+            .separator {
+                width: 100%;
+                height: 2dp;
+                decorator: image(skills-dooted-line-long contain);
+            }
+
+            .button-group {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 20%;
+            }
+
+            .button-group button {
+                display: block;
+                margin-top: 3dp;
+            }
+
+            .cant-create-hero-message
+            {
+                display: block;
+                height: 20dp;
+                font-family: Inria Sans;
+                font-size: 2vh;
+                color: primary-list-value;
+                z-index: 50;
+                transform: translateY(-60dp);
+            }
+
+            card .char-icon-container
+            {
+                position: relative;
+                top:85%;
+                left: 50%;
+                transform: translate(-50%,5%);
+                width: 70%;
+                height: 35%;
+                z-index: 2;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            .savegame-thumbnail
+            {
+                height: auto;
+                width: 96%;
+                z-index: 1;
+                mask-image: image(Choose-save-mask contain);
+                position: relative;
+                top: -28dp;
+            }
+
+            .corner-left
+            {
+                decorator: image(Choose-save-ornament-l contain);
+                position: relative;
+                top: 1dp;
+                left: -46%;
+                width: 20dp;
+                height: 20dp;
+                display: block;
+                z-index: 50;
+            }
+
+            .corner-right
+            {
+                decorator: image(Choose-save-ornament-r contain);
+                position: relative;
+                top: -15dp;
+                right: -46%;
+                width: 20dp;
+                height: 20dp;
+                display: block;
+                z-index: 50;
+            }
+
+            .hardcore-text
+            {
+                font-family: OptimusPrinceps;
+            }
+
+            .dead-screenshot
+            {
+                decorator: image("Textures\data\icons\pixmaps\savegamethumbs\dead.dds")
+            }
+
+
+            .button-previous {
+                width: 6dp;
+                height: 6dp;
+                decorator: image("ArrowL-default" contain);
+            }
+
+            .button-previous:focus,
+            .button-previous:focus-visible
+            {
+                decorator: image("ArrowL-hover" contain);
+                transform: scale(1.1);
+            }
+
+            .button-previous:hover {
+                decorator: image("ArrowL-hover" contain);
+            }
+
+            .button-previous:active {
+                decorator: image("ArrowL-active" contain);
+            }
+
+            .button-next {
+                width: 6dp;
+                height: 6dp;
+                decorator: image("ArrowR-default" contain);
+            }
+
+            .button-next:focus,
+            .button-next:focus-visible{
+                decorator: image("ArrowR-hover" contain);
+                transform: scale(1.1);
+            }
+
+            .button-next:hover {
+                decorator: image("ArrowR-hover" contain);
+            }
+
+            .button-next:active {
+                decorator: image("ArrowR-active" contain);
+            }
+
+
+        </style>
+    </head>
+    <body>
+    <panel id="character_selection" data-model="HeroSelectionCardsViewModel">
+        <div class="main_container">
+            <div class="scrollable-card-container" id="scrollable-container" onscroll="OnCharSelectionScroll">
+                <card data-for="HeroCard : HeroCards" data-if="HeroCard.HeroName != 'Invalid'" class="debug-yellow-off">
+                    <div class="corner-left"/>
+                    <div class="corner-right"/>
+                    <div class="image-logo" data-if="HeroCard.NewHero"/>
+                    <!-- New Character Button-->
+                    <div class = "cant-create-hero-message" data-if="HeroCard.BlockNewHeroCreation">1219472177</div>
+                    <button id="first-focus" class="small-button new-char-button"
+                            data-if="HeroCard.NewHero"
+                            data-class-disabled="HeroCard.BlockNewHeroCreation"
+                            data-event-click="LoadGame(it_index)">3821373107</button>
+                    <img data-attr-src="HeroCard.Screenshot" id="ingame-screenshot" class="savegame-thumbnail" data-if="HeroCard.ExistingHero"/>
+                    <div class="card-header-container" data-if="HeroCard.ExistingHero">
+                        <div class="char-icon-container" data-if="HeroCard.ExistingHero">
+                            <span class="char-icon-ornament"></span>
+                            <img class="char-icon" data-attr-sprite="HeroCard.HeroIcon"/>
+                            <div class="char-level-frame">
+                                <span class="optimus-text highlight-text char-level">{{ HeroCard.Level }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class ="header-spacer"></div>
+                    <div class="hero-info" data-if="HeroCard.ExistingHero">
+                        <div class="hero-info-header">
+                            <span class="charname-ornament charname-ornament-left"></span>
+                            <span class="optimus-text highlight-text char-name">{{ HeroCard.HeroName }}</span>
+                            <span class="charname-ornament charname-ornament-right"></span>
+                        </div>
+                        <div data-if="HeroCard.bHardcore">
+                            <div data-if="!HeroCard.bDeadHardcoreCharacter" style="width:  100%;">
+                                <div style="display: flex; flex-direction: row; justify-content: space-between; width:  100%;">
+                                    <span data-if="HeroCard.bHardcore" class="secondary-list-label hardcore-text" style="color: title;">3568834676</span> <!--hardcore-->
+                                </div>
+                            </div>
+                            <div data-if="HeroCard.bDeadHardcoreCharacter" style="width:  100%;" >
+                                <div style="display: flex; flex-direction: row; justify-content: space-between; width:  100%;">
+                                    <span data-if="HeroCard.bHardcore" class="secondary-list-label hardcore-text" style="color: red;">3568834676</span> <!--hardcore-->
+                                    <span class="secondary-list-value hardcore-text" style="color: red;">3717994795</span> <!--dead-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">1207294411</span><span class="secondary-list-value">{{ HeroCard.HeroClass }}</span></div>
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">1527590396</span><span class="secondary-list-value">{{ HeroCard.AlignmentString }}</span></div>
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">3724761188</span><span class="secondary-list-value">{{ HeroCard.GodString }}</span></div>
+                        <div class="separator"></div>
+                        <div>
+                            <span class="secondary-list-label">0910045053</span>
+                            <div class="difficulty-button" style="justify-content: space-between" style="width: 155dp;">
+                                <button class="button-previous" data-event-click="PrevDifficulty(it_index)"></button>
+                                <span class="secondary-list-value" style="width: 140dp; text-anchor: middle; text-align: center;">{{ HeroCard.DifficultyString }}</span>
+                                <button class="button-next" data-event-click="NextDifficulty(it_index)"></button>
+                            </div>
+                        </div>
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">2072194808</span><span class="secondary-list-value">{{ HeroCard.ProgressString }}</span></div>
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">3962391314</span><span class="secondary-list-value">{{ HeroCard.TimePlayed }}</span></div>
+                        <div class="separator"></div>
+                        <div><span class="secondary-list-label">0203064002</span><span class="secondary-list-value">{{ HeroCard.NetworkMode }}</span></div>
+                        <div class="separator"></div>
+
+                    </div>
+                    <div class ="header-spacer"></div>
+                    <div class="button-group">
+                        <button class="small-button secondaryButton delete-button"
+                                data-if="HeroCard.ExistingHero"
+                                data-event-click="DeleteGame(it_index)">0784026047</button>
+                        <div style="width:  90%; " >
+                            <button class="small-button play-button" data-if="HeroCard.ExistingHero" data-event-click="LoadGame(it_index)">2988704102</button>
+                        </div>
+                    </div>
+                </card>
+                <!--<div data-if="HeroCards.size > 4" style="width: 275dp; flex-shrink: 0;"></div>-->
+                <div class="invisible-card"></div>
+            </div>
+
+            <div class="back-button-container">
+                <button  style="nav-up:#first-focus;" id="return-button" class="back-button" onclick="ReturnToMainMenu">
+                    <div class = "button-container">
+                        <div class="button-label ">2417289527</div>
+                        <div class="button-prompt  right-button"></div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </panel>
+    </body>
+</rml>
